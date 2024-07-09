@@ -11,12 +11,18 @@ import { BsMinecartLoaded } from "react-icons/bs";
 
 // images
 import logo from "../../assets/logo/logo.png"
-
 import { Link } from "react-router-dom";
 
+// context 
+import { useContext } from "react";
+import { MyContext } from "../../App";
 
 import "./Header.css";
 const Header = () => {
+
+  const context = useContext(MyContext); 
+
+
   return (
     <>
     {/* top bar part */}
@@ -95,7 +101,10 @@ const Header = () => {
              </div>
              <div className="col-sm-10">
                 <div className="menu-part-middle">
-                    <CountryDrop />
+                  {
+                     context.countryList.length !== 0 &&  <CountryDrop /> 
+                  }
+                   
 
                     {/* search btn  */}
                    <SearchBox /> 

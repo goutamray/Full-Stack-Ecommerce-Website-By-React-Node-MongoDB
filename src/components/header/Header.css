@@ -347,6 +347,10 @@
   padding: 10px 20px;
   border-bottom: 1px solid #eeeeee;
 }
+.location-modal  .countryList li button.active{
+  background-color: #f1f1f1 !important;
+}
+
 .location-modal .close_{
   width: 30px;
   height: 30px;
@@ -373,3 +377,10 @@
 ::-webkit-scrollbar-track{
   background: transparent !important;
 }
+
+.countryDrop .my-select{
+  display: flex;
+  flex-direction: column;
+}
+
+

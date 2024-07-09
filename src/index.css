@@ -8,13 +8,14 @@
   --heading-color : #202435 ;
   --hover-color : #233a95 ;
   --price-color : #D51243; 
+  --font-primary : "Dosis", sans-serif;
+  --font-secondary : "Inter", sans-serif; 
 }
 body{
    margin: 0;
    padding: 0;
    box-sizing: border-box;
    overflow-x: hidden; /* Hide horizontal scrollbar */
-   font-family: "Dosis", sans-serif; 
 }
 
 ul{

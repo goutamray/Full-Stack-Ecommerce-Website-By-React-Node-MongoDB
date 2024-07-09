@@ -1,0 +1,246 @@
+
+/*** Top bar css ****/
+.top-bar{
+  background-color: var(--hover-color);
+  padding: 9px 0px;
+}
+.top-bar p{
+  font-family: var(--font-primary );
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+/**** Second bar css *****/
+.second-bar {
+  padding: 8px 0px;
+  border-bottom: 1px solid rgb(195, 195, 195);
+
+}
+.second-bar .menu-top ul{
+   display: flex;
+   gap: 14px;
+}
+.second-bar .menu-top li a{
+     font-size: 13px;
+     font-weight: 500;
+     font-family: var(--font-secondary);
+     text-transform: capitalize;
+     color: var(--heading-color);
+}
+.second-bar .menu-top li a:hover{
+  color: var(--primary-color);
+  transition: all 0.3s ease-in-out;
+}
+.second-bar .offer-text{
+   display: flex ;
+   gap: 6px;
+   align-items: center;
+   justify-content: end;
+}
+.second-bar .offer-text span svg{
+  font-size: 20px;
+}
+.second-bar .offer-text p{
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/**** Right part *****/
+.info {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: end;
+}
+.info p{
+   font-size: 13px;
+   font-weight: 400;
+   color: var(--heading-color);
+}
+.info a{
+   font-size: 14px;
+   font-weight: 700;
+   color: var(--primary-color);
+}
+.info a:hover{
+  text-decoration: underline;
+}
+
+/*** language & currency part *****/
+.right-select-part {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: end;
+  margin-left: 20px;
+}
+.right-select-part  .language select{
+  font-size: 13px;
+  border: 1px solid rgb(180, 180, 180);
+  outline: none;
+  padding: 2px 5px;
+  font-weight: 600;
+}
+.right-select-part  .currency select{
+  font-size: 13px;
+  outline: none;
+  padding: 2px 5px;
+  font-weight: 600;
+}
+
+
+/**** middle-header-bar  *****/
+.middle-header-bar {
+  padding-top: 24px ;
+}
+.middle-header-bar .logo a img{
+  width: 175px;
+}
+.middle-header-bar .logo p{
+ font-size: 13px;
+ color: var(--heading-color);
+ font-weight: 300;
+}
+.menu-part-middle {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: space-between;
+}
+.menu-part-middle button.countryDrop{
+  width: 180px;
+  height: 60px;
+  min-width: 150px;
+  border: 1px solid #d9d9e9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  padding: 10px 15px;
+  text-align: left;
+}
+.menu-part-middle button span.location{
+  font-size: 10px;
+  text-transform: capitalize;
+  color: var(--heading-color);
+  font-family: var(--font-secondary);
+  line-height: 16px;
+}
+.menu-part-middle button span.country{
+  font-size: 13px;
+  text-transform: capitalize;
+  color: var(--hover-color);
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  line-height: 16px;
+}
+.menu-part-middle .countryDrop{
+  display: flex;
+  justify-content: space-between;
+}
+.menu-part-middle .countryDrop svg{
+  color: rgb(164, 164, 164);
+  font-size: 16px;
+}
+
+/**** header-search *****/
+.header-search {
+  width: 60%;
+  height: 60px;
+  background-color: #f3f4f7 ;
+  padding: 10px 20px;
+  border-radius: 7px;
+  position: relative;
+  border: 1px solid #d9d9e9;
+}
+.header-search input{
+  outline: none;
+  background: transparent;
+  font-size: 18px;
+  width: 100%;
+  height: 40px;
+  border: none;
+  padding: 0px 15px;
+}
+.header-search input::-webkit-input-placeholder{
+  color: #969696;
+  font-size: 15px;
+}
+.header-search  button{
+  border: transparent;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+}
+.header-search  button svg{
+  font-size: 25px;
+}
+
+/**** cart section css  *****/
+.cart-section{
+   display: flex;
+   gap: 10px;
+   justify-content: flex-end;
+}
+.cart-section .user button{
+   height: 40px;
+   width: 40px;
+   background: transparent;
+   border-radius: 50%;
+   border: 1px solid rgb(191, 191, 191);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.cart-section .user button svg{
+  font-size: 20px;
+}
+.cart-section .price{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  padding-left: 5px;
+}
+.cart-section .price button{
+  height: 40px;
+  width: 40px;
+  background: #fff1ee;
+  border-radius: 50%;
+  border: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart-section .price span{
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+.cart-section .price button svg{
+  color: var(--price-color);
+}
+.total-count{
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--price-color);
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.total-count span{
+ font-size: 11px !important;
+ color: #fff !important;
+ padding: 2px;
+ display: block;
+}
+
+

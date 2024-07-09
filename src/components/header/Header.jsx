@@ -1,8 +1,11 @@
+
+// components 
 import CountryDrop from "../countryDropDown/CountryDrop";
+import SearchBox from "./searchBox/SearchBox";
+import Navigation from "./navigation/Navigation";
 
 // react icons 
 import { MdOutlineSecurity } from "react-icons/md";
-import { IoIosSearch } from "react-icons/io";
 import { FiUser } from "react-icons/fi";
 import { BsMinecartLoaded } from "react-icons/bs";
 
@@ -16,14 +19,14 @@ import "./Header.css";
 const Header = () => {
   return (
     <>
-    {/* top bar */}
+    {/* top bar part */}
       <div className="top-bar">
         <div className="container">
            <p className="text-center text-white "> Due to the <b className="text-bold">COVID 19 </b> epidemic, orders may be processed with a slight delay </p>
         </div>
       </div>
 
-      {/* second bar  */}
+      {/* second bar part  */}
       <div className="second-bar">
         <div className="container">
             <div className="row">
@@ -95,10 +98,7 @@ const Header = () => {
                     <CountryDrop />
 
                     {/* search btn  */}
-                    <div className="header-search">
-                      <input type="text"placeholder="Search for products...." />
-                      <button className="search"> <IoIosSearch /> </button>
-                    </div>
+                   <SearchBox /> 
 
                     {/* cart section */}
                     <div className="cart-section">
@@ -111,17 +111,21 @@ const Header = () => {
                           <div className="total-count">
                                 <span> 1 </span>
                             </div>
-                        
                         </div>
                     </div>
+
                 </div>
              </div>
           </div>
        </div>
+
+       {/* header bottom part  */}
+       <Navigation />
+
     </>
   )
 }
 
-export default Header
+export default Header;
 
 

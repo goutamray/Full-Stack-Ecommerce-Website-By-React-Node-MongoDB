@@ -15,7 +15,6 @@
 .second-bar {
   padding: 8px 0px;
   border-bottom: 1px solid rgb(195, 195, 195);
-
 }
 .second-bar .menu-top ul{
    display: flex;
@@ -243,4 +242,134 @@
  display: block;
 }
 
+/**** header-bottom css *****/
+.header-bottom {
+  padding: 18px 0px !important;
+  border-bottom: 1px solid rgb(195, 195, 195);
+}
+.header-bottom .category-tab{
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.header-bottom .category-tab button{
+  background-color: var(--primary-color);
+  font-size: 15px ;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 25px;
+  border: none;
+  padding: 13px 15px;
+  width: 213px !important;
+}
+.header-bottom .category-tab button span.menu svg{
+  font-size: 24px ;
+  padding-right: 5px;
+}
+.header-bottom .category-tab button span.angle svg{
+   font-size: 22px ;
+   padding-left: 10px;
+} 
 
+/**** menu css ****/
+.my-custom-row{
+  display: flex;
+  align-items: center;
+}
+.main-menu ul{
+   display: flex;
+   align-items: center;
+   justify-content: end;
+   gap: 3px;
+}
+.main-menu ul li a{
+   font-size: 16px;
+   font-weight: 600;
+   font-family: var(--font-primary);
+   color: var(--heading-color);
+   text-transform: uppercase;
+   padding: 8px 17px;
+   border-radius: 25px;
+   transition: all 0.3s ease-in-out;
+}
+.main-menu ul li:hover a {
+  background-color: #f0faff;
+  color: var(--primary-color);
+}
+.main-menu .custom-icon{
+  display: flex;
+  gap: 10px;
+}
+.main-menu .custom-icon span svg{
+  font-size: 16px;
+  position: relative;
+  top: -2px;
+  padding-left: 6px;
+}
+
+/***** location-modal css *****/
+.location-modal{
+  position: relative;
+}
+.location-modal .MuiPaper-elevation{
+  padding: 25px;
+}
+.location-modal h2{
+  color: var(--heading-color);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-secondary);
+}
+.location-modal p{
+  color: var(--heading-color);
+  font-size: 12px;
+  font-weight: 400;
+  font-family: var(--font-secondary);
+  line-height: 24px;
+  padding-top: 5px;
+}
+.location-modal  .countryList{
+  margin-bottom: 0px;
+  max-height: 350px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin-top: 10px;
+}
+.location-modal  .countryList li{
+  width: 100%;
+}
+.location-modal  .countryList li button{
+  width: 100% !important;
+  text-transform: capitalize;
+  color: #000 !important;
+  justify-content: flex-start;
+  padding: 10px 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+.location-modal .close_{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.location-modal .close_ svg{
+  font-size: 22px;
+}
+::-webkit-scrollbar{
+  height: 8px !important;
+  width: 8px !important;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #ccc !important;
+}
+::-webkit-scrollbar-track{
+  background: transparent !important;
+}

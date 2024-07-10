@@ -311,7 +311,6 @@
   top: -2px;
   padding-left: 6px;
 }
-
 .main-menu ul li .submenu{
   position: absolute;
   top: 140%;
@@ -321,6 +320,7 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s ease-in-out;
+  z-index: 100;
 }
 .main-menu ul li .submenu li{
   padding-bottom: 0px !important;
@@ -342,6 +342,7 @@
 }
 .main-menu ul li .submenu li:hover a{
  background-color: #f3f4f7;
+
 }
 .my-custom-row .category-tab{
   position: relative;
@@ -358,6 +359,7 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s ease-in-out;
+  z-index: 100;
 }
 .my-custom-row .category-tab .sidebarnav.open{
   height: auto !important;
@@ -367,14 +369,45 @@
 .my-custom-row .category-tab .sidebarnav ul li{
   width: 100%;
   padding: 0px 5px;
+  position: static;
 }
 .my-custom-row .category-tab .sidebarnav ul li a{
   font-size: 16px;
-  color: #000;
+  color: #000 !important;
   text-transform: capitalize;
   display: block;
   padding: 5px 0px !important;
 }
+.my-custom-row .category-tab .sidebarnav ul li:hover a{
+  color: var(--primary-color) !important;
+}
+.my-custom-row .category-tab .sidebarnav ul li.angle a{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000 !important;
+}
+.my-custom-row .category-tab .sidebarnav ul li.angle a svg{
+  font-size: 16px;
+}
+.my-custom-row .category-tab .sidebarnav ul li .submenu{
+  position: absolute;
+  left: 110%;
+  top: 0px;
+  background-color: #fff;
+  padding: 20px;
+  width: 200px;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.my-custom-row .category-tab .sidebarnav ul li:hover .submenu {
+   opacity: 1;
+   visibility: visible;
+   left: 100%;
+   border: 1px solid rgb(211, 211, 211);
+} 
 
 
 /***** location-modal css *****/

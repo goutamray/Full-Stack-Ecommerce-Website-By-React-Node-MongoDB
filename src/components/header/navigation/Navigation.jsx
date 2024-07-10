@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
-
+import { FaAngleRight } from "react-icons/fa6"; 
 
 const Navigation = () => {
+
   const [isOpenSideNav, setIsOpemSideNav ] = useState(true); 
+  
   return (
     <>
         <nav className="header-bottom ">
@@ -22,7 +24,17 @@ const Navigation = () => {
                         </button>
                         <div className={`sidebarnav ${isOpenSideNav === true ? "open" : ""}`}>
                            <ul>
-                            <li> <Link href="#"> Men </Link></li>
+                             <li className="angle"> 
+                              <Link href="#"> Men <FaAngleRight />  </Link>
+                              <div className="submenu shadow">
+                                <li> <Link href="/">  Clothing </Link> </li>
+                                <li> <Link href="/">  FoodWear </Link> </li>
+                                <li> <Link href="/">  Watches </Link> </li>
+                                <li> <Link href="/">  Clothing </Link> </li>
+                                <li> <Link href="/">  FoodWear </Link> </li>
+                                <li> <Link href="/">  Watches </Link> </li>
+                              </div>
+                            </li>
                             <li> <Link href="#"> Women </Link></li>
                             <li> <Link href="#"> Beauty </Link></li>
                             <li> <Link href="#"> Watches </Link></li>

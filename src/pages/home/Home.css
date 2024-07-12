@@ -85,7 +85,6 @@
   font-weight: 600;
   font-family: var(--font-primary);
 }
-
 .price-total .delete-price{
   font-size: 16px;
   font-weight: 600;
@@ -93,7 +92,6 @@
   color: #C2C2D3;
   text-decoration: line-through;
 }
-
 .price-total .regular-price{
    color: var(--price-color);
    font-family: var(--font-primary);
@@ -111,25 +109,65 @@
   border-radius: 25px;
   text-align: center;
   margin: auto;
-  
 }
-.imagewrapper {
+.product-item .imagewrapper {
   position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.product-item .imagewrapper:hover img{
+  transform: scale(1.1);
 }
 .imagewrapper .discount{
   height: 30px;
   width: 40px;
   background-color: var(--primary-color);
   position: absolute;
-  left: 20px;
-  top: 10px;
+  left: 15px;
+  top: 15px;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .imagewrapper .discount span{
   font-size: 12px;
   color: #fff;
+}
+.imagewrapper .actions{
+  position: absolute;
+  top: 20px;
+  right: -100% ;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  opacity: 0 ;
+  visibility: hidden;
+}
+.imagewrapper .actions button{ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #fff !important;
+  z-index: 60;
+ border: 1px solid rgb(222, 222, 222);
+ transition: all 0.3s ease-in-out ;
+} 
+.imagewrapper .actions button svg{
+  color: #969696;
+}
+.imagewrapper .actions button:hover{
+  background-color: var(--hover-color) !important;
+}
+.imagewrapper .actions button:hover svg{
+  color: #fff;
+}
+
+.product-item:hover .imagewrapper .actions{
+  opacity: 1;
+  visibility: visible;
+  right: 10px;
 }

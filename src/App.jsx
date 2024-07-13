@@ -13,6 +13,7 @@ import Header from './components/header/Header'
 const MyContext = createContext();
 
 import './App.css'
+import Footer from './components/footer/Footer';
 function App() {
   const [countryList , setCountryList ] = useState([]);
   const [selecetedCountry, setSelectedCountry ] = useState('')
@@ -49,7 +50,7 @@ function App() {
                 </Routes>
 
             {/* footer part  */}
-
+            <Footer />
   
           </MyContext.Provider>
      </BrowserRouter>

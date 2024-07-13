@@ -280,6 +280,7 @@
 .comment-data{
   padding: 40px;
   background-color: #fffbec;
+  border-radius: 10px;
 }
 .comment-data h4{
   color: var(--heading-color);
@@ -364,14 +365,13 @@
     background-color: var(--hover-color);
     height: 350px;
     overflow: hidden;
-    margin: 40px 0px;
+    margin-top: 40px;
 }
 .news-row{
   display: flex;
   align-items: center;
   flex-direction: row;
 }
-
 .newsleter-image{
   position: relative;
 }

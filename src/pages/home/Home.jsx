@@ -187,6 +187,7 @@ const Home = () => {
          </div>
       </div>
 
+      {/* news letter section */}
       <div className="newsletter">
          <div className="container">
             <div className="row news-row">
@@ -210,6 +211,7 @@ const Home = () => {
             </div>
          </div>
       </div>
+      
     </>
   )
 }

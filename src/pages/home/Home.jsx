@@ -16,11 +16,15 @@ import { Navigation } from 'swiper/modules';
 
 import "./Home.css"
 import ProductItem from "../../components/productItem/ProductItem";
+import CategorySlider from "../../components/category/CategorySlider";
 const Home = () => {
 
   return (
     <>
       <HomeBanner />
+
+      {/* cat slider  */}
+      <CategorySlider />
 
       {/* Home Banner */}
       <div className="homeBanner py-5 ">
@@ -33,11 +37,25 @@ const Home = () => {
                     <h3> Special Organic </h3>
                     <h1> Roats Burger </h1>
                   </div>
-                  <div className="price">
+                  <div className="price mt-1">
                     <p> only-from </p>
                     <h4> $14.99 </h4>
                   </div>
                </div>
+
+               <div className="data-all rounded">
+                  <h2> Best Bakery Products </h2>
+                  <div className="product-name">
+                    <h3 className="fresh"> Freshest Products </h3>
+                    <h1> every hour. </h1>
+                  </div>
+                  <div className="price mt-1">
+                    <p> only-from </p>
+                    <h4> $24.99 </h4>
+                  </div>
+                  <button> Shop Now</button>
+               </div>
+
             </div>
             <div className="col-sm-9 product-row ">
                <div className="product-slider">

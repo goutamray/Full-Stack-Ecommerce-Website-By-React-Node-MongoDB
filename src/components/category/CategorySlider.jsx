@@ -8,107 +8,58 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Navigation } from 'swiper/modules';
+import { useState } from 'react';
 
 
 
 const CategorySlider = () => {
+
+   // background 
+   const [itemBg, setItemBg ] = useState([
+    "#f2fce4",
+    "#fffceb",
+    "#ecffec",
+    "#feefea",
+    "#fff3eb",
+    "#fff3ff",
+    "#f2fce4",
+    "#feefea",
+    "#fff3ff",
+    "#f2fce4",
+    "#feefea",
+    "#fff3eb",
+    "#fff3ff",
+    "#f2fce4",
+    "#feefea",
+  ])
+
+
+
   return (
     <div className="cat-slider py-5">
        <div className="container">
+        <h3 className='mb-4 '> Featured Categories </h3>
            <div className="row">
              <div className="col">
              <Swiper
                       slidesPerView={10}
-                      spaceBetween={0}
+                      spaceBetween={10}
                       slidesPerGroup={1}
                       navigation={true}
                       modules={[ Navigation]}
-                      className="mySwiper"
+                      className="mySwiper-data"
                     >
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                              <div className="item">
-                                 <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                 <h6 className='text-center'> Red Apple </h6>
-                              </div>
-                          </SwiperSlide>
+                        {
+                            itemBg?.map((item, index) => {
+                             return <SwiperSlide key={index} >
+                                <div className="item" style={{ background : item}}>
+                                   <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
+                                   <h6 className='text-center'> Red Apple </h6>
+                                </div>
+                            </SwiperSlide>
+                            })
+                        }
+                         
                     </Swiper>
              </div>
            </div>

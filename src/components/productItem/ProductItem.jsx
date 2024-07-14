@@ -10,7 +10,7 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { useContext } from "react";
 import { MyContext } from "../../App";
 
-const ProductItem = () => {
+const ProductItem = (props) => {
  const context = useContext(MyContext)
 
   const viewProductDetails = (id) => {
@@ -20,7 +20,7 @@ const ProductItem = () => {
 
   return (
     <>
-       <div className="item product-item ">
+       <div className={`item product-item ${props.itemView} `}>
             <div className="imagewrapper">
                   <img src={product} alt="product" />
                     <div className="discount">

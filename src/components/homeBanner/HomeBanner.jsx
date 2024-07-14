@@ -26,8 +26,7 @@ const HomeBanner = () => {
     <div className="py-2">
         <div className="container">
           <div className="row">
-            <div className="col-sm-3"></div>
-            <div className="col-sm-9">
+            <div className="col-sm-12">
                   <Slider {...settings}>
                     <div className="item">
                         <img src={slider1} alt="slider1" height={350} className="rounded" />

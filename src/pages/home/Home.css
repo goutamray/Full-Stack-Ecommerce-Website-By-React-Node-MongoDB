@@ -123,6 +123,7 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   gap: 12px;
 }
 .product-item .all-details a{
@@ -153,14 +154,15 @@
 .product-item .all-details  a.cart-btn {
   font-size: 13px;
   font-family: var(--font-secondary);
-  color: var(--primary-color);
+  color: #fff;
   line-height: 18px;
-  padding: 6px 20px;
+  padding: 8px 20px;
   border: 1px solid var(--primary-color);
-  width: 170px !important;
+  width: 70% !important;
   border-radius: 25px;
   text-align: center;
-  margin: auto;
+  background-color: var(--hover-color);
+
 }
 .product-item .imagewrapper {
   position: relative;
@@ -437,6 +439,4 @@
   top: 12px;
   right: 23%;
 }
-
-
 

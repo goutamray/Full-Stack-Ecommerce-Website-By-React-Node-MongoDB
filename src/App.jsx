@@ -5,20 +5,21 @@ import axios from 'axios';
 
 // import pages 
 import Home from "../src/pages/home/Home"
+import Listing from './pages/listing/Listing';
 
 // import components
 import Header from './components/header/Header'
+import Footer from './components/footer/Footer';
+import ProductModal from './components/productModal/ProductModal';
 
 // context 
 const MyContext = createContext();
 
 import './App.css'
-import Footer from './components/footer/Footer';
-import ProductModal from './components/productModal/ProductModal';
 function App() {
   const [countryList , setCountryList ] = useState([]);
   const [selecetedCountry, setSelectedCountry ] = useState('');
-  const [isOpenProductModal, setIsOpenProductModal] = useState(false)
+  const [isOpenProductModal, setIsOpenProductModal] = useState(false);
 
  // get all countries
   useEffect(() => {
@@ -51,6 +52,7 @@ function App() {
             <Header />
                 <Routes >
                   <Route  path='/' exact={true} element={ <Home /> }/>
+                  <Route  path='/cat/:id' exact={true} element={ <Listing /> }/>
                 </Routes>
 
             {/* footer part  */}

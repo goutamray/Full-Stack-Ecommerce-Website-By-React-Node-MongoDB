@@ -1,0 +1,133 @@
+
+.product-listing-page{
+  padding: 20px 0px;
+}
+.bradcrumb h2{
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.product-listing-page .productListing{
+ gap: 20px;
+}
+.product-listing-page .sidebar{
+  width: 20%;
+  flex: 0 0 20%;
+}
+.product-listing-page .sidebar .filterBox{
+  margin-bottom: 30px;
+}
+.product-listing-page .sidebar .filterBox h6{
+ font-size: 18px;
+ text-transform: uppercase;
+ font-weight: 700;
+ margin-bottom: 10px;
+}
+.product-listing-page .content_right{
+  width: 77%;
+  flex: 0 0 77%;
+}
+
+.sidebar .sticky{
+  position: sticky;
+  top: 50px;
+}
+
+.productListing{
+  padding: 20px 0px;
+}
+.scroll{
+  padding-left: 8px;
+  max-height: 200px;
+  overflow-y: scroll !important;
+}
+.scroll::-webkit-scrollbar{
+  width: 5px;
+  height: 5px;
+}
+.scroll ul li{
+  margin-bottom: 0px;
+  width: 100%;
+}
+.css-ahj2mt-MuiTypography-root {
+  font-size: 14px !important;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  width: 20px;
+  height: 20px;
+}
+
+/**** Range css ****/
+.priceRange .second-price{
+  padding-left: 20px !important;
+}
+.range-slider {
+  height: 5px !important;
+}
+.range-slider .range-slider__thumb {
+  width: 16px;
+  height: 16px;
+  background: #0646f3;
+}
+
+
+/**** Grid box css *****/
+.showBy{
+  background-color: #f7f8fd;
+  padding: 20px 0px;
+  border-radius: 5px;
+}
+.showBy  .left-grid{
+  padding-left: 20px;
+}
+.showBy  .left-grid  button{
+  border: none;
+  background: transparent;
+  text-transform: capitalize;
+}
+.showBy  .left-grid button svg{
+  font-size: 22px;
+  color: #000;
+  opacity: 0.5;
+}
+.showBy .left-grid  button.acti svg{
+  opacity: 1 !important;
+}
+
+.showBy  .left-grid button:hover svg{
+  opacity: 1;
+}
+
+
+
+.drop-btn span svg{
+  margin-left: 5px !important;
+}
+.showPerPageDrop li.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-gutters.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  width: 82px;
+}
+
+/**** view css ******/
+.productListingGrid{
+   padding-top: 20px;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
+}
+.productListingGrid .product-item.four{
+  width: 23%;
+} 
+.productListingGrid .product-item.three{
+  width: 31.5%;
+} 
+.productListingGrid .product-item.one{
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+} 
+.productListingGrid .product-item.one .imagewrapper{
+   width: 25% !important;
+}
+
+
+

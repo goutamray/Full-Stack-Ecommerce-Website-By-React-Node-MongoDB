@@ -95,7 +95,7 @@ const Header = () => {
             {/* logo part */}
              <div className="col-sm-2">
                 <div className="logo">
-                   <Link href={"/"}> <img src={logo} alt="logo"/> </Link>
+                   <Link to={"/"}> <img src={logo} alt="logo"/> </Link>
                    <p> Online Grocery Shopping Center </p>
                 </div>
              </div>

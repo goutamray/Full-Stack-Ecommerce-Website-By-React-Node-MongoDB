@@ -246,6 +246,7 @@
 .header-bottom {
   padding: 8px 0px !important;
   border-bottom: 1px solid rgb(195, 195, 195);
+  margin-top: 5px;
 }
 .header-bottom .category-tab{
   display: flex;
@@ -346,6 +347,8 @@
 }
 .my-custom-row .category-tab{
   position: relative;
+  background-color: #fff;
+  z-index: 101;
 }
 .my-custom-row .category-tab .sidebarnav{
   position: absolute;

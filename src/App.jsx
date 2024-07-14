@@ -16,6 +16,7 @@ import ProductModal from './components/productModal/ProductModal';
 const MyContext = createContext();
 
 import './App.css'
+import ProductDetails from './pages/productDetails/ProductDetails';
 function App() {
   const [countryList , setCountryList ] = useState([]);
   const [selecetedCountry, setSelectedCountry ] = useState('');
@@ -53,6 +54,7 @@ function App() {
                 <Routes >
                   <Route  path='/' exact={true} element={ <Home /> }/>
                   <Route  path='/cat/:id' exact={true} element={ <Listing /> }/>
+                  <Route  path='/product/:id' exact={true} element={ <ProductDetails /> }/>
                 </Routes>
 
             {/* footer part  */}

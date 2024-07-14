@@ -7,7 +7,17 @@ import Rating from '@mui/material/Rating';
 import { SlSizeFullscreen } from "react-icons/sl";
 import { IoIosHeartEmpty } from "react-icons/io";
 
+import { useContext } from "react";
+import { MyContext } from "../../App";
+
 const ProductItem = () => {
+ const context = useContext(MyContext)
+
+  const viewProductDetails = (id) => {
+    context.setIsOpenProductModal(true); 
+  }; 
+
+
   return (
     <>
        <div className="item product-item ">
@@ -17,7 +27,7 @@ const ProductItem = () => {
                          <span> 10% </span>
                    </div>
                    <div className="actions">
-                      <button className="screen"> <SlSizeFullscreen /> </button>
+                      <button className="screen" onClick={() => viewProductDetails(1)}> <SlSizeFullscreen /> </button>
                       <button className="cart"> <IoIosHeartEmpty /> </button>
                    </div>
             </div>
@@ -32,6 +42,8 @@ const ProductItem = () => {
                     <Link href="#" className="cart-btn"> Add to cart </Link>
                </div>                     
          </div>
+
+   
     </>
   )
 }

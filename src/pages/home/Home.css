@@ -113,6 +113,11 @@
   height: auto;
   border: 1px solid rgb(220, 220, 220);
   border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.product-item:hover {
+  border: 1px solid #0000!important;
+  box-shadow: 0 3px 6px #7b6c6c29,0 3px 6px #0000003b;
 }
 .product-item .all-details{
   padding: 15px;
@@ -432,7 +437,6 @@
   top: 12px;
   right: 23%;
 }
-
 
 
 

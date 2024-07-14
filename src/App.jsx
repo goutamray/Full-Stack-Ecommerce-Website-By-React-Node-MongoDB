@@ -14,9 +14,11 @@ const MyContext = createContext();
 
 import './App.css'
 import Footer from './components/footer/Footer';
+import ProductModal from './components/productModal/ProductModal';
 function App() {
   const [countryList , setCountryList ] = useState([]);
-  const [selecetedCountry, setSelectedCountry ] = useState('')
+  const [selecetedCountry, setSelectedCountry ] = useState('');
+  const [isOpenProductModal, setIsOpenProductModal] = useState(false)
 
  // get all countries
   useEffect(() => {
@@ -36,6 +38,9 @@ function App() {
     countryList,
     selecetedCountry,
     setSelectedCountry,
+    isOpenProductModal,
+    setIsOpenProductModal,
+
   };   
 
   return (
@@ -44,14 +49,18 @@ function App() {
         <MyContext.Provider value={values}>
           {/* header part */}
             <Header />
-
                 <Routes >
                   <Route  path='/' exact={true} element={ <Home /> }/>
                 </Routes>
 
             {/* footer part  */}
             <Footer />
-  
+
+            {/* Product modal */}
+             {
+                isOpenProductModal === true && <ProductModal />
+             }
+         
           </MyContext.Provider>
      </BrowserRouter>
     </>

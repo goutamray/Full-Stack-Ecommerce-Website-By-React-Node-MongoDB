@@ -18,10 +18,15 @@ const MyContext = createContext();
 import './App.css'
 import ProductDetails from './pages/productDetails/ProductDetails';
 import Cart from './pages/cart/Cart';
+import SignIn from './pages/signIn/SignIn';
+import SignUp from './pages/signUp/SignUp';
+
 function App() {
   const [countryList , setCountryList ] = useState([]);
   const [selecetedCountry, setSelectedCountry ] = useState('');
   const [isOpenProductModal, setIsOpenProductModal] = useState(false);
+  const [isHeaderFooterShow, setIsHeaderFooterShow] = useState(true); 
+  const [isLogin, setIsLogin] = useState(false); 
 
  // get all countries
   useEffect(() => {
@@ -32,7 +37,7 @@ function App() {
   const getCountry = async(url) => {
      const response = await axios.get(url).then((res) => {
       setCountryList(res.data.data);
-      console.log(res.data.data);
+      console.log(response.data);
      })
   }
 
@@ -43,7 +48,10 @@ function App() {
     setSelectedCountry,
     isOpenProductModal,
     setIsOpenProductModal,
-
+    isHeaderFooterShow, 
+    setIsHeaderFooterShow, 
+    isLogin,
+    setIsLogin,
   };   
 
   return (
@@ -51,16 +59,24 @@ function App() {
      <BrowserRouter >
         <MyContext.Provider value={values}>
           {/* header part */}
-            <Header />
+            {
+              isHeaderFooterShow === true &&  <Header />
+            }
+          
                 <Routes >
                   <Route  path='/' exact={true} element={ <Home /> }/>
                   <Route  path='/cat/:id' exact={true} element={ <Listing /> }/>
                   <Route  path='/product/:id' exact={true} element={ <ProductDetails /> }/>
                   <Route  path='/cart' exact={true} element={ <Cart /> }/>
+                  <Route  path='/signIn' exact={true} element={ <SignIn /> }/>
+                  <Route  path='/signUp' exact={true} element={ <SignUp /> }/>
                 </Routes>
 
             {/* footer part  */}
-            <Footer />
+             {
+                isHeaderFooterShow === true &&   <Footer />
+             }
+           
 
             {/* Product modal */}
              {

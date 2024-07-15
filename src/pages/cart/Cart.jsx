@@ -1,12 +1,16 @@
+
+import QuantityBox from "../../components/quantityBox/QuantityBox";
+
+// react icons
 import { RiDeleteBin6Fill } from "react-icons/ri"
+import { PiSignOutBold } from "react-icons/pi";
+import { FaLongArrowAltLeft } from "react-icons/fa";
+
 import { Link } from "react-router-dom"
 
 import Rating from '@mui/material/Rating';
 
 import "./Cart.css";
-import QuantityBox from "../../components/quantityBox/QuantityBox";
-import { PiSignOutBold } from "react-icons/pi";
-import { FaLongArrowAltLeft } from "react-icons/fa";
 const Cart = () => {
   return (
     <>

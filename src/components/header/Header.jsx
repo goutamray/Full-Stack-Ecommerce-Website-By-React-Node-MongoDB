@@ -35,7 +35,7 @@ const Header = () => {
       {/* second bar part  */}
       <div className="second-bar">
         <div className="container">
-            <div className="row">
+            <div className="row align-items-center">
                <div className="col-sm-4">
                  <div className="menu-top">
                    <ul>
@@ -95,7 +95,7 @@ const Header = () => {
             {/* logo part */}
              <div className="col-sm-2">
                 <div className="logo">
-                   <Link to={"/"}> <img src={logo} alt="logo"/> </Link>
+                   <Link to={"/"}> <img src={logo} alt="logo" className="logo-main"/> </Link>
                    <p> Online Grocery Shopping Center </p>
                 </div>
              </div>
@@ -112,7 +112,15 @@ const Header = () => {
                     {/* cart section */}
                     <div className="cart-section">
                         <div className="user">
-                          <button> <FiUser /> </button>
+                           {
+                              context.isLogin !== true 
+                                ? 
+                               <Link  to="/signIn"> Sign In </Link> 
+                                 : 
+                                <button> <FiUser /> </button>
+                           }
+                       
+                        
                         </div>
                         <div className="price">
                           <span> $ 19.56 </span>

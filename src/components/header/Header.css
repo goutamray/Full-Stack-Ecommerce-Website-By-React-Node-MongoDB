@@ -91,9 +91,13 @@
 
 /**** middle-header-bar  *****/
 .middle-header-bar {
-  padding-top: 24px ;
+  padding-top: 20px ;
 }
-.middle-header-bar .logo a img{
+.middle-header-bar .logo{
+  position: relative;
+  top: 10px;
+}
+.middle-header-bar .logo a.logo-main img{
   width: 175px;
 }
 .middle-header-bar .logo p{
@@ -144,7 +148,7 @@
 
 /**** header-search *****/
 .header-search {
-  width: 60%;
+  width: 57%;
   height: 60px;
   background-color: #f3f4f7 ;
   padding: 10px 20px;
@@ -184,15 +188,21 @@
    gap: 10px;
    justify-content: flex-end;
 }
+.cart-section .user a{
+   padding: 8px 15px;
+   background: var(--hover-color);
+   border-radius: 20px;
+   display: block;
+   font-size: 16px;
+   font-weight: 500;
+   color: #fff;
+}
 .cart-section .user button{
-   height: 40px;
-   width: 40px;
-   background: transparent;
-   border-radius: 50%;
-   border: 1px solid rgb(191, 191, 191);
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgb(208, 208, 208);
 }
 .cart-section .user button svg{
   font-size: 20px;

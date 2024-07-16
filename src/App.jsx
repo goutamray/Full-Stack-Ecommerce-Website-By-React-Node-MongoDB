@@ -20,6 +20,7 @@ import ProductDetails from './pages/productDetails/ProductDetails';
 import Cart from './pages/cart/Cart';
 import SignIn from './pages/signIn/SignIn';
 import SignUp from './pages/signUp/SignUp';
+import About from './pages/about/About';
 
 function App() {
   const [countryList , setCountryList ] = useState([]);
@@ -65,6 +66,7 @@ function App() {
           
                 <Routes >
                   <Route  path='/' exact={true} element={ <Home /> }/>
+                  <Route  path='/about' exact={true} element={ <About /> }/>
                   <Route  path='/cat/:id' exact={true} element={ <Listing /> }/>
                   <Route  path='/product/:id' exact={true} element={ <ProductDetails /> }/>
                   <Route  path='/cart' exact={true} element={ <Cart /> }/>

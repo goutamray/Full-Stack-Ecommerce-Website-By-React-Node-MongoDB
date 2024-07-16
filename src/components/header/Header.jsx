@@ -40,16 +40,16 @@ const Header = () => {
                  <div className="menu-top">
                    <ul>
                     <li> 
-                      <Link href="/about"> About Us </Link>
+                      <Link to="/about"> About Us </Link>
                     </li>
                     <li> 
-                      <Link href="/my-account"> My account </Link>
+                      <Link to="/my-account"> My account </Link>
                     </li>
                     <li> 
-                      <Link href="/wishlist"> Wishlist </Link>
+                      <Link to="/wishlist"> Wishlist </Link>
                     </li>
                     <li> 
-                      <Link href="/order-trucking"> Order Tracking </Link>
+                      <Link to="/order-trucking"> Order Tracking </Link>
                     </li>
                    </ul>
                  </div>

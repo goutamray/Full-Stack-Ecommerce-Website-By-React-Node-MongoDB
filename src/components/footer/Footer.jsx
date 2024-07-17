@@ -5,6 +5,7 @@ import { FaTruck } from "react-icons/fa";
 import { CiDiscount1 } from "react-icons/ci";
 import { CiDollar } from "react-icons/ci";
 
+
 import { Link } from "react-router-dom";
 import payment from "../../assets/banner/payments.png"; 
 

@@ -207,7 +207,7 @@
 .cart-section .user button svg{
   font-size: 20px;
 }
-.cart-section .price{
+.cart-section .price a{
   display: flex;
   gap: 10px;
   align-items: center;
@@ -215,7 +215,7 @@
   position: relative;
   padding-left: 5px;
 }
-.cart-section .price button{
+.cart-section .price a button{
   height: 40px;
   width: 40px;
   background: #fff1ee;
@@ -225,12 +225,12 @@
   justify-content: center;
   align-items: center;
 }
-.cart-section .price span{
+.cart-section .price a span{
   font-size: 16px;
   font-weight: 600;
   color: var(--heading-color);
 }
-.cart-section .price button svg{
+.cart-section .price a button svg{
   color: var(--price-color);
 }
 .total-count{

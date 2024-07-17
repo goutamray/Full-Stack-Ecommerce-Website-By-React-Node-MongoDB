@@ -46,6 +46,24 @@ const CategorySlider = () => {
                       spaceBetween={10}
                       slidesPerGroup={1}
                       navigation={true}
+                      breakpoints={{
+                        340: {
+                          slidesPerView: 1,
+                          spaceBetween: 20,
+                        },
+                        640: {
+                          slidesPerView: 2,
+                          spaceBetween: 20,
+                        },
+                        768: {
+                          slidesPerView: 4,
+                          spaceBetween: 40,
+                        },
+                        1024: {
+                          slidesPerView: 5,
+                          spaceBetween: 50,
+                        },
+                      }}
                       modules={[ Navigation]}
                       className="mySwiper-data"
                     >

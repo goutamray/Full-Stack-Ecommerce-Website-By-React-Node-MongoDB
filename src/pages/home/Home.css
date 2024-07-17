@@ -158,7 +158,7 @@
   line-height: 18px;
   padding: 8px 20px;
   border: 1px solid var(--primary-color);
-  width: 70% !important;
+  width: 80% !important;
   border-radius: 25px;
   text-align: center;
   background-color: var(--hover-color);
@@ -439,4 +439,88 @@
   top: 12px;
   right: 23%;
 }
+
+/*********** Responsive css Home page ********/
+
+/***** Min 320px & Max 576px  ******/
+@media (min-width : 320px) and (max-width: 576px){ 
+.cat-slider .swiper-button-prev, .cat-slider .swiper-button-next {
+    top: -27px !important;
+}
+.homeBanner .info {
+    padding: 58px;
+ }
+.homeBanner .data-all{
+  padding: 58px;
+ }
+ .product-slider .product-header{
+  padding: 20px 10px;
+ }
+ .product-slider .product-header p {
+  width: 200px;
+}
+.product-item .all-details  a.cart-btn {
+  width: 90% !important;
+}
+.product_row_all.product-row2 .item.product-item {
+  width: 47%;
+}
+
+.comment-data {
+  margin: 0px 10px;
+}
+.product-banner {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 10px;
+}
+.product-banner .data-all-product {
+  width: 360px !important;
+}
+.product-banner .data-all-product2 {
+  width: 360px !important;
+}
+.newsletter {
+  height: 540px;
+}
+.newsleter-image img {
+  top: 30px;
+}
+.news-btn input {
+  width: 368px;
+}
+.news-btn {
+  left: 2px;
+}
+.news-btn button {
+  right: 10%;
+}
+.top-part {
+  margin-bottom: 5px;
+}
+}
+
+/**** Min 576px & Max 768px  ******/
+@media (min-width : 576px) and (max-width: 768px){
+.product_row_all.product-row2 .item.product-item {
+    width: 31%;
+}
+.my-comment-section{
+  display: flex;
+  flex-direction: column;
+}
+.news-btn input {
+  width: 320px;
+}
+.news-btn button {
+  right: -26%;
+}
+.newsleter-image img {
+  top: 12px;
+  right: -47px;
+}
+
+}
+
+
 

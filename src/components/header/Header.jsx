@@ -122,15 +122,17 @@ const Header = () => {
                                  : 
                                 <button> <FiUser /> </button>
                            }
-                       
+                        
                         
                         </div>
                         <div className="price">
+                        <Link to="/cart" > 
                           <span> $ 19.56 </span>
                           <button> <BsMinecartLoaded /> </button>    
                           <div className="total-count">
                                 <span> 1 </span>
                             </div>
+                        </Link>
                         </div>
                     </div>
 

@@ -36,7 +36,7 @@ const Home = () => {
       <div className="homeBanner py-5 ">
         <div className="container">
           <div className="row">
-            <div className="col-sm-3">
+            <div className="col-sm-12 col-md-3">
                <div className="sticky">
                      <div className="info rounded">
                         <h2> Bacola Natural Foods </h2>
@@ -66,7 +66,7 @@ const Home = () => {
    
 
             </div>
-            <div className="col-sm-9 product-row ">
+            <div className="col-sm-12 col-md-9 product-row ">
                <div className="product-slider">
                   <div className="product-header">
                      <div>
@@ -83,6 +83,24 @@ const Home = () => {
                       spaceBetween={10}
                       pagination={{
                         clickable: true,
+                      }}
+                      breakpoints={{
+                        340: {
+                          slidesPerView: 2,
+                          spaceBetween: 20,
+                        },
+                        640: {
+                          slidesPerView: 3,
+                          spaceBetween: 20,
+                        },
+                        768: {
+                          slidesPerView: 3,
+                          spaceBetween: 40,
+                        },
+                        1024: {
+                          slidesPerView: 4,
+                          spaceBetween: 50,
+                        },
                       }}
                       navigation={true}
                       modules={[ Navigation]}
@@ -149,8 +167,8 @@ const Home = () => {
       <div className="comment-section">
          <div className="container">
             <h2> Client Comments </h2>
-            <div className="row">
-               <div className="col-sm-3">
+            <div className="row my-comment-section ">
+               <div className="col-sm-6 col-md-12 col-xl-3">
                   <div className="comment-data">
                      <h4 > The Best Marketplace </h4>
                       <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut. </p>
@@ -163,7 +181,7 @@ const Home = () => {
                       </div>
                   </div>
                </div>
-               <div className="col-sm-9">
+               <div className="col-sm-12 col-md-12 col-xl-9">
                   <div className="product-banner">
                      <div className="data-all-product rounded">
                         <h2> Weekend Discount 40% </h2>

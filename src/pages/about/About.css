@@ -105,3 +105,33 @@
   width: 1200px;
 
 }
+
+/***** Responsive css *******/
+@media (min-width : 320px) and (max-width: 768px){
+.about-section{
+    height: 350px !important;
+}
+.about-text h2{
+ font-size: 35px;
+}
+.text-data-content{
+  padding-left: 20px !important;
+}
+.text-data-content h2 {
+  width: 89%;
+  padding: 25px 0px;
+}
+.people-content{
+  padding-left: 10px !important;
+  padding-right: 10px;
+}
+.people-content h1{
+  width: 80%;
+}
+.bottom-content p {
+  opacity: 0;
+  visibility: hidden;
+
+}
+
+}

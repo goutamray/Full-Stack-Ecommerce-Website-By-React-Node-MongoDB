@@ -137,3 +137,52 @@
   color: #fff;
 
 }
+
+
+/**** Responsive css ******/
+@media (min-width : 320px) and (max-width: 576px){
+.my-cart-row {
+  display: flex;
+  flex-direction: column;
+}
+.cart-product table {
+  display: flex;
+  justify-content: space-between;
+}
+.cart-product table thead tr{
+    display: flex;
+    flex-direction: column;
+}
+.cart-product table tbody{
+  position: relative;
+  top: -32px;
+  background: transparent !important;
+
+}
+.table-box .image img{
+  opacity: 0;
+  visibility: hidden;
+}
+.cart-product table tbody tr{
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+}
+.cart-product table tbody tr td {
+  display: flex;
+  justify-content: flex-end;
+}
+.cart-body table thead {
+  background: #ffffff !important;
+}
+.cart-counter {
+  position: relative;
+  right: -7%;
+}
+
+
+
+}
+
+
+

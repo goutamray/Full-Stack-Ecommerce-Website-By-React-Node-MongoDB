@@ -24,11 +24,11 @@ const Cart = () => {
               </div>
             </div>
           </div>
-          <div className="row">
+          <div className="row my-cart-row ">
             <div className="col-md-8">
                     {/* cart body start  */}
                     <div className="cart-body">
-                      <div className="table-responsive">
+                      <div className="table-responsive cart-product">
                       <table className="table table-bordered ">
                             <thead>
                                   <tr > 
@@ -65,137 +65,7 @@ const Cart = () => {
                                       <span >  <RiDeleteBin6Fill  /> 
                                       </span>
                                   </td>
-                                </tr>
-                                <tr >
-                                  <td> 
-                                    <div className="table-box d-flex align-items-center">
-                                        <div className="image">
-                                            <Link to=""> 
-                                                <img src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-60-600x600.jpg" alt="" />
-                                            </Link>  
-                                        </div>
-                                        <div className="product-content">
-                                          <Link to=""> <h5> Angies Boomchickapop Sweet & Salty Kettle Corn  </h5> </Link>  
-                                          <Rating name="half-rating" defaultValue={4.5} precision={0.5} readOnly  size="small" />               
-                                        </div>
-                                    </div>
-                                  </td>
-                                  <td className="product-price"> $ 20 </td>
-                                  <td> 
-                                    <div className="cart-counter">
-                                         <QuantityBox />
-                                    </div>
-                                  </td>
-                                  <td className="subTotal"> $120.00 </td>
-                                  <td className="delete-product"> 
-                                      <span >  <RiDeleteBin6Fill  /> 
-                                      </span>
-                                  </td>
-                                </tr>
-                                <tr >
-                                  <td> 
-                                    <div className="table-box d-flex align-items-center">
-                                        <div className="image">
-                                            <Link to=""> 
-                                                <img src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-60-600x600.jpg" alt="" />
-                                            </Link>  
-                                        </div>
-                                        <div className="product-content">
-                                          <Link to=""> <h5> Angies Boomchickapop Sweet & Salty Kettle Corn  </h5> </Link>  
-                                          <Rating name="half-rating" defaultValue={4.5} precision={0.5} readOnly  size="small" />               
-                                        </div>
-                                    </div>
-                                  </td>
-                                  <td className="product-price"> $ 20 </td>
-                                  <td> 
-                                    <div className="cart-counter">
-                                         <QuantityBox />
-                                    </div>
-                                  </td>
-                                  <td className="subTotal"> $120.00 </td>
-                                  <td className="delete-product"> 
-                                      <span >  <RiDeleteBin6Fill  /> 
-                                      </span>
-                                  </td>
-                                </tr>
-                                <tr >
-                                  <td> 
-                                    <div className="table-box d-flex align-items-center">
-                                        <div className="image">
-                                            <Link to=""> 
-                                                <img src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-60-600x600.jpg" alt="" />
-                                            </Link>  
-                                        </div>
-                                        <div className="product-content">
-                                          <Link to=""> <h5> Angies Boomchickapop Sweet & Salty Kettle Corn  </h5> </Link>  
-                                          <Rating name="half-rating" defaultValue={4.5} precision={0.5} readOnly  size="small" />               
-                                        </div>
-                                    </div>
-                                  </td>
-                                  <td className="product-price"> $ 20 </td>
-                                  <td> 
-                                    <div className="cart-counter">
-                                         <QuantityBox />
-                                    </div>
-                                  </td>
-                                  <td className="subTotal"> $120.00 </td>
-                                  <td className="delete-product"> 
-                                      <span >  <RiDeleteBin6Fill  /> 
-                                      </span>
-                                  </td>
-                                </tr>
-                                <tr >
-                                  <td> 
-                                    <div className="table-box d-flex align-items-center">
-                                        <div className="image">
-                                            <Link to=""> 
-                                                <img src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-60-600x600.jpg" alt="" />
-                                            </Link>  
-                                        </div>
-                                        <div className="product-content">
-                                          <Link to=""> <h5> Angies Boomchickapop Sweet & Salty Kettle Corn  </h5> </Link>  
-                                          <Rating name="half-rating" defaultValue={4.5} precision={0.5} readOnly  size="small" />               
-                                        </div>
-                                    </div>
-                                  </td>
-                                  <td className="product-price"> $ 20 </td>
-                                  <td> 
-                                    <div className="cart-counter">
-                                         <QuantityBox />
-                                    </div>
-                                  </td>
-                                  <td className="subTotal"> $120.00 </td>
-                                  <td className="delete-product"> 
-                                      <span >  <RiDeleteBin6Fill  /> 
-                                      </span>
-                                  </td>
-                                </tr>
-                                <tr >
-                                  <td> 
-                                    <div className="table-box d-flex align-items-center">
-                                        <div className="image">
-                                            <Link to=""> 
-                                                <img src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-60-600x600.jpg" alt="" />
-                                            </Link>  
-                                        </div>
-                                        <div className="product-content">
-                                          <Link to=""> <h5> Angies Boomchickapop Sweet & Salty Kettle Corn  </h5> </Link>  
-                                          <Rating name="half-rating" defaultValue={4.5} precision={0.5} readOnly  size="small" />               
-                                        </div>
-                                    </div>
-                                  </td>
-                                  <td className="product-price"> $ 20 </td>
-                                  <td> 
-                                    <div className="cart-counter">
-                                         <QuantityBox />
-                                    </div>
-                                  </td>
-                                  <td className="subTotal"> $120.00 </td>
-                                  <td className="delete-product"> 
-                                      <span >  <RiDeleteBin6Fill  /> 
-                                      </span>
-                                  </td>
-                                </tr>
+                                </tr>                         
                             </tbody>
                         </table>
                       </div>

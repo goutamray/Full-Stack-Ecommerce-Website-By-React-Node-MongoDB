@@ -37,7 +37,7 @@ const Contact = () => {
             <div className="col-md-4">
               <div className="contact-part">
                  <span> <IoMailOutline /> </span>
-                 <h6> developergoutam53@gmail.com</h6>
+                 <h6> goutamr362@gmail.com</h6>
                  <p> Lorem ipsum dolor, sit amet consectetur. </p>
                </div>
             </div>
@@ -48,7 +48,7 @@ const Contact = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-2"></div>
-            <div className="col-md-8 shadow p-5">
+             <div className="col-md-8 shadow p-5">
                 <div className="form-text">
                    <h2> Send Us </h2>
                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus sed dolorem earum dicta sapiente eveniet officia! Expedita aut iste sapiente. </p>

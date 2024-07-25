@@ -15,7 +15,7 @@ const SignIn = () => {
 
   useEffect(() => {
     context.setIsHeaderFooterShow(false); 
-  }, []); 
+  }, []);  
 
   return (
     <>

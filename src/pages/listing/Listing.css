@@ -130,4 +130,9 @@
 }
 
 
+/******** Responsive css  *******/
 
+/***** Min 320px & Max 576px  ******/
+@media (min-width : 320px) and (max-width: 576px){
+  
+}

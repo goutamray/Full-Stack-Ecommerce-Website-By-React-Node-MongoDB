@@ -3,6 +3,13 @@
   padding: 60px !important;
 }
 
+/**** Responsive css ******/
 
+@media (min-width : 320px) and (max-width: 576px){
+  .related-Product {
+    padding: 10px !important;
+  }
+  
+}
 
 

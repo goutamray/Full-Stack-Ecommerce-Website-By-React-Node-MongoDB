@@ -135,7 +135,7 @@
 }
 
 
-/* review all details css */
+/********* review all details css ********/
 .review-customer h4{
    color: #2A2A2A;
    font-size: 18px;
@@ -188,7 +188,10 @@
 .review-card .review-final{
   width: 12%;
 }
-
+.customer-review-info{
+  display: flex;
+  justify-content: space-between;
+}
 
 /****** right side ber  ******/
 .review-details{
@@ -262,5 +265,68 @@
 } 
 
 
+/******** Responsive css  *******/
 
+/***** Min 320px & Max 576px  ******/
+@media (min-width : 320px) and (max-width: 576px){
+.productDetails h3{
+  margin-top: 20px;
+}
+.product-content {
+  padding-left: 0px !important;
+}
+.productSize span {
+  font-size: 17px;
+}
+.productSize.d-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.product-content button.cart-btn {
+  padding: 8px 15px;
+}
+.productDetailsTab {
+  padding: 10px !important;
+}
+li.list-inline-item.my-custom-list {
+  margin-bottom: 10px;
+}
+.cart-counter{
+  display: flex;
+  gap: 10px;
+}
+.all-count-compare.d-flex {
+  display: flex;
+  flex-direction: column;
+}
+.review-card {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.review-card .image-item {
+  width: 100%;
+}
+.customer-review-info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-group.star-view {
+  margin-top: 16px;
+}
+.css-1nbsiwm-MuiRating-root {
+  position: relative;
+  top: 3px;
+}
+.review-details {
+  margin-top: 41px;
+  padding-left: 0px !important;
+}
+.product-item .all-details  a.cart-btn {
+  padding: 8px 15px;
+}
+
+}
 

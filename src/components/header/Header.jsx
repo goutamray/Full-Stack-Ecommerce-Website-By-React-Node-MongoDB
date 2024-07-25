@@ -8,6 +8,7 @@ import Navigation from "./navigation/Navigation";
 import { MdOutlineSecurity } from "react-icons/md";
 import { FiUser } from "react-icons/fi";
 import { BsMinecartLoaded } from "react-icons/bs";
+import { IoMdMenu } from "react-icons/io";
 
 // images
 import logo from "../../assets/logo/logo.png"
@@ -21,7 +22,6 @@ import "./Header.css";
 const Header = () => {
 
   const context = useContext(MyContext); 
-
 
   return (
     <>
@@ -96,7 +96,8 @@ const Header = () => {
        <div className="container middle-header-bar ">
           <div className="row">
             {/* logo part */}
-             <div className="col-sm-2">
+             <div className="col-sm-2 logo-part ">
+                <button> <IoMdMenu /> </button>
                 <div className="logo">
                    <Link to={"/"}> <img src={logo} alt="logo" className="logo-main"/> </Link>
                    <p> Online Grocery Shopping Center </p>
@@ -126,12 +127,12 @@ const Header = () => {
                         
                         </div>
                         <div className="price">
-                        <Link to="/cart" > 
-                          <span> $ 19.56 </span>
-                          <button> <BsMinecartLoaded /> </button>    
-                          <div className="total-count">
-                                <span> 1 </span>
-                            </div>
+                         <Link to="/cart" > 
+                             <span className="total-amonut"> $ 19.56 </span>
+                             <button> <BsMinecartLoaded /> </button>    
+                             <div className="total-count">
+                                 <span> 1 </span>
+                             </div>
                         </Link>
                         </div>
                     </div>

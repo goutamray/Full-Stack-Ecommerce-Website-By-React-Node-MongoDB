@@ -97,6 +97,10 @@
   position: relative;
   top: 10px;
 }
+.logo-part button{
+  display: none;
+}
+
 .middle-header-bar .logo a.logo-main img{
   width: 175px;
 }
@@ -496,5 +500,78 @@
   display: flex;
   flex-direction: column;
 }
+
+/******** Responsive css  *******/
+
+/***** Min 320px & Max 576px  ******/
+@media (min-width : 320px) and (max-width: 576px){
+.second-bar{
+    opacity: 0;
+    visibility: hidden;
+    height: 0px !important;
+}
+img.logo-main {
+    width: 50%;
+}
+.logo-part{
+  display: flex;
+  gap: 10px;
+}
+.logo-part button{
+  display: block;
+  background-color: transparent;
+  border: none;
+}
+.logo-part button svg{
+  font-size: 25px;
+} 
+.middle-header-bar .logo {
+  position: relative;
+  top: -4px;
+  left: 14%;
+}
+.middle-header-bar .logo p {
+  display: none;
+}
+.cart-section{
+  position: relative;
+}
+.cart-section .price {
+  position: absolute;
+  top: -29%;
+  right: 55%;
+}
+.cart-section .price  span.total-amonut {
+  width: 0px;
+  opacity: 0;
+  visibility: hidden;
+}
+.total-count span{
+  color: #fff !important;
+  display: block !important;
+}
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

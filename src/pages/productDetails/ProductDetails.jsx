@@ -1,23 +1,22 @@
 
-
+// material ui 
 import { Rating } from "@mui/material";
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
 
 // import components
 import ProductZoom from "../../components/productZoom/ProductZoom";
 import QuantityBox from "../../components/quantityBox/QuantityBox";
+import RelatedProduct from "./relatedProduct/RelatedProduct";
 
 // react icons 
 import { CiHeart } from "react-icons/ci";
-import { FaCodeCompare, FaStar } from "react-icons/fa6";
+import { FaCodeCompare } from "react-icons/fa6";
 
 import { useState } from "react";
 
 
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
-
 import "./ProductDetails.css"; 
-import RelatedProduct from "./relatedProduct/RelatedProduct";
 
 const ProductDetails = () => {
   const [activeSize, setActiveSize ] = useState(null);
@@ -80,13 +79,15 @@ const ProductDetails = () => {
                         </ul>
                       </div>
 
-                      {/* cart btn */}
-                        <div className="d-flex align-items-center gap-2">
-                            <QuantityBox />
-                           <button className="cart-btn"> Add To Cart </button>
+                      {/****  cart btn ********/}
+                        <div className="all-count-compare d-flex align-items-center gap-2">
+                          <div className="cart-counter ">
+                             <QuantityBox />
+                             <button className="cart-btn"> Add To Cart </button>
+                          </div>
                            <div className="wish-compare-btn">
                              <Tooltip title="Add To WishList" placement="top-start">
-                                <Button><CiHeart /> </Button>   
+                                <Button> <CiHeart /> </Button>   
                               </Tooltip>
                              <Tooltip title="Add To Compare " placement="top-start">
                                 <Button> <FaCodeCompare /> </Button>   
@@ -108,9 +109,15 @@ const ProductDetails = () => {
             <div className="card productDetailsTab p-5">
                      <div className="custom-tabs">
                        <ul className='list list-inline'>
-                         <li className='list-inline-item'> <button className={`${activeTab === 0 && "active" }`} onClick={() => setActiveTab(0)}> Description </button> </li>
-                         <li className='list-inline-item'> <button className={`${activeTab === 1 && "active" }`} onClick={() => setActiveTab(1)}> Additional info </button> </li>
-                         <li className='list-inline-item'> <button className={`${activeTab === 2 && "active" }`} onClick={() => setActiveTab(2)}> Reviews (3) </button> </li>
+                         <li className='list-inline-item my-custom-list '> 
+                             <button className={`${activeTab === 0 && "active" }`} onClick={() => setActiveTab(0)}> Description </button> 
+                          </li>
+                         <li className='list-inline-item my-custom-list'> 
+                             <button className={`${activeTab === 1 && "active" }`} onClick={()   => setActiveTab(1)}> Additional info </button> 
+                          </li>
+                         <li className='list-inline-item my-custom-list'> 
+                             <button className={`${activeTab === 2 && "active" }`} onClick={() => setActiveTab(2)}> Reviews (3) </button> 
+                          </li>
                        </ul>
                   
                   {
@@ -184,30 +191,8 @@ const ProductDetails = () => {
                                                                <p>12″ air / wide track slick tread</p>
                                                            </td>
                                                        </tr>
-                                                       <tr className="seat-back-height">
-                                                           <th>Seat back height</th>
-                                                           <td>
-                                                               <p>21.5″</p>
-                                                           </td>
-                                                       </tr>
-                                                       <tr className="head-room-inside-canopy">
-                                                           <th>Head room (inside canopy)</th>
-                                                           <td>
-                                                               <p>25″</p>
-                                                           </td>
-                                                       </tr>
-                                                       <tr className="pa_color">
-                                                           <th>Color</th>
-                                                           <td>
-                                                               <p>Black, Blue, Red, White</p>
-                                                           </td>
-                                                       </tr>
-                                                       <tr className="pa_size">
-                                                           <th>Size</th>
-                                                           <td>
-                                                               <p>M, S</p>
-                                                           </td>
-                                                       </tr>
+                                                      
+                                                       
                              </tbody>
                        </table>
                     </div>
@@ -230,17 +215,20 @@ const ProductDetails = () => {
                                      </div>
                                      <p> Goutam Ray </p>
                                   </div>
-                                  <div className="card-info">
-                                     <div className="review-date">
-                                       <p className="now-date"> 25-05-2024 </p>
+                                  <div className="customer-review-info ">
+                                      <div className="card-info">
+                                        <div className="review-date">
+                                          <p className="now-date"> 25-05-2024 </p>
+                                          </div>
+                                          <div className="star-message mt-3"> 
+                                            <p className="message"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ad magni culpa, numquam dolore dignissimos perspiciatis mollitia cum unde error.  </p>
+                                          </div> 
                                       </div>
-                                      <div className="star-message mt-3"> 
-                                        <p className="message"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ad magni culpa, numquam dolore dignissimos perspiciatis mollitia cum unde error.  </p>
-                                      </div> 
+                                      <div className="review-final">
+                                        <span>  <Rating name="read-only" value={5} readOnly size="small"/> </span>   
+                                      </div>
                                   </div>
-                                  <div className="review-final">
-                                     <span>  <Rating name="read-only" value={5} readOnly size="small"/> </span>   
-                                  </div>
+                            
                               </div>
                            
                             <div className="review-form">

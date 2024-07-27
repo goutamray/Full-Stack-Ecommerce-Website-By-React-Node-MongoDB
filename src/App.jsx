@@ -15,13 +15,22 @@ import ProductModal from './components/productModal/ProductModal';
 // context 
 const MyContext = createContext();
 
-import './App.css'
 import ProductDetails from './pages/productDetails/ProductDetails';
 import Cart from './pages/cart/Cart';
-import SignIn from './pages/signIn/SignIn';
-import SignUp from './pages/signUp/SignUp';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
+import SignIn from './pages/signIn/SignIn';
+import SignUp from './pages/signUp/SignUp';
+import MyAccount from './pages/myAccount/MyAccount';
+import Dashboard from './pages/myAccount/dashboard/Dashboard';
+
+import './App.css';
+import Logout from './pages/myAccount/logout/Logout';
+import ChangePassword from './pages/myAccount/changePassword/ChangePassword';
+import AccountDetail from './pages/myAccount/accountDetails/AccountDetail';
+import Address from './pages/myAccount/address/Address';
+import Download from './pages/myAccount/download/Download';
+import Order from './pages/myAccount/order/Order';
 
 function App() {
   const [countryList , setCountryList ] = useState([]);
@@ -69,12 +78,24 @@ function App() {
                   <Route  path='/' exact={true} element={ <Home /> }/>
                   <Route  path='/about' exact={true} element={ <About /> }/>
                   <Route  path='/contact' exact={true} element={ <Contact /> }/>
+                  <Route  path='/cat' exact={true} element={ <Listing /> }/>
                   <Route  path='/cat/:id' exact={true} element={ <Listing /> }/>
                   <Route  path='/product/:id' exact={true} element={ <ProductDetails /> }/>
                   <Route  path='/cart' exact={true} element={ <Cart /> }/>
                   <Route  path='/signIn' exact={true} element={ <SignIn /> }/>
                   <Route  path='/signUp' exact={true} element={ <SignUp /> }/>
-                </Routes>
+
+                   {/* children routing */}
+                  <Route  path='/my-account' exact={true} element={ <MyAccount /> } >
+                     <Route path='dashboard'  exact={true} element={<Dashboard />}/>
+                     <Route path='orders'  exact={true} element={<Order />}/>
+                     <Route path='downloads'  exact={true} element={<Download />}/>
+                     <Route path='address'  exact={true} element={<Address />}/>
+                     <Route path='account-details'  exact={true} element={<AccountDetail />}/>
+                     <Route path='change-password'  exact={true} element={<ChangePassword />}/>
+                     <Route path='logout'  exact={true} element={<Logout />}/>
+                  </Route >
+              </Routes>
 
             {/* footer part  */}
              {
@@ -95,3 +116,6 @@ function App() {
 
 export default App
 export { MyContext }
+
+
+

@@ -91,7 +91,7 @@
 
 /**** middle-header-bar  *****/
 .middle-header-bar {
-  padding-top: 20px ;
+  padding-top: 0px ;
 }
 .middle-header-bar .logo{
   position: relative;
@@ -260,7 +260,7 @@
 .header-bottom {
   padding: 8px 0px !important;
   border-bottom: 1px solid rgb(195, 195, 195);
-  margin-top: 5px;
+  margin-top: 0px;
 }
 .header-bottom .category-tab{
   display: flex;
@@ -502,6 +502,8 @@
 }
 
 /******** Responsive css  *******/
+
+
 
 /***** Min 320px & Max 576px  ******/
 @media (min-width : 320px) and (max-width: 576px){

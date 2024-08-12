@@ -7,10 +7,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // import required modules
-import { Navigation } from 'swiper/modules';
 import { useState } from 'react';
-
-
+import { Navigation } from 'swiper/modules';
 
 const CategorySlider = () => {
 
@@ -32,8 +30,6 @@ const CategorySlider = () => {
     "#f2fce4",
     "#feefea",
   ])
-
-
 
   return (
     <div className="cat-slider py-5">

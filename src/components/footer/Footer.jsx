@@ -1,13 +1,12 @@
 
 // react icons 
-import { TbMilk } from "react-icons/tb";
+import { CiDiscount1, CiDollar } from "react-icons/ci";
 import { FaTruck } from "react-icons/fa";
-import { CiDiscount1 } from "react-icons/ci";
-import { CiDollar } from "react-icons/ci";
+import { TbMilk } from "react-icons/tb";
 
 
 import { Link } from "react-router-dom";
-import payment from "../../assets/banner/payments.png"; 
+import payment from "../../assets/banner/payments.png";
 
 import "./Footer.css";
 const Footer = () => {
@@ -95,14 +94,14 @@ const Footer = () => {
               <div className="footer-middle-part">
                 <h2> BEVERAGES </h2>
                 <ul>
-                  <li> <Link href="#"> Water</Link></li>
-                  <li> <Link href="#"> Sparkling Water </Link></li>
-                  <li> <Link href="#"> Soda & Pop </Link></li>
-                  <li> <Link href="#"> Soda & Pop </Link></li>
+                  <li> <Link href="#"> Water</Link> </li>
+                  <li> <Link href="#"> Sparkling Water </Link> </li>
+                  <li> <Link href="#"> Soda & Pop </Link> </li>
+                  <li> <Link href="#"> Soda & Pop </Link> </li>
                   <li> <Link href="#"> Coffee </Link></li>
-                  <li> <Link href="#"> Milk & Plant-Based Milk </Link></li>
-                  <li> <Link href="#"> Tea & Kombucha </Link></li>
-                  <li> <Link href="#"> Drink Boxes & Pouches </Link></li>
+                  <li> <Link href="#"> Milk & Plant-Based Milk </Link> </li>
+                  <li> <Link href="#"> Tea & Kombucha </Link> </li>
+                  <li> <Link href="#"> Drink Boxes & Pouches </Link> </li>
                 </ul>
               </div>
             </div>

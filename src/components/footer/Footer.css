@@ -1,21 +1,20 @@
-
-.top-footer{
+.top-footer {
   padding: 40px 0px;
   background-color: #f7f8fd;
 }
-.top-container{
+.top-container {
   padding-bottom: 30px;
   border-bottom: 1px solid rgb(210, 210, 210);
 }
-.top-part{
+.top-part {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.top-part span svg{
+.top-part span svg {
   font-size: 22px;
 }
-.top-part p{
+.top-part p {
   font-size: 13px;
   font-weight: 500;
   font-family: var(--font-secondary);
@@ -23,20 +22,20 @@
 }
 
 /**** middle part footer *****/
-.middle-footer{
+.middle-footer {
   padding: 40px 0px;
   background-color: #f7f8fd;
 }
-.footer-middle-part h2{
+.footer-middle-part h2 {
   font-size: 15px;
   font-weight: 600;
   font-family: var(--font-secondary);
   color: var(--heading-color);
 }
-.footer-middle-part ul{
-   margin-top: 20px;
+.footer-middle-part ul {
+  margin-top: 20px;
 }
-.footer-middle-part ul li a{
+.footer-middle-part ul li a {
   font-size: 13px;
   font-weight: 400;
   font-family: var(--font-secondary);
@@ -46,52 +45,48 @@
 }
 
 /*** bottom footer part css *****/
-.bottom-footer{
+.bottom-footer {
   padding: 40px 0px;
   background-color: #f7f8fd;
 }
-.bottom-footer .copyright{
+.bottom-footer .copyright {
   font-size: 13px;
   color: #5e5e5e;
   font-weight: 500;
   font-family: var(--font-secondary);
 }
-.bottom-footer .copyright p a{
+.bottom-footer .copyright p a {
   font-size: 16px;
   color: var(--hover-color);
   font-weight: 600;
 }
-.bottom-footer .payment{
-   text-align: end;
+.bottom-footer .payment {
+  text-align: end;
 }
 
 /***** Responsive css ******/
-@media (min-width : 320px) and (max-width: 576px){
-.top-part {
+@media (min-width: 320px) and (max-width: 576px) {
+  .top-part {
     margin-bottom: 9px;
-}
-.footer-middle-part {
+  }
+  .footer-middle-part {
     margin-bottom: 20px !important;
     margin-left: 5px;
+  }
+  .footer-middle-part ul {
+    margin-top: 10px;
+  }
+  .footer-middle-part h2 {
+    font-size: 18px;
+  }
+  .footer-middle-part ul li a {
+    font-size: 15px;
+  }
+  .bottom-footer .copyright {
+    text-align: center;
+  }
+  .bottom-footer .payment {
+    text-align: center;
+    margin-top: 5px;
+  }
 }
-.footer-middle-part ul {
-  margin-top: 10px;
-}
-.footer-middle-part h2 {
-  font-size: 18px;
-}
-.footer-middle-part ul li a {
-  font-size: 15px;
-}
-.bottom-footer .copyright {
- text-align: center;
-}
-.bottom-footer .payment {
-  text-align: center;
-  margin-top: 5px;
-}
-
-}
-
-
-

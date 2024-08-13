@@ -1,36 +1,37 @@
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { createContext, useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // import pages 
-import Home from "../src/pages/home/Home"
+import Home from "../src/pages/home/Home";
 import Listing from './pages/listing/Listing';
 
 // import components
-import Header from './components/header/Header'
 import Footer from './components/footer/Footer';
+import Header from './components/header/Header';
 import ProductModal from './components/productModal/ProductModal';
 
 // context 
 const MyContext = createContext();
 
-import ProductDetails from './pages/productDetails/ProductDetails';
-import Cart from './pages/cart/Cart';
 import About from './pages/about/About';
+import Cart from './pages/cart/Cart';
 import Contact from './pages/contact/Contact';
-import SignIn from './pages/signIn/SignIn';
-import SignUp from './pages/signUp/SignUp';
 import MyAccount from './pages/myAccount/MyAccount';
 import Dashboard from './pages/myAccount/dashboard/Dashboard';
+import ProductDetails from './pages/productDetails/ProductDetails';
+import SignIn from './pages/signIn/SignIn';
+import SignUp from './pages/signUp/SignUp';
 
 import './App.css';
-import Logout from './pages/myAccount/logout/Logout';
-import ChangePassword from './pages/myAccount/changePassword/ChangePassword';
 import AccountDetail from './pages/myAccount/accountDetails/AccountDetail';
 import Address from './pages/myAccount/address/Address';
+import ChangePassword from './pages/myAccount/changePassword/ChangePassword';
 import Download from './pages/myAccount/download/Download';
+import Logout from './pages/myAccount/logout/Logout';
 import Order from './pages/myAccount/order/Order';
+import NotFound from './pages/notFound/NotFound';
 
 function App() {
   const [countryList , setCountryList ] = useState([]);
@@ -84,6 +85,7 @@ function App() {
                   <Route  path='/cart' exact={true} element={ <Cart /> }/>
                   <Route  path='/signIn' exact={true} element={ <SignIn /> }/>
                   <Route  path='/signUp' exact={true} element={ <SignUp /> }/>
+                  <Route  path='*' exact={true} element={ <NotFound /> }/>
 
                    {/* children routing */}
                   <Route  path='/my-account' exact={true} element={ <MyAccount /> } >
@@ -115,7 +117,7 @@ function App() {
 }
 
 export default App
-export { MyContext }
+export { MyContext };
 
 
 

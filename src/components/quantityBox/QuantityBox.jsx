@@ -1,7 +1,8 @@
+import { useState } from "react";
 
+// react icons 
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa";
-import { useState } from "react";
 
 const QuantityBox = () => {
   const [inputVal, setInputVal ] = useState(1);

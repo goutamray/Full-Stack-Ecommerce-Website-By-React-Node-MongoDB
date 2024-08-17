@@ -18,12 +18,9 @@ const Transition = React.forwardRef(function Transition( props, ref ) {
 
 const CountryDrop = () => {
   const [isOpemModal, setIsOpenModal] = useState(false);
-
   const [selectedTab, setSelectedTab ] = useState(null);
   
   const context = useContext(MyContext); 
-
-
   const [countryList, setCountryList ] = useState([]);
 
   const selectCountry = (index, country) => {
@@ -36,6 +33,7 @@ const CountryDrop = () => {
     setCountryList(context.countryList)
   }, [context.countryList]); 
 
+  // file list 
   const filterList = (e) => {
     const keyword = e.target.value.toLowerCase();
 

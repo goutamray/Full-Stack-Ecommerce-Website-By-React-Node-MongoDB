@@ -1,9 +1,14 @@
 
 
 import { Link } from "react-router-dom";
-import product from "../../assets/banner/product.jpg"
+
+// material ui 
 import Rating from '@mui/material/Rating';
 
+// image
+import product from "../../assets/banner/product.jpg"
+
+// react icons 
 import { SlSizeFullscreen } from "react-icons/sl";
 import { IoIosHeartEmpty } from "react-icons/io";
 

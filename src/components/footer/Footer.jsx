@@ -6,6 +6,8 @@ import { TbMilk } from "react-icons/tb";
 
 
 import { Link } from "react-router-dom";
+
+// image 
 import payment from "../../assets/banner/payments.png";
 
 import "./Footer.css";

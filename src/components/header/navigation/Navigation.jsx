@@ -7,7 +7,6 @@ import { IoMenu } from "react-icons/io5";
 import { FaAngleRight } from "react-icons/fa6"; 
 
 const Navigation = () => {
-
   const [isOpenSideNav, setIsOpemSideNav ] = useState(false); 
   
   return (

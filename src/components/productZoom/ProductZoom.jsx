@@ -1,19 +1,16 @@
 import { useRef } from "react";
 
-
 import Slider from "react-slick";
 
 // image zoom css 
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 
-
 const ProductZoom = () => {
-
   const zoomSliderBig = useRef(); 
   const zoomSlider = useRef(); 
 
-  
+ // setting 1 
   let settings = {
     dots: false,
     infinite: false,
@@ -24,6 +21,7 @@ const ProductZoom = () => {
     arrows : true
   };
 
+   // setting 2 
   let settings2 = {
     dots: false,
     infinite: false,

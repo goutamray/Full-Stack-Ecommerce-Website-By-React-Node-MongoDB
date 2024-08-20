@@ -42,7 +42,7 @@ const HomeBanner = () => {
                          <div className="main-content">
                             <h1 className="entry-title"> A different kind of grocery store </h1>
                             <p> Only this week. Don’t miss... </p>
-                          <div className="price">
+                          <div className="price-data">
                             <p> from </p>
                             <h1> $ 7.99 </h1>
                           </div>
@@ -60,7 +60,7 @@ const HomeBanner = () => {
                          <div className="main-content">
                             <h1 className="entry-title"> Quality Freshness Guaranteed!  </h1>
                             <p> Only this week. Don’t miss... </p>
-                          <div className="price">
+                          <div className="price-data">
                             <p> from </p>
                             <h1> $ 14.35 </h1>
                           </div>
@@ -78,7 +78,7 @@ const HomeBanner = () => {
                          <div className="main-content">
                             <h1 className="entry-title"> Having the best quality products </h1>
                             <p> Only this week. Don’t miss... </p>
-                          <div className="price">
+                          <div className="price-data">
                             <p> from </p>
                             <h1> $ 5.43 </h1>
                           </div>

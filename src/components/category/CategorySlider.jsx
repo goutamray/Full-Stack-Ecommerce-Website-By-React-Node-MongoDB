@@ -7,29 +7,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // import required modules
-import { useState } from 'react';
-import { Navigation } from 'swiper/modules';
+import { useEffect, useState } from 'react';
+import { Navigation, Autoplay } from 'swiper/modules';
 
-const CategorySlider = () => {
+const CategorySlider = ({ catData }) => {
+  const [categoryData, setCategoryData ] = useState([]);
 
-   // background 
-   const [itemBg, setItemBg ] = useState([
-    "#f2fce4",
-    "#fffceb",
-    "#ecffec",
-    "#feefea",
-    "#fff3eb",
-    "#fff3ff",
-    "#f2fce4",
-    "#feefea",
-    "#fff3ff",
-    "#f2fce4",
-    "#feefea",
-    "#fff3eb",
-    "#fff3ff",
-    "#f2fce4",
-    "#feefea",
-  ])
+
+  // get all category 
+  useEffect(() => {
+    setCategoryData(catData);
+  }, [catData]);
+
 
   return (
     <div className="cat-slider py-5">
@@ -41,6 +30,11 @@ const CategorySlider = () => {
                       slidesPerView={10}
                       spaceBetween={10}
                       slidesPerGroup={1}
+                      loop={true}
+                      autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                      }}
                       navigation={true}
                       breakpoints={{
                         340: {
@@ -53,22 +47,22 @@ const CategorySlider = () => {
                         },
                         768: {
                           slidesPerView: 4,
-                          spaceBetween: 40,
+                          spaceBetween: 20,
                         },
                         1024: {
-                          slidesPerView: 5,
-                          spaceBetween: 50,
+                          slidesPerView: 7,
+                          spaceBetween: 20,
                         },
                       }}
-                      modules={[ Navigation]}
+                      modules={[ Navigation, Autoplay]}
                       className="mySwiper-data"
                     >
                         {
-                            itemBg?.map((item, index) => {
+                          categoryData.length !== 0 &&  categoryData?.map((item, index) => {
                              return <SwiperSlide key={index} >
-                                <div className="item" style={{ background : item}}>
-                                   <img src="https://754969b0.rocketcdn.me/bacola/wp-content/uploads/2021/04/category-image2.png" alt="" />
-                                   <h6 className='text-center'> Red Apple </h6>
+                                <div className="item" style={{ background : item.color}}>
+                                   <img src={item.photo} alt="" />
+                                   <h6 className='text-center'> {item.name}</h6>
                                 </div>
                             </SwiperSlide>
                             })

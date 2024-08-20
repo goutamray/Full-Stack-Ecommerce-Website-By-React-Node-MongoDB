@@ -22,15 +22,36 @@ import { Navigation } from 'swiper/modules';
 import man from "../../assets/avater/avatar.jpg"
 import coupon from "../../assets/banner/coupon.png"
 
-import "./Home.css"
+import { useEffect, useState } from "react";
+import { fetchDataFromApi, fetchProductFromApi } from "../../utils/api";
+
+import "./Home.css";
+
 const Home = () => {
+   const [catData, setCatData ] = useState([]); 
+   const [productData, setProductData] = useState([]); 
+
+   useEffect(() => {
+      fetchDataFromApi("/").then((res) => {
+         setCatData(res.categoryList);
+      });
+
+      fetchProductFromApi("/").then((res) => {
+         setProductData(res.productList);
+      }); 
+
+   }, [])
 
   return (
     <>
       <HomeBanner />
 
       {/* cat slider  */}
-      <CategorySlider />
+
+      {
+         catData?.length !== 0 && <CategorySlider catData={catData}/>
+      }
+ 
 
       {/* Home Banner */}
       <div className="homeBanner py-5 ">
@@ -81,56 +102,40 @@ const Home = () => {
                   <Swiper
                       slidesPerView={4}
                       spaceBetween={10}
+                      loop={true}
                       pagination={{
                         clickable: true,
                       }}
                       breakpoints={{
                         340: {
                           slidesPerView: 2,
-                          spaceBetween: 20,
+                          spaceBetween: 15,
                         },
                         640: {
                           slidesPerView: 3,
-                          spaceBetween: 20,
+                          spaceBetween: 15,
                         },
                         768: {
                           slidesPerView: 3,
-                          spaceBetween: 40,
+                          spaceBetween: 20,
                         },
                         1024: {
                           slidesPerView: 4,
-                          spaceBetween: 50,
+                          spaceBetween: 20,
                         },
                       }}
                       navigation={true}
                       modules={[ Navigation]}
                       className="mySwiper"
                     >
-                          <SwiperSlide>
-                             <ProductItem />
-                          </SwiperSlide>
-
-                          <SwiperSlide>
-                             <ProductItem />
-                          </SwiperSlide>
-
-                          <SwiperSlide>
-                             <ProductItem />
-                          </SwiperSlide>
-
-                          <SwiperSlide>
-                             <ProductItem />
-                          </SwiperSlide>
-
-                          <SwiperSlide>
-                             <ProductItem />
-                          </SwiperSlide>
-
-                          <SwiperSlide>
-                             <ProductItem />
-                          </SwiperSlide>
-                          
-                          
+                     {
+                        productData.length !== 0 && 
+                        productData.map((item, index) => {
+                          return <SwiperSlide key={index}>
+                          <ProductItem item={item}/>
+                       </SwiperSlide>
+                        })
+                     }     
                     </Swiper>
                           
                   </div>
@@ -147,15 +152,12 @@ const Home = () => {
                   </div>
 
                   <div className="product_row_all product-row2 mt-4 d-flex ">
-                             <ProductItem />
-                             <ProductItem />
-                             <ProductItem />
-                             <ProductItem />
-                             <ProductItem />                      
-                             <ProductItem />                      
-                             <ProductItem />                      
-                             <ProductItem />                      
-                                               
+                     {
+                        productData.length !== 0 && 
+                        productData.map((item, index) => {
+                           return <ProductItem key={index} item={item}/>
+                        })
+                     }                                   
                   </div>
                </div>
             </div>

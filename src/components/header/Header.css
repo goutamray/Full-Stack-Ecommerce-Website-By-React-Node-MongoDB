@@ -262,6 +262,11 @@
   padding: 8px 0px !important;
   border-bottom: 1px solid rgb(195, 195, 195);
   margin-top: 0px;
+  position: sticky !important;
+  top: -1% !important;
+  background: #fff;
+  z-index: 999;
+  width: 100%;
 }
 .header-bottom .category-tab{
   display: flex;

@@ -38,14 +38,14 @@ img.rounded.my-custom-size {
   font-size: 16px;
   font-weight: 400;
 }
-.price{
+.price-data{
   display: flex;
   gap: 10px;
   align-items: center;
   padding: 10px 0px;
   margin-bottom: 20px;
 }
-.price h1{
+.price-data h1{
   font-size: 40px;
   font-weight: 600;
   color: var(--price-color);
@@ -177,6 +177,11 @@ img.rounded.my-custom-size {
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
 }
+.imagewrapper img{
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
 .product-item:hover {
   border: 1px solid #0000!important;
   box-shadow: 0 3px 6px #7b6c6c29,0 3px 6px #0000003b;
@@ -201,7 +206,7 @@ img.rounded.my-custom-size {
   font-family: var(--font-primary);
 }
 .price-total .delete-price{
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   font-family: var(--font-primary);
   color: #C2C2D3;
@@ -212,6 +217,12 @@ img.rounded.my-custom-size {
    font-family: var(--font-primary);
    font-weight: 600;
    margin-left: 4px;
+   font-size: 18px;
+}
+.currency-data{
+  font-family: var(--font-primary);
+  font-weight: 600;
+  color: var(--hover-color);
 }
 .product-item .all-details  a.cart-btn {
   font-size: 13px;

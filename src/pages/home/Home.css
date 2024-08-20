@@ -1,5 +1,65 @@
 
 
+/* slider css */
+img.rounded.my-custom-size {
+  width: 1500px;
+}
+.slick-slide {
+  min-height: 0px !important;  
+}
+.item {
+ position: relative;
+}
+.item .slide-content{
+  position: absolute;
+  left: 10%;
+  top: 10%;
+}
+.item .slide-content .offer-part{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.item .slide-content .offer-part p{
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  padding: 4px 10px;
+  color:#fff
+}
+.item .slide-content .entry-title{
+ font-size: 46px;
+ font-weight: 700;
+ color: #000000;
+ font-family: var(--font-secondary);
+ width: 450px;
+ padding: 10px 0px;
+}
+.main-content p{
+  font-size: 16px;
+  font-weight: 400;
+}
+.price{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 0px;
+  margin-bottom: 20px;
+}
+.price h1{
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--price-color);
+  font-family: var(--font-secondary);
+}
+.main-content  a{
+  border: none;
+  background-color: var(--primary-color);
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  padding: 8px 25px;
+  border-radius: 10px;
+}
 /***** Product css  *******/
 .homeBanner .info{
   background-image: url("../../assets/banner/banner.jpg");
@@ -15,6 +75,7 @@
   align-items: flex-start;
   padding: 40px;
 }
+
 .homeBanner .data-all{
   background-image: url("../../assets/banner/banner4.jpg");
   background-position: center;
@@ -30,6 +91,7 @@
   padding: 40px;
   margin-top: 40px;
 }
+
 .homeBanner .data-all h2{
   font-size: 14px;
   color: #828181 !important;

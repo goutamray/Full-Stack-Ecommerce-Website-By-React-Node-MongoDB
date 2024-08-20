@@ -95,7 +95,7 @@
 }
 .middle-header-bar .logo{
   position: relative;
-  top: 10px;
+  top: 25px;
 }
 .logo-part button{
   display: none;
@@ -191,6 +191,7 @@
    display: flex;
    gap: 10px;
    justify-content: flex-end;
+   align-items: center;
 }
 .cart-section .user a{
    padding: 8px 15px;

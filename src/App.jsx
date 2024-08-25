@@ -32,19 +32,32 @@ import Download from './pages/myAccount/download/Download';
 import Logout from './pages/myAccount/logout/Logout';
 import Order from './pages/myAccount/order/Order';
 import NotFound from './pages/notFound/NotFound';
+import { fetchProductFromApi } from './utils/api';
 
 function App() {
   const [countryList , setCountryList ] = useState([]);
   const [selecetedCountry, setSelectedCountry ] = useState('');
-  const [isOpenProductModal, setIsOpenProductModal] = useState(false);
+  const [isOpenProductModal, setIsOpenProductModal] = useState({
+    id : "",
+    open : false,
+  });
   const [isHeaderFooterShow, setIsHeaderFooterShow] = useState(true); 
   const [isLogin, setIsLogin] = useState(false); 
+
+  const [productData, setProductData] = useState(); 
 
  // get all countries
   useEffect(() => {
     getCountry("https://countriesnow.space/api/v0.1/countries")
   }, [])
 
+  // get all single product modal 
+  useEffect(() => {
+    isOpenProductModal.open === true &&  
+    fetchProductFromApi(`/${isOpenProductModal.id}`).then((res) => {
+      setProductData(res.product)
+    })
+  }, [isOpenProductModal]);
 
   const getCountry = async(url) => {
      const response = await axios.get(url).then((res) => {
@@ -106,7 +119,7 @@ function App() {
 
             {/* Product modal */}
              {
-                isOpenProductModal === true && <ProductModal />
+                isOpenProductModal.open === true && <ProductModal data={productData}/>
              }
          
           </MyContext.Provider>

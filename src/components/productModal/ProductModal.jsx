@@ -16,40 +16,41 @@ import QuantityBox from "../quantityBox/QuantityBox";
 import "./ProductModal.css"; 
 import ProductZoom from "../productZoom/ProductZoom";
 
-const ProductModal = ({ closeProductModal }) => {
+const ProductModal = ({ closeProductModal, data }) => {
   const context = useContext(MyContext)
-
-
+  
+  console.log(data);
+  
   return (
     <>
       <div>
         <Dialog  open={true} onClose={() => context.setIsOpenProductModal(false)} className="productModal">
           <div className="modal-top-part">
                 <button className="close_btn" onClick={() => context.setIsOpenProductModal(false)}> <IoMdClose /> </button>
-                <h3> All Natural Italian-Style Chicken Meatballs </h3>
+                <h3> {data?.name}</h3>
                 <div className="d-flex align-items-center"> 
                     <div className="brand d-flex align-items-center ">
                         <span> Brands </span>
-                        <span className="ml-2"> <b> Welchs </b></span>
+                        <span className="ml-2"> <b> {data?.brand}</b></span>
                     </div>
-                    <Rating name="read-only" value={5} readOnly size="small"/>
+                    <Rating name="read-only" value={parseInt(data?.rating)} readOnly size="small"/>
                 </div>
                 <hr />
              <div>
                <div className="product-details-popup pt-3">
                   <div className="row">
                     <div className="col-md-5 ">
-                      <ProductZoom />
+                      <ProductZoom images={data?.photo} discount={data?.discount}/>
                     </div>
 
                     <div className="col-md-7">
                       <div className="product-content">
                         <div className="price-total">
-                             <span className="delete-price"> $24.00 </span>
-                            <span className="regular-price"> $19.50 </span>
+                             <span className="delete-price">{data?.oldPrice}</span>
+                            <span className="regular-price"> {data?.price}</span>
                         </div>
                         <p className="stock"> In Stock </p>
-                        <p className="desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus praesentium voluptate accusantium esse amet</p>
+                        <p className="desc">{data?.description}</p>
                         <div className="d-flex align-items-center gap-2">
                             <QuantityBox />
                            <button className="cart-btn"> Add To Cart </button>

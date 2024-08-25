@@ -8,30 +8,29 @@ import axios from "axios"
  */
 export const fetchDataFromApi = async(url) => {
    try {
-      const res = await axios.get("http://localhost:5050/api/v1/category"+url);
-      return res.data;
+      const response = await axios.get("http://localhost:5050/api/v1/category"+url);
+      return response.data;
    } catch (error) {
       console.error('Error submitting form data:', error.message);
       throw error; 
    }  
 }; 
 
-
 /**
- * send category data to database from api 
- * @param {*} url 
- * @param {*} formData 
- * @returns 
+ * Create category data
+ * @param {string} url - The endpoint URL (e.g., "/create")
+ * @param {FormData} formData - The form data to submit
+ * @returns {Promise<Object>} - The response data from the server
  */
 export const postData = async(url, formData) => {
    try {
-      const { res } = await axios.post("http://localhost:5050/api/v1/category"+ url, formData); 
-      return res;
+      const response = await axios.post(`http://localhost:5050/api/v1/category${url}`, formData); 
+      return response.data;
    } catch (error) {
       console.error('Error submitting form data:', error.message);
-      throw error; // Re-throw the error for handling in the calling func
+      throw error; 
    }
-}; 
+};
 
 
 /**
@@ -101,7 +100,6 @@ export const fetchProductFromApi = async(url) => {
 };
 
 
-
 /**
  * delete product data from api 
  * @param {*} id 
@@ -142,8 +140,8 @@ export const editProductData = async( url, updatedData ) => {
  */
 export const createBrandData = async(url, formData) => {
    try {
-      const { res } = await axios.post("http://localhost:5050/api/v1/brand"+ url, formData); 
-      return res;
+      const response = await axios.post("http://localhost:5050/api/v1/brand"+ url, formData); 
+      return response.data;
    } catch (error) {
       console.error('Error submitting form data:', error.message);
       throw error; 
@@ -158,8 +156,8 @@ export const createBrandData = async(url, formData) => {
  */
 export const fetchBrandDataFromApi = async(url) => {
    try {
-      const res = await axios.get("http://localhost:5050/api/v1/brand"+url);
-      return res.data;
+      const response = await axios.get("http://localhost:5050/api/v1/brand"+url);
+      return response.data;
    } catch (error) {
       console.error('Error submitting form data:', error.message);
       throw error; 
@@ -173,8 +171,8 @@ export const fetchBrandDataFromApi = async(url) => {
  */
 export const deleteBrandData = async( id ) => {
    try {
-      const res = await axios.delete(`http://localhost:5050/api/v1/brand${id}`); 
-      return res.data; 
+      const response = await axios.delete(`http://localhost:5050/api/v1/brand${id}`); 
+      return response.data; 
    } catch (error) {
       console.error('Error submitting form data:', error.message);
       throw error; 
@@ -190,12 +188,73 @@ export const deleteBrandData = async( id ) => {
  */
 export const editBrandData = async( url, updatedData ) => {
    try {
-    const res = await axios.patch(`http://localhost:5050/api/v1/brand${url}`, updatedData); 
-    return res.data;  
+    const response = await axios.patch(`http://localhost:5050/api/v1/brand${url}`, updatedData); 
+    return response.data;  
    } catch (error) {
     console.error('Error submitting form data:', error.message);
     throw error; 
    }
  }; 
 
+/**
+ * send sub category data to database from api 
+ * @param {*} url 
+ * @param {*} formData 
+ * @returns 
+ */
+export const createSubCategoryData = async(url, formData) => {
+   try {
+      const response = await axios.post("http://localhost:5050/api/v1/subCategory"+ url, formData); 
+       return response.data;
+   } catch (error) {
+      console.error('Error submitting form data:', error.message);
+      throw error; 
+   }
+}; 
 
+
+/**
+ *  fetch data from api
+ * @param {*} url 
+ * @returns 
+ */
+export const fetchSubCategoryDataFromApi = async(url) => {
+   try {
+      const res = await axios.get("http://localhost:5050/api/v1/subCategory"+url);
+      return res.data;
+   } catch (error) {
+      console.error('Error submitting form data:', error.message);
+      throw error; 
+   }  
+}; 
+
+/**
+ * delete sub category data from api 
+ * @param {*} id 
+ * @returns 
+ */
+export const deleteSubCategoryData = async( id ) => {
+   try {
+      const res = await axios.delete(`http://localhost:5050/api/v1/subCategory${id}`); 
+      return res.data; 
+   } catch (error) {
+      console.error('Error submitting form data:', error.message);
+      throw error; 
+   }
+}; 
+
+/**
+ * edit sub category data from api 
+ * @param {*} url 
+ * @param {*} updatedData 
+ * @returns 
+ */
+export const editSubCategoryData = async( url, updatedData ) => {
+   try {
+    const res = await axios.patch(`http://localhost:5050/api/v1/subCategory${url}`, updatedData); 
+    return res.data;  
+   } catch (error) {
+    console.error('Error submitting form data:', error.message);
+    throw error; 
+   }
+ }; 

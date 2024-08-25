@@ -1,11 +1,8 @@
 
-
 import { Link } from "react-router-dom";
 
 // material ui 
 import Rating from '@mui/material/Rating';
-
-
 
 // react icons 
 import { SlSizeFullscreen } from "react-icons/sl";
@@ -15,12 +12,14 @@ import { useContext } from "react";
 import { MyContext } from "../../App";
 
 const ProductItem = (props) => {
- const context = useContext(MyContext)
+   const context = useContext(MyContext)
 
   const viewProductDetails = (id) => {
-    context.setIsOpenProductModal(true); 
+    context.setIsOpenProductModal({
+      id: id,
+      open : true,
+    }); 
   }; 
-
 
   return (
     <>
@@ -28,10 +27,12 @@ const ProductItem = (props) => {
             <div className="imagewrapper">
                   <img src={props?.item?.photo[0]} alt="product" />
                     <div className="discount">
-                         <span> 10% </span>
+                         <span> {props?.item?.discount}% </span>
                    </div>
                    <div className="actions">
-                      <button className="screen" onClick={() => viewProductDetails(1)}> <SlSizeFullscreen /> </button>
+                      <button className="screen" onClick={() => viewProductDetails(props?.item?._id)}> 
+                          <SlSizeFullscreen />
+                       </button>
                       <button className="cart"> <IoIosHeartEmpty /> </button>
                    </div>
             </div>

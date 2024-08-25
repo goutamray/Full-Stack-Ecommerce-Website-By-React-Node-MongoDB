@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 
-const ProductZoom = () => {
+const ProductZoom = ({ images, discount }) => {
   const zoomSliderBig = useRef(); 
   const zoomSlider = useRef(); 
 
@@ -44,40 +44,34 @@ const ProductZoom = () => {
       <div className="productZoom">
           <div className="product-zoom-box">
                           <div className="discount-pro">
-                             <span> 20% </span>
+                             <span> { discount }</span>
                           </div>
                        <Slider {...settings2} className="product-galary-slider-big" ref={zoomSliderBig}>    
+                          {
+                            images?.map((item, index) => {
+                              return  <div className="item" key={index}>
+                              <div className="product-zoom">
+                                  <InnerImageZoom zoomType="hover"
+                                  zoomScale= "1"  src={item}  /> 
+                                  
+                            </div>
+                          </div>
+                            })
+                          }
                                    
-                               <div className="item" >
-                                    <div className="product-zoom">
-                                        <InnerImageZoom zoomType="hover" zoomScale= "1"  src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg`}  /> 
-                                        
-                                  </div>
-                                </div>                           
-                               <div className="item" >
-                                    <div className="product-zoom">
-                                        <InnerImageZoom zoomType="hover" zoomScale= "1"  src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image2-47.jpg`}  /> 
-                                  </div>
-                                </div>                           
-                               <div className="item" >
-                                    <div className="product-zoom">
-                                        <InnerImageZoom zoomType="hover" zoomScale= "1"  src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image3-35.jpg`}  /> 
-                                  </div>
-                                </div>                           
                             </Slider>
                        </div>
                      {/*galary image start  */}
                       <div className="zoom-galary">
                         <Slider {...settings} className="product-galary-slider" ref={zoomSlider}>
-                          <div className="item" >
-                              <img src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62.jpg`} alt="zoom" onClick={() => goto(0)}/>
-                          </div>
-                          <div className="item" >
-                              <img src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image2-47.jpg`} alt="zoom" onClick={() => goto(1)} />
-                          </div>
-                          <div className="item" >
-                              <img src={`https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image3-35.jpg`} alt="zoom" onClick={() => goto(2)} />
-                          </div>
+
+                        {
+                          images?.map((item, index) => {
+                            return  <div className="item" key={index}>
+                            <img src={item} alt="zoom" onClick={() => goto(index)}/>
+                        </div>
+                          })
+                        }
                           
                        </Slider>
                       </div>

@@ -32,7 +32,7 @@ import Download from './pages/myAccount/download/Download';
 import Logout from './pages/myAccount/logout/Logout';
 import Order from './pages/myAccount/order/Order';
 import NotFound from './pages/notFound/NotFound';
-import { fetchProductFromApi } from './utils/api';
+import { fetchDataFromApi, fetchProductFromApi } from './utils/api';
 
 function App() {
   const [countryList , setCountryList ] = useState([]);
@@ -45,6 +45,9 @@ function App() {
   const [isLogin, setIsLogin] = useState(false); 
 
   const [productData, setProductData] = useState(); 
+  const [categoryData, setCategoryData] = useState([]); 
+
+ 
 
  // get all countries
   useEffect(() => {
@@ -56,14 +59,20 @@ function App() {
     isOpenProductModal.open === true &&  
     fetchProductFromApi(`/${isOpenProductModal.id}`).then((res) => {
       setProductData(res.product)
-    })
-  }, [isOpenProductModal]);
+    });
+
+    fetchDataFromApi("/").then((res) => {
+      setCategoryData(res); 
+    }); 
+
+  }, [isOpenProductModal ]);
 
   const getCountry = async(url) => {
      const response = await axios.get(url).then((res) => {
       setCountryList(res.data.data);
      })
   }
+  
 
   // send all data
   const values = {
@@ -76,6 +85,9 @@ function App() {
     setIsHeaderFooterShow, 
     isLogin,
     setIsLogin,
+    categoryData,
+    setCategoryData,
+
   };   
 
   return (

@@ -25,32 +25,63 @@ import coupon from "../../assets/banner/coupon.png"
 import { useEffect, useState } from "react";
 import { fetchDataFromApi, fetchProductFromApi } from "../../utils/api";
 
+ import Tabs from '@mui/material/Tabs';
+ import Tab from '@mui/material/Tab';
+
 import "./Home.css";
+import axios from "axios";
 
 const Home = () => {
-   const [catData, setCatData ] = useState([]); 
-   const [productData, setProductData] = useState([]); 
+    const [productData, setProductData] = useState([]); 
+   const [categoryAllData, setCategoryAllData] = useState([]); 
 
    useEffect(() => {
-      fetchDataFromApi("/").then((res) => {
-         setCatData(res.categoryList);
-      });
-
       fetchProductFromApi("/").then((res) => {
          setProductData(res.productList);
       }); 
 
-   }, [])
+      fetchDataFromApi("/").then((res) => {
+         setCategoryAllData(res.categoryList); 
+       }); 
+
+   }, []); 
+
+
+  // filter 
+   const [selectedCategory, setSelectedCategory] = useState('');
+   const [products, setProducts] = useState([]);
+
+   useEffect(() => {
+      if (categoryAllData?.length > 0) {
+         const firstCategoryId = categoryAllData[0]._id;
+         setSelectedCategory(firstCategoryId);
+         fetchProducts(firstCategoryId);
+      }
+   }, [categoryAllData]);
+
+   const fetchProducts = async (category) => {
+      try {
+         const response = await axios.get(`http://localhost:5050/api/v1/product?category=${category}`);
+         setProducts(response.data.productList);
+      } catch (error) {
+         console.error('Error fetching products:', error);
+      }
+   };
+
+   const handleCategoryChange = (event, newValue) => {
+      setSelectedCategory(newValue);
+      fetchProducts(newValue);
+   };
 
   return (
     <>
       <HomeBanner />
 
       {/* cat slider  */}
-
-      {
-         catData?.length !== 0 && <CategorySlider catData={catData}/>
-      }
+       {
+         categoryAllData.length !== 0 && 
+         <CategorySlider catData={categoryAllData} />
+       }
  
 
       {/* Home Banner */}
@@ -84,22 +115,34 @@ const Home = () => {
                         <button> Shop Now</button>
                      </div>
                </div>
-   
-
             </div>
+
+            
             <div className="col-sm-12 col-md-9 product-row ">
                <div className="product-slider">
+
                   <div className="product-header">
                      <div>
-                        <h2> BEST SELLERS </h2>
+                        <h2> Popular Products </h2>
                         <p> Do not miss the current offers until the end of   March. </p>
                     </div>
-                    <button className="view-all-btn"> View All <span> <FaArrowRightLong /> </span></button>
-                  </div>
+                    <Tabs
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                        variant="scrollable"
+                        scrollButtons="auto"
+                        aria-label="scrollable auto tabs example"
+                     >
+                        {categoryAllData?.length > 0 &&
+                           categoryAllData.map((item) => (
+                                 <Tab key={item._id} value={item._id} label={item.name} className="dynamic-cat-data" />
+                           ))
+                        }
+                     </Tabs>
+                  </div> 
 
-                  <div className="product_row_all mt-4">
-
-                  <Swiper
+               <div className="product_row_all mt-4">
+                   <Swiper
                       slidesPerView={4}
                       spaceBetween={10}
                       loop={true}
@@ -129,16 +172,16 @@ const Home = () => {
                       className="mySwiper"
                     >
                      {
-                        productData.length !== 0 && 
-                        productData.map((item, index) => {
+                        products?.length !== 0 && 
+                        products.map((item, index) => {
                           return <SwiperSlide key={index}>
                           <ProductItem item={item}/>
                        </SwiperSlide>
                         })
                      }     
-                    </Swiper>
+                    </Swiper> 
                           
-                  </div>
+                  </div> 
                </div>
 
                {/* new products */}

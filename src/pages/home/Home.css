@@ -344,7 +344,13 @@ img.rounded.my-custom-size {
 .cat-slider .swiper-button-prev:after, .cat-slider .swiper-button-next:after {
   font-size: 12px !important;
 }
-
+.dynamic-cat-data{
+  font-size: 20px;
+  font-weight: 600;
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  color: #000000 !important;
+}
 
 /*****  Comment section css*******/
 .comment-section{

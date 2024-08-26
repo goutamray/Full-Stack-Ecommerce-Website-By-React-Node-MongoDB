@@ -14,7 +14,7 @@
   font-weight: 500;
   font-family: var(--font-secondary);
   color: var(--font-secondary);
-  margin-top: 40px;
+  margin-top: 0px;
   margin-bottom: 8px;
 }
 .productModal .close_btn {

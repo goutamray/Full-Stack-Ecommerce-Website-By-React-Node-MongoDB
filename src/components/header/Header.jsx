@@ -19,7 +19,7 @@ import { useContext } from "react";
 import { MyContext } from "../../App";
 
 import "./Header.css";
-const Header = () => {
+const Header = ( ) => {
   const context = useContext(MyContext); 
 
   return (

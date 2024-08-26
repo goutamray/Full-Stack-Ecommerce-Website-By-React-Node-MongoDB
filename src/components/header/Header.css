@@ -314,9 +314,15 @@
    font-family: var(--font-primary);
    color: var(--heading-color);
    text-transform: uppercase;
-   padding: 8px 17px;
+   padding: 8px 7px;
    border-radius: 25px;
    transition: all 0.3s ease-in-out;
+}
+.main-menu ul li a span svg{
+  font-size: 16px !important;
+  position: relative;
+  top: -2px;
+  padding-left: 4px;
 }
 .main-menu ul li:hover a {
   background-color: #f0faff;
@@ -326,12 +332,12 @@
   display: flex;
   gap: 10px;
 }
-.main-menu .custom-icon span svg{
+/* .main-menu .custom-icon span svg{
   font-size: 16px;
   position: relative;
   top: -2px;
   padding-left: 6px;
-}
+} */
 .main-menu ul li .submenu{
   position: absolute;
   top: 140%;

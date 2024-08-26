@@ -19,8 +19,6 @@ import ProductZoom from "../productZoom/ProductZoom";
 const ProductModal = ({ closeProductModal, data }) => {
   const context = useContext(MyContext)
   
-  console.log(data);
-  
   return (
     <>
       <div>
@@ -45,9 +43,10 @@ const ProductModal = ({ closeProductModal, data }) => {
 
                     <div className="col-md-7">
                       <div className="product-content">
+                      <h4> {data?.name}</h4>
                         <div className="price-total">
-                             <span className="delete-price">{data?.oldPrice}</span>
-                            <span className="regular-price"> {data?.price}</span>
+                             <span className="delete-price">${data?.oldPrice}</span>
+                            <span className="regular-price mr-2"> ${data?.price}</span>
                         </div>
                         <p className="stock"> In Stock </p>
                         <p className="desc">{data?.description}</p>

@@ -13,7 +13,6 @@ import { Navigation, Autoplay } from 'swiper/modules';
 const CategorySlider = ({ catData }) => {
   const [categoryData, setCategoryData ] = useState([]);
 
-
   // get all category 
   useEffect(() => {
     setCategoryData(catData);

@@ -211,11 +211,11 @@ img.rounded.my-custom-size {
   font-weight: 600;
   font-family: var(--font-primary);
 }
-.price-total .delete-price{
+.price-total .delete-price {
   font-size: 18px;
   font-weight: 600;
-  font-family: var(--font-primary);
-  color: #C2C2D3;
+  /* font-family: var(--font-primary); */
+  color: #000000;
   text-decoration: line-through;
 }
 .price-total .regular-price{

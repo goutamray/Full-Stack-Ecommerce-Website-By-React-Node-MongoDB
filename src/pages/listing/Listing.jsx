@@ -24,6 +24,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 import "./Listing.css";
+
 const Listing = () => {
   const [productView, setProductView ] = useState('four');
   const [productData, setProductData] = useState([]); 
@@ -43,48 +44,75 @@ const Listing = () => {
    // get params id 
   const { id } = useParams(); 
 
- // Function to fetch products based on the category ID or fetch all products if no category ID
- const fetchProducts = async (categoryId) => {
-  try {
-    setLoading(true); // Start loading
-    let url = categoryId ? 
-      `http://localhost:5050/api/v1/product?category=${categoryId}` : 
-      `http://localhost:5050/api/v1/product`;
+  // Function to fetch products based on the category ID or fetch all products if no category ID
+  const fetchProducts = async (categoryId) => {
+    try {
+      setLoading(true); // Start loading
+      let url = categoryId ? 
+        `http://localhost:5050/api/v1/product?category=${categoryId}` : 
+        `http://localhost:5050/api/v1/product`;
 
-    const response = await axios.get(url);
-    setProductData(response.data.productList || []); // Set the fetched product data to state
-  } catch (error) {
-    console.error('Error fetching products:', error);
-    setProductData([]); // Set to empty array on error
-  } finally {
-    setLoading(false); // End loading
-  }
-};
+      const response = await axios.get(url);
+      setProductData(response.data.productList || []); // Set the fetched product data to state
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      setProductData([]); // Set to empty array on error
+    } finally {
+      setLoading(false); // End loading
+    }
+  };
 
-// Fetch products when the component mounts or the 'id' parameter changes
-useEffect(() => {
-  fetchProducts(id);
-}, [id]);
+  // Fetch products when the component mounts or the 'id' parameter changes
+  useEffect(() => {
+    fetchProducts(id);
+  }, [id]);
 
 
-// filter category by sidebar content 
-const filterData = async (id) => {
-  try {
-    setLoading(true); // Start loading
-    let url = id ? 
-      `http://localhost:5050/api/v1/product?category=${id}` : 
-      `http://localhost:5050/api/v1/product`;
+  // filter category by sidebar content 
+  const filterData = async (id) => {
+    try {
+      setLoading(true); // Start loading
+      let url = id ? 
+        `http://localhost:5050/api/v1/product?category=${id}` : 
+        `http://localhost:5050/api/v1/product`;
 
-    const response = await axios.get(url);
-    setProductData(response.data.productList || []); // Set the fetched product data to state
-  } catch (error) {
-    console.error('Error fetching products:', error);
-    setProductData([]); // Set to empty array on error
-  } finally {
-    setLoading(false); // End loading
-  }
-}
+      const response = await axios.get(url);
+      setProductData(response.data.productList || []); // Set the fetched product data to state
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      setProductData([]); // Set to empty array on error
+    } finally {
+      setLoading(false); // End loading
+    }
+  };
 
+
+  // filter by price 
+  const filterByPrice = async (price, categoryId) => {
+    try {
+      setLoading(true); // Start loading
+      
+      // Build the URL with query parameters
+      let url = `http://localhost:5050/api/v1/product?`;
+      
+      if (price && price.length === 2) {
+        url += `minPrice=${parseFloat(price[0])}&maxPrice=${parseFloat(price[1])}`;
+      }
+
+      if (categoryId) {
+        url += `&category=${categoryId}`;
+      }
+
+      // Make the API request
+      const response = await axios.get(url);
+      setProductData(response.data.productList || []); // Set the fetched product data to state
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      setProductData([]); // Set to empty array on error
+    } finally {
+      setLoading(false); // End loading
+    }
+  };
 
 
   return (
@@ -99,7 +127,7 @@ const filterData = async (id) => {
         <div className="product-listing-page">
           <div className="container">
             <div className="productListing d-flex">
-                <SideBar filterData={filterData}/>
+                <SideBar filterData={filterData} filterByPrice={filterByPrice}/>
                 <div className="content_right">
                    <div className="showBy d-flex align-items-center justify-content-between">
                       <div className="left-grid d-flex align-items-center gap-2 ">

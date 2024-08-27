@@ -20,6 +20,7 @@ import { MyContext } from "../../App";
 
 import "./Header.css";
 const Header = ( ) => {
+   
   const context = useContext(MyContext); 
 
   return (
@@ -122,8 +123,6 @@ const Header = ( ) => {
                                  : 
                                 <button> <FiUser /> </button>
                            }
-                        
-                        
                         </div>
                         <div className="price">
                          <Link to="/cart" > 
@@ -142,10 +141,8 @@ const Header = ( ) => {
        </div>
 
        {/* header bottom part  */}
-       {
-         context.categoryData !== 0 && <Navigation navData={context.categoryData}/>
-       }
-       
+      
+        <Navigation />
 
     </>
   )

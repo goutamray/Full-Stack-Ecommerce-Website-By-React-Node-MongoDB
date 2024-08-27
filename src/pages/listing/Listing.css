@@ -106,9 +106,6 @@
 .showBy  .left-grid button:hover svg{
   opacity: 1;
 }
-
-
-
 .drop-btn span svg{
   margin-left: 5px !important;
 }
@@ -122,6 +119,11 @@
    display: flex;
    flex-wrap: wrap;
    gap: 20px;
+  
+}
+.productListingGrid p{
+  padding: 20px 0px;
+  margin-left: 50%;
 }
 .productListingGrid .product-item.four{
   width: 23%;

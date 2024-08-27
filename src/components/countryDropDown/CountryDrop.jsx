@@ -57,7 +57,7 @@ const CountryDrop = () => {
                 <span className="location"> Your Location </span>
                 <span className="country"> 
                   {  context.selecetedCountry !== "" ? 
-                     context.selecetedCountry.length > 12 ? 
+                     context.selecetedCountry?.length > 12 ? 
                      context.selecetedCountry?.substr(0, 12) + '...' : 
                      context.selecetedCountry :
                      "Select Location" }
@@ -84,10 +84,10 @@ const CountryDrop = () => {
                 return (
                   <li key={index}> 
                       <Button 
-                      onClick={() => selectCountry(index, item.country )}
+                      onClick={() => selectCountry(index, item?.country )}
                       className={` ${ selectedTab === index ? "active" : "" }`}
                        > 
-                        {item.country} 
+                        {item?.country} 
                       </Button> 
                   </li>
                 )

@@ -46,6 +46,12 @@ const SideBar = (props) => {
    }
    }, [value, categoryId]);
 
+
+   // rating change filter 
+   const onRatingChange = (newRating) => {
+      props.filterByRating(newRating, categoryId); // Pass the selected rating and current category ID
+    }; 
+
   return (
     <>
       <div className="sidebar">
@@ -88,19 +94,19 @@ const SideBar = (props) => {
               <h6> Filter By Rating </h6>
               <div className="scroll">
                 <ul>
-                     <li>
+                     <li onClick={() => onRatingChange(5)}>
                         <Rating name="read-only" value={5} readOnly size="small" />
                      </li>
-                     <li>
+                     <li onClick={() => onRatingChange(4)}>
                         <Rating name="read-only" value={4} readOnly size="small" />
                      </li>
-                     <li>
+                     <li onClick={() => onRatingChange(3)}>
                         <Rating name="read-only" value={3} readOnly size="small" />
                      </li>
-                     <li>
+                     <li onClick={() => onRatingChange(2)}>
                         <Rating name="read-only" value={2} readOnly size="small" />
                      </li>
-                     <li>
+                     <li onClick={() => onRatingChange(1)}>
                         <Rating name="read-only" value={1} readOnly size="small" />
                      </li>
                 </ul>

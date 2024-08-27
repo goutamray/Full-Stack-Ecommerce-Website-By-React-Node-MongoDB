@@ -115,6 +115,26 @@ const Listing = () => {
   };
 
 
+  // filter by rating 
+  const filterByRating = async (rating, categoryId) => {
+    try {
+      console.log('Filtering by rating:', rating, 'and category:', categoryId); // Log the inputs
+      setLoading(true);
+      const url = categoryId 
+        ? `http://localhost:5050/api/v1/product?rating=${rating}&category=${categoryId}` 
+        : `http://localhost:5050/api/v1/product`;
+      
+      const response = await axios.get(url);
+      setProductData(response.data.productList || []);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      setProductData([]);
+    } finally {
+      setLoading(false);
+    }
+  }
+  
+
   return (
     <>
        <div className="bradcrumb py-10">
@@ -127,7 +147,7 @@ const Listing = () => {
         <div className="product-listing-page">
           <div className="container">
             <div className="productListing d-flex">
-                <SideBar filterData={filterData} filterByPrice={filterByPrice}/>
+                <SideBar filterData={filterData} filterByPrice={filterByPrice} filterByRating={filterByRating}/>
                 <div className="content_right">
                    <div className="showBy d-flex align-items-center justify-content-between">
                       <div className="left-grid d-flex align-items-center gap-2 ">

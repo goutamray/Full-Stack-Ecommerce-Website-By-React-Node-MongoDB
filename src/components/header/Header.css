@@ -302,7 +302,7 @@
    display: flex;
    align-items: center;
    justify-content: end;
-   gap: 3px;
+   gap: 4px;
 }
 .main-menu ul li{
   position: relative;
@@ -310,11 +310,11 @@
 }
 .main-menu ul li a{
    font-size: 16px;
-   font-weight: 600;
-   font-family: var(--font-primary);
+   font-weight: 700;
+   /* font-family: var(--font-primary); */
    color: var(--heading-color);
    text-transform: uppercase;
-   padding: 8px 7px;
+   padding: 8px 10px;
    border-radius: 25px;
    transition: all 0.3s ease-in-out;
 }
@@ -325,7 +325,7 @@
   padding-left: 4px;
 }
 .main-menu ul li:hover a {
-  background-color: #f0faff;
+  background-color: #f1f1f1 !important;
   color: var(--primary-color);
 }
 .main-menu .custom-icon{

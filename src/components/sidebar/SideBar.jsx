@@ -1,7 +1,6 @@
 
 // material ui 
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Radio from '@mui/material/Radio'; 
 import RadioGroup from '@mui/material/RadioGroup'; 
 import Rating from '@mui/material/Rating'; 
@@ -12,20 +11,21 @@ import "react-range-slider-input/dist/style.css";
 import { useState } from 'react';
 
 import sidebarImg from "../../assets/banner/sidebar.png"
+import { useContext } from 'react';
+import { MyContext } from '../../App';
 
 
-const SideBar = () => {
+const SideBar = (props) => {
   const [value, setValue] = useState([100, 60000]);
-  const [value2, setValue2] = useState(0);
+  const [radioData, setRadioData] = useState();
 
+  const context = useContext(MyContext); 
 
-  const [radioData, setRadioData] = useState('female');
-
+  // handle category 
   const handleChange = (event) => {
-   setRadioData(event.target.value);
+     setRadioData(event.target.value);
+     props.filterData(event.target.value);
   };
-
-
 
   return (
     <>
@@ -41,19 +41,14 @@ const SideBar = () => {
                   value={radioData}
                   onChange={handleChange}
                   >
-                     <li> 
-                        <FormControlLabel value="female" control={<Radio />} label="Female" />
-                     </li>
-                     <li>
-                        <FormControlLabel value="male" control={<Radio />} label="Male" />
-                     </li>
-                     <li>
-                        <FormControlLabel value="other" control={<Radio />} label="other" />
-                     </li>
-                     <li>
-                        <FormControlLabel value="custom" control={<Radio />} label="custom" />
-                     </li>
-                  
+                     {
+                        context?.categoryData?.categoryList?.length !== 0 &&
+                        context?.categoryData?.categoryList?.map((item, index) => {
+                           return <li key={index}> 
+                           <FormControlLabel value={item?._id}  control={<Radio />} label={item?.name} />
+                        </li>
+                        })
+                     } 
                   </RadioGroup>
                 </ul>
                  
@@ -71,7 +66,7 @@ const SideBar = () => {
 
           {/* Brand */}
           <div className="filterBox">
-              <h6> BRANDS</h6>
+              <h6> Filter By Rating </h6>
               <div className="scroll">
                 <ul>
                      <li>

@@ -142,7 +142,10 @@ const Header = ( ) => {
        </div>
 
        {/* header bottom part  */}
-       <Navigation />
+       {
+         context.categoryData !== 0 && <Navigation navData={context.categoryData}/>
+       }
+       
 
     </>
   )

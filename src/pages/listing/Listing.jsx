@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 // import components 
 import SideBar from "../../components/sidebar/SideBar";
@@ -20,17 +20,17 @@ import MenuItem from '@mui/material/MenuItem';
 // material ui
 import Pagination from '@mui/material/Pagination';
 
+import { useEffect } from "react";
+import axios from "axios";
 
 import "./Listing.css";
-import { useEffect } from "react";
-import { fetchProductFromApi } from "../../utils/api";
 const Listing = () => {
   const [productView, setProductView ] = useState('four');
+  const [productData, setProductData] = useState([]); 
+  const [loading, setLoading] = useState(true); // Add a loading state 
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-
- const [productData, setProductData] = useState([]); 
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -40,11 +40,52 @@ const Listing = () => {
     setAnchorEl(null);
   };
 
-  useEffect(() => {
-    fetchProductFromApi("/").then((res) => {
-      setProductData(res.productList);
-   }); 
-  }, []); 
+   // get params id 
+  const { id } = useParams(); 
+
+ // Function to fetch products based on the category ID or fetch all products if no category ID
+ const fetchProducts = async (categoryId) => {
+  try {
+    setLoading(true); // Start loading
+    let url = categoryId ? 
+      `http://localhost:5050/api/v1/product?category=${categoryId}` : 
+      `http://localhost:5050/api/v1/product`;
+
+    const response = await axios.get(url);
+    setProductData(response.data.productList || []); // Set the fetched product data to state
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    setProductData([]); // Set to empty array on error
+  } finally {
+    setLoading(false); // End loading
+  }
+};
+
+// Fetch products when the component mounts or the 'id' parameter changes
+useEffect(() => {
+  fetchProducts(id);
+}, [id]);
+
+
+// filter category by sidebar content 
+const filterData = async (id) => {
+  try {
+    setLoading(true); // Start loading
+    let url = id ? 
+      `http://localhost:5050/api/v1/product?category=${id}` : 
+      `http://localhost:5050/api/v1/product`;
+
+    const response = await axios.get(url);
+    setProductData(response.data.productList || []); // Set the fetched product data to state
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    setProductData([]); // Set to empty array on error
+  } finally {
+    setLoading(false); // End loading
+  }
+}
+
+
 
   return (
     <>
@@ -58,7 +99,7 @@ const Listing = () => {
         <div className="product-listing-page">
           <div className="container">
             <div className="productListing d-flex">
-                <SideBar />
+                <SideBar filterData={filterData}/>
                 <div className="content_right">
                    <div className="showBy d-flex align-items-center justify-content-between">
                       <div className="left-grid d-flex align-items-center gap-2 ">
@@ -97,14 +138,16 @@ const Listing = () => {
                       </div>
                    </div>
                    <div className="productListingGrid">
-
-                    {
-                      productData.length !== 0 &&
-                      productData.map((item, index) => {
-                        return <ProductItem itemView={productView} key={index} item={item}/>
-                      })
-                    }
-                   </div>
+                        {loading ? (
+                          <p>Loading...</p>
+                        ) : productData.length > 0 ? (
+                          productData.map((item) => (
+                            <ProductItem itemView={productView} key={item?._id} item={item} />
+                          ))
+                        ) : (
+                          <p>No products found.</p>
+                        )}
+                    </div>
 
                    {/* pagination */}
                    <div className="d-flex justify-content-center align-items-center mt-5">

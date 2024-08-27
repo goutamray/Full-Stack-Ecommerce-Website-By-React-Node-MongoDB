@@ -17,6 +17,7 @@ import { useState } from "react";
 
 
 import "./ProductDetails.css"; 
+import { useEffect } from "react";
 
 const ProductDetails = () => {
   const [activeSize, setActiveSize ] = useState(null);
@@ -26,6 +27,11 @@ const ProductDetails = () => {
   const isActive = (index) => {
     setActiveSize(index)
   }; 
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+    
+  }, []); 
 
   return (
     <>

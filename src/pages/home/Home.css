@@ -196,9 +196,15 @@ img.rounded.my-custom-size {
 .product-item .all-details a{
   font-family: var(--font-secondary);
   font-size: 15px !important;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--heading-color);
+  transition: all ease-in-out 0.3s;
 }
+
+.product-item .all-details a:hover{
+  color: var(--price-color); 
+}
+
 .product-item .all-details p{
   color: var(--secondary-color);
   font-size: 13px;
@@ -525,6 +531,18 @@ img.rounded.my-custom-size {
 @media (min-width : 320px) and (max-width: 576px){ 
 .cat-slider .swiper-button-prev, .cat-slider .swiper-button-next {
     top: -27px !important;
+}
+.item .slide-content .entry-title {
+  font-size: 25px;
+  font-weight: 700;
+  color: #000000;
+  font-family: var(--font-secondary);
+  width: 380px !important;
+  padding-right: 20px;
+}
+img.rounded.my-custom-size {
+  width: 450px;
+  object-fit: cover !important;
 }
 .homeBanner .info {
     padding: 58px;

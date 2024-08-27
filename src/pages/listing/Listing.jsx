@@ -22,11 +22,15 @@ import Pagination from '@mui/material/Pagination';
 
 
 import "./Listing.css";
+import { useEffect } from "react";
+import { fetchProductFromApi } from "../../utils/api";
 const Listing = () => {
   const [productView, setProductView ] = useState('four');
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+ const [productData, setProductData] = useState([]); 
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -36,11 +40,16 @@ const Listing = () => {
     setAnchorEl(null);
   };
 
+  useEffect(() => {
+    fetchProductFromApi("/").then((res) => {
+      setProductData(res.productList);
+   }); 
+  }, []); 
 
   return (
     <>
        <div className="bradcrumb py-10">
-          <div className="container">
+          <div className="container custom-background ">
             <div className="col">
                 <h2 className="pt-5"> <Link to="/"> Home </Link> / Shop</h2>
             </div>
@@ -88,23 +97,13 @@ const Listing = () => {
                       </div>
                    </div>
                    <div className="productListingGrid">
-                      <ProductItem itemView={productView} />
-                      <ProductItem itemView={productView} />
-                      <ProductItem itemView={productView} />
-                      <ProductItem itemView={productView} />
-                      <ProductItem itemView={productView} />
-                      <ProductItem itemView={productView} />
-                      <ProductItem itemView={productView} />
-                      <ProductItem itemView={productView} />     
-                      <ProductItem itemView={productView} />     
-                      <ProductItem itemView={productView} />     
-                      <ProductItem itemView={productView} />     
-                      <ProductItem itemView={productView} />     
-                      <ProductItem itemView={productView} />     
-                      <ProductItem itemView={productView} />     
-                      <ProductItem itemView={productView} />     
-                      <ProductItem itemView={productView} />     
-                      <ProductItem itemView={productView} />     
+
+                    {
+                      productData.length !== 0 &&
+                      productData.map((item, index) => {
+                        return <ProductItem itemView={productView} key={index} item={item}/>
+                      })
+                    }
                    </div>
 
                    {/* pagination */}

@@ -61,9 +61,12 @@ const Navigation = () => {
                         </li>
 
                         {
-                            context.categoryData?.categoryList?.length !== 0 && context.categoryData?.categoryList?.map((item, index) => {
+                            context.categoryData?.categoryList?.length !== 0 &&
+                            context.categoryData?.categoryList?.map((item, index) => {
                               return  <li className="list-inline-item" key={index}> 
-                              <Link href="/"> {item.name } <span> <FaAngleDown /> </span> </Link>
+                              <Link to={`/category/${item._id}`}> {item.name } 
+                                 <span> <FaAngleDown /> </span> 
+                              </Link>
                               <div className="submenu shadow">
                                  <li> <Link href="/">  Clothing </Link> </li>
                                  <li> <Link href="/">  FoodWear </Link> </li>
@@ -74,7 +77,7 @@ const Navigation = () => {
                              </div>
                             </li>
                             })
-                           }
+                          }
                       </ul>
                    </div>
                  </div>

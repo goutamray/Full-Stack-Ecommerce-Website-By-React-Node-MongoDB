@@ -87,6 +87,8 @@ function App() {
     setIsLogin,
     categoryData,
     setCategoryData,
+    productData,
+    setProductData 
 
   };   
 
@@ -103,8 +105,7 @@ function App() {
                   <Route  path='/' exact={true} element={ <Home /> }/>
                   <Route  path='/about' exact={true} element={ <About /> }/>
                   <Route  path='/contact' exact={true} element={ <Contact /> }/>
-                  <Route  path='/cat' exact={true} element={ <Listing /> }/>
-                  <Route  path='/cat/:id' exact={true} element={ <Listing /> }/>
+                  <Route  path='/category/:id' exact={true} element={ <Listing /> }/>
                   <Route  path='/product/:id' exact={true} element={ <ProductDetails /> }/>
                   <Route  path='/cart' exact={true} element={ <Cart /> }/>
                   <Route  path='/signIn' exact={true} element={ <SignIn /> }/>

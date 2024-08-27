@@ -25,6 +25,7 @@ import coupon from "../../assets/banner/coupon.png"
 import { useEffect, useState } from "react";
 import { fetchDataFromApi, fetchProductFromApi } from "../../utils/api";
 
+// material ui 
  import Tabs from '@mui/material/Tabs';
  import Tab from '@mui/material/Tab';
 
@@ -32,9 +33,10 @@ import "./Home.css";
 import axios from "axios";
 
 const Home = () => {
-    const [productData, setProductData] = useState([]); 
+   const [productData, setProductData] = useState([]); 
    const [categoryAllData, setCategoryAllData] = useState([]); 
 
+   // get all product & category 
    useEffect(() => {
       fetchProductFromApi("/").then((res) => {
          setProductData(res.productList);
@@ -43,7 +45,6 @@ const Home = () => {
       fetchDataFromApi("/").then((res) => {
          setCategoryAllData(res.categoryList); 
        }); 
-
    }, []); 
 
 
@@ -79,7 +80,7 @@ const Home = () => {
 
       {/* cat slider  */}
        {
-         categoryAllData.length !== 0 && 
+         categoryAllData?.length !== 0 && 
          <CategorySlider catData={categoryAllData} />
        }
  
@@ -135,7 +136,7 @@ const Home = () => {
                      >
                         {categoryAllData?.length > 0 &&
                            categoryAllData.map((item) => (
-                                 <Tab key={item._id} value={item._id} label={item.name} className="dynamic-cat-data" />
+                                 <Tab key={item?._id} value={item?._id} label={item?.name} className="dynamic-cat-data" />
                            ))
                         }
                      </Tabs>
@@ -173,7 +174,7 @@ const Home = () => {
                     >
                      {
                         products?.length !== 0 && 
-                        products.map((item, index) => {
+                        products?.map((item, index) => {
                           return <SwiperSlide key={index}>
                           <ProductItem item={item}/>
                        </SwiperSlide>

@@ -12,7 +12,7 @@ import { useContext } from "react";
 import { MyContext } from "../../App";
 
 const ProductItem = (props) => {
-   const context = useContext(MyContext)
+   const context = useContext(MyContext); 
 
   const viewProductDetails = (id) => {
     context.setIsOpenProductModal({
@@ -37,7 +37,9 @@ const ProductItem = (props) => {
                    </div>
             </div>
              <div className="all-details">
-                  <Link href="#"> {props?.item?.name.length > 30 ? props?.item?.name.substring(0, 35) + ". . ." : props?.item?.name } </Link>
+                  <Link to={`/product/${props?.item?._id}`} > 
+                      {props?.item?.name.length > 30 ? props?.item?.name.substring(0, 35) + ". . ." : props?.item?.name }
+                  </Link>
                    <p> In Stock </p>
                   <Rating name="read-only" value={props?.item?.rating} readOnly size="small" precision={0.5} />
                    <div className="price-total">
@@ -45,7 +47,7 @@ const ProductItem = (props) => {
                       <span className="regular-price"> {props?.item?.oldPrice}  </span>
                       <span className="currency-data"> BDT  </span>
                    </div>
-                    <Link href="#" className="cart-btn"> Add to cart </Link>
+                    <Link to={`/product/${props?.item?._id}`} className="cart-btn"> Add to cart </Link>
                </div>                     
          </div>
 

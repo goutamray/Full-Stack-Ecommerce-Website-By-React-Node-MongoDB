@@ -193,7 +193,7 @@ const Listing = () => {
                             <ProductItem itemView={productView} key={item?._id} item={item} />
                           ))
                         ) : (
-                          <p>No products found.</p>
+                          <p className="no-product">No products found.</p>
                         )}
                     </div>
 

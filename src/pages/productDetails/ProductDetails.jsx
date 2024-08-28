@@ -12,78 +12,169 @@ import RelatedProduct from "./relatedProduct/RelatedProduct";
 // react icons 
 import { CiHeart } from "react-icons/ci";
 import { FaCodeCompare } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
+import { FaPinterest } from "react-icons/fa";
+import { FaTelegram } from "react-icons/fa";
 
 import { useState } from "react";
 
 
 import "./ProductDetails.css"; 
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const ProductDetails = () => {
-  const [activeSize, setActiveSize ] = useState(null);
-  const [activeTab , setActiveTab ] = useState(0); 
+  const [activeSize, setActiveSize] = useState(null);
+  const [activeTab, setActiveTab] = useState(0);
 
-  // active size
+  const [productData, setProductData] = useState(null); // State to hold product data
+  const [loading, setLoading] = useState(false);
+  const [relatedProducts, setRelatedProducts] = useState([]); // State to hold related products
+
+  // Function to handle active size selection
   const isActive = (index) => {
-    setActiveSize(index)
-  }; 
+    setActiveSize(index);
+  };
 
   useEffect(() => {
-    window.scrollTo(0,0);
-    
-  }, []); 
+    window.scrollTo(0, 0);
+  }, []);
 
+  const { id } = useParams();
+
+  // get single product data & related products 
+  const fetchSingleProduct = async (id) => {
+    try {
+      setLoading(true); // Start loading
+
+      // Fetch the single product
+      const productRes = await axios.get(`http://localhost:5050/api/v1/product/${id}`);
+      const fetchedProduct = productRes.data.product;
+      setProductData(fetchedProduct); // Set the fetched product data to state
+
+      // Fetch related products within the same category, excluding the current product
+      if (fetchedProduct && fetchedProduct.category) {
+        const category = fetchedProduct.category;
+        try {
+          const relatedRes = await axios.get(`http://localhost:5050/api/v1/product/related-product`, {
+            params: {
+              category,
+              excludeProductId: id // Exclude the current product from the related products
+            }
+          });
+          setRelatedProducts(relatedRes.data.relatedProducts); // Set related products to state
+        } catch (error) {
+          console.error('Error fetching related products:', error);
+          setRelatedProducts([]); // Clear related products on error
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching product:', error);
+      setProductData(null); // Set to null on error
+    } finally {
+      setLoading(false); // End loading
+    }
+  };
+
+
+// Fetch product when the component mounts or the 'id' parameter changes
+useEffect(() => {
+  if (id) {
+    fetchSingleProduct(id);
+  }
+}, [id]);
+
+ 
   return (
     <>
      <div className="productDetails ">
       <div className="container">
          <div className="row">
            <div className="col-md-4">
-               <ProductZoom />
+               <ProductZoom images={productData?.photo} discount={productData?.discount}/>
            </div>
            <div className="col-md-8">
-              <div className="product-details">
-                <h3> All Natural Italian-Style Chicken Meatballs </h3>
+
+           <div>
+              {loading ? (
+                <p>Loading...</p>
+              ) : productData ? (
+                 <div className="product-details">
+                <h3> {productData?.name} </h3>
                 <div className="d-flex align-items-center"> 
                     <div className="brand d-flex align-items-center ">
                         <span> Brands </span>
-                        <span className="ml-2"> <b> Welchs </b></span>
+                        <span className="ml-2"> <b> {productData?.brand} </b></span>
                     </div>
                     <div className="reviews d-flex align-items-center gap-2">
-                       <Rating name="read-only" value={5} readOnly size="small"/>
+                       <Rating name="read-only" value={parseInt(productData?.rating)} readOnly size="small"/>
                         <span > 2 Reviews </span>
                     </div>
                 </div>
                 <div className="product-content">
                         <div className="price-total">
-                             <span className="delete-price"> $24.00 </span>
-                            <span className="regular-price"> $19.50 </span>
+                             <span className="delete-price"> {productData?.price}</span>
+                            <span className="regular-price"> {productData?.oldPrice} </span>
+                            <span className="currency-data"> BDT  </span>
                         </div>
                         <p className="stock"> In Stock </p>
-                        <p className="desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus praesentium voluptate accusantium esse amet</p>
+                        <p className="desc">{productData?.description}</p>
 
-                        {/* size  */}
-                        <div className="productSize d-flex align-items-center mt-3 mb-4">
-                         <span> Size / Weight: </span>
-                         <ul className='list list-inline'>
-                           <li className='list-inline-item' > 
-                               <a href="#" className={`tag ${activeSize === 0 ? "active" : ""}`} onClick={() => isActive(0)} > 50 kg </a>
-                            </li>
-                           <li className='list-inline-item' > 
-                               <a href="#" className={`tag ${activeSize === 1 ? "active" : ""}`} onClick={() => isActive(1)}> 100 kg </a>
-                            </li>
-                           <li className='list-inline-item' > 
-                               <a href="#" className={`tag ${activeSize === 2 ? "active" : ""}`} onClick={() => isActive(2)}> 150 kg </a>
-                            </li>
-                           <li className='list-inline-item' > 
-                               <a href="#" className={`tag ${activeSize === 3 ? "active" : ""}`} onClick={() => isActive(3)} > 200 kg </a>
-                            </li>
-                           <li className='list-inline-item' > 
-                               <a href="#" className={`tag ${activeSize === 4 ? "active" : ""}`} onClick={() => isActive(4)}> 250 kg </a>
-                            </li>
-                                             
-                        </ul>
-                      </div>
+                {/* product ram data  */}
+                     {
+                          productData?.productRams?.length !== 0 && 
+                          <div className="productSize d-flex align-items-center mt-3 mb-4">
+                          <span> Ram : </span>
+                          <ul className='list list-inline'>
+                            {
+                              productData?.productRams?.map((item, index) => {      
+                                return <li className='list-inline-item' key={index}> 
+                                <a href="#" className={`tag ${activeSize === index ? "active" : ""}`} onClick={() => isActive(index)} > {item} </a>
+                             </li>
+                              })
+                            }                
+                         </ul>
+                       </div>
+                     }
+
+                   {/* product size data  */}
+
+                       {
+                          productData?.productSize?.length !== 0 && 
+                          <div className="productSize d-flex align-items-center mt-3 mb-4">
+                          <span> Size :  </span>
+                          <ul className='list list-inline'>
+                            {
+                              productData?.productSize?.map((item, index) => {
+                                return <li className='list-inline-item' key={index}> 
+                                <a href="#" className={`tag ${activeSize === index ? "active" : ""}`} onClick={() => isActive(index)} > {item} </a>
+                             </li>
+                              })
+                            }                
+                         </ul>
+                       </div>
+                     }
+
+                   {/* product weight data  */}
+                       {
+                          productData?.productWeight?.length !== 0 && 
+                          <div className="productSize d-flex align-items-center mt-3 mb-4">
+                          <span> Weight :  </span>
+                          <ul className='list list-inline'>
+                            {
+                              productData?.productWeight?.map((item, index) => {
+                                return <li className='list-inline-item' key={index}> 
+                                <a href="#" className={`tag ${activeSize === index ? "active" : ""}`} onClick={() => isActive(index)} > {item} </a>
+                             </li>
+                              })
+                            }                
+                          </ul>
+                        </div>
+                      }
+                      
 
                       {/****  cart btn ********/}
                         <div className="all-count-compare d-flex align-items-center gap-2">
@@ -99,12 +190,29 @@ const ProductDetails = () => {
                                 <Button> <FaCodeCompare /> </Button>   
                               </Tooltip>
                           </div>
+                  
                         </div>
 
-                      {/* wish and compare  */}
-                        
+                      {/* follow us  */}
+                      <div className="follow-us-btn">
+                            <div>
+                              <p> Share : </p>
+                            </div>
+                            <div className="share-icon">
+                              <span> <FaFacebook /> </span>
+                              <span> <FaXTwitter /> </span>
+                              <span> <FaLinkedin /> </span>
+                              <span> <FaPinterest /> </span>
+                              <span> <FaTelegram /> </span>
+                            </div>
+                          </div>
                       </div>
               </div>
+              ) : (
+                <p>No product found.</p>
+              )}
+            </div>
+             
            </div>
          </div>
       </div>
@@ -128,7 +236,7 @@ const ProductDetails = () => {
                   
                   {
                     activeTab === 0 && <div className="tab-content mt-3">
-                    <p className="all-small-font"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa earum numquam asperiores placeat error saepe rem quaerat possimus aperiam eius! </p>
+                    <p className="all-small-font"> {productData?.description} </p>
                   </div>
                   }
                     
@@ -322,9 +430,7 @@ const ProductDetails = () => {
      </div>
 
      {/* related product  */}
-     <RelatedProduct title={"RELATED PRODUCTS"}/>
-
-  
+     <RelatedProduct title={"RELATED PRODUCTS"} relatedProducts={relatedProducts}/>
 
     </>
   )

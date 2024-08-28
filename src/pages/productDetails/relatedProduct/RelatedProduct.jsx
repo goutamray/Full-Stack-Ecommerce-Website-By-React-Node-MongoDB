@@ -13,7 +13,7 @@ import { Navigation } from 'swiper/modules';
 
 
 import "./ProductRelated.css"
-const RelatedProduct = ( { title }) => {
+const RelatedProduct = ( { title, relatedProducts }) => {
 
   return (
     <>
@@ -58,7 +58,17 @@ const RelatedProduct = ( { title }) => {
                           modules={[  Navigation]}
                           className="mySwiper"
                         >
-                          <SwiperSlide>
+                          {
+                            relatedProducts?.length !== 0 && 
+                            relatedProducts?.map((item, index) => {
+                              return  <SwiperSlide key={index}>
+                              <ProductItem item={item}/>
+                           </SwiperSlide>
+                            })
+                          }
+                      
+
+                          {/* <SwiperSlide>
                              <ProductItem />
                           </SwiperSlide>
 
@@ -76,11 +86,7 @@ const RelatedProduct = ( { title }) => {
 
                           <SwiperSlide>
                              <ProductItem />
-                          </SwiperSlide>
-
-                          <SwiperSlide>
-                             <ProductItem />
-                          </SwiperSlide>
+                          </SwiperSlide> */}
                     </Swiper>
                           
                   </div>

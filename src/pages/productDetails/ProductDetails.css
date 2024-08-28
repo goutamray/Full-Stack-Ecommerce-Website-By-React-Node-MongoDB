@@ -18,14 +18,31 @@
 .brand span {
   padding-right: 10px !important;
 }
+.cart-counter {
+  padding: 20px 0px;
+  display: flex;
+  gap: 12px;
+ margin-top: 0px !important; 
+}
 
 /****** description  *****/
+.product-content {
+   padding-left: 0px !important; 
+}
+.price-total {
+  padding: 5px 0px;
+}
 .product-content .price-total .regular-price {
   font-size: 25px;
  }
  .product-content .price-total .delete-price{
    font-size: 18px;
  }
+ span.currency-data{
+  font-family: var(--font-primary);
+  font-weight: 600;
+  color: var(--hover-color);
+}
  .product-content .stock{
    font-size: 14px;
    color: var(--secondary-color);
@@ -44,6 +61,7 @@
    color: var(--heading-color);
    margin-top: 20px;
    margin-bottom: 20px;
+   width: 650px;
  }
  .product-content button.cart-btn{
    font-size: 16px;
@@ -101,7 +119,28 @@
    padding: 0px;
 }
 
-
+.follow-us-btn{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+.follow-us-btn p{
+  font-size: 18px;
+  font-weight: 500;
+}
+.follow-us-btn .share-icon{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.follow-us-btn .share-icon span svg{
+  font-size: 24px;
+  transition: all ease-in-out 0.3s;
+}
+.follow-us-btn .share-icon span svg:hover{
+  color: var(--primary-color);
+}
 /************  prouct details tab css   ***************/
 .productDetailsTab {
   border-radius: 20px;

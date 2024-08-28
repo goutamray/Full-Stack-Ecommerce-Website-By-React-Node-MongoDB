@@ -50,8 +50,6 @@ const ProductItem = (props) => {
                     <Link to={`/product/${props?.item?._id}`} className="cart-btn"> Add to cart </Link>
                </div>                     
          </div>
-
-   
     </>
   )
 }

@@ -12,8 +12,6 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import ProductModal from './components/productModal/ProductModal';
 
-// context 
-const MyContext = createContext();
 
 import About from './pages/about/About';
 import Cart from './pages/cart/Cart';
@@ -24,7 +22,6 @@ import ProductDetails from './pages/productDetails/ProductDetails';
 import SignIn from './pages/signIn/SignIn';
 import SignUp from './pages/signUp/SignUp';
 
-import './App.css';
 import AccountDetail from './pages/myAccount/accountDetails/AccountDetail';
 import Address from './pages/myAccount/address/Address';
 import ChangePassword from './pages/myAccount/changePassword/ChangePassword';
@@ -33,6 +30,12 @@ import Logout from './pages/myAccount/logout/Logout';
 import Order from './pages/myAccount/order/Order';
 import NotFound from './pages/notFound/NotFound';
 import { fetchDataFromApi, fetchProductFromApi } from './utils/api';
+
+import './App.css';
+import { ToastContainer } from 'react-toastify';
+
+// context 
+const MyContext = createContext();
 
 function App() {
   const [countryList , setCountryList ] = useState([]);
@@ -46,8 +49,6 @@ function App() {
 
   const [productData, setProductData] = useState(); 
   const [categoryData, setCategoryData] = useState([]); 
-
- 
 
  // get all countries
   useEffect(() => {
@@ -94,6 +95,18 @@ function App() {
 
   return (
     <>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
      <BrowserRouter >
         <MyContext.Provider value={values}>
           {/* header part */}

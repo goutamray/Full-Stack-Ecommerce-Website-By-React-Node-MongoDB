@@ -22,19 +22,22 @@ import { Navigation } from 'swiper/modules';
 import man from "../../assets/avater/avatar.jpg"
 import coupon from "../../assets/banner/coupon.png"
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchDataFromApi, fetchProductFromApi } from "../../utils/api";
+import { MyContext } from "../../App";
 
 // material ui 
  import Tabs from '@mui/material/Tabs';
  import Tab from '@mui/material/Tab';
+ import axios from "axios";
 
 import "./Home.css";
-import axios from "axios";
 
 const Home = () => {
    const [productData, setProductData] = useState([]); 
    const [categoryAllData, setCategoryAllData] = useState([]); 
+
+   const context = useContext(MyContext);
 
    // get all product & category 
    useEffect(() => {
@@ -73,6 +76,16 @@ const Home = () => {
       setSelectedCategory(newValue);
       fetchProducts(newValue);
    };
+
+
+ // show header footer 
+  useEffect(() => {
+     context.setIsHeaderFooterShow(true); 
+ }, [context]); 
+
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []); 
 
   return (
     <>

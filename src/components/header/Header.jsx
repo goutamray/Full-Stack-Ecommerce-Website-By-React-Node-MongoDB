@@ -9,19 +9,65 @@ import { MdOutlineSecurity } from "react-icons/md";
 import { FiUser } from "react-icons/fi";
 import { BsMinecartLoaded } from "react-icons/bs";
 import { IoMdMenu } from "react-icons/io";
+import { PiShieldWarningFill } from "react-icons/pi";
+import { RiLock2Fill } from "react-icons/ri";
+import { FaRegUserCircle } from "react-icons/fa";
 
 // images
 import logo from "../../assets/logo/logo.png"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // context 
-import { useContext } from "react";
-import { MyContext } from "../../App";
+import { useContext, useEffect, useState } from "react";
+import { MyContext } from "../../App"
+
+  
 
 import "./Header.css";
+import createToast from "../../utils/toastify";
 const Header = ( ) => {
-   
+  const [openDrop, setOpenDrop ] = useState(false); 
   const context = useContext(MyContext); 
+  const navigate = useNavigate();
+
+
+   // handle open 
+ const handleOpen  = () => {
+   setOpenDrop(() => !openDrop);
+  };
+ 
+  // handle close
+  const handleClose  = () => {
+   setOpenDrop(false);
+  };
+
+   //user logout 
+   const handleLogout = () => {
+      localStorage.clear();
+
+      setTimeout(() => {
+            navigate("/signIn");
+            createToast("User Logout Successful", "success");
+      }, 2000);
+   };  
+
+    // Check login status on component mount
+    useEffect(() => {
+      const token = localStorage.getItem("token");
+   
+      if (token) {
+        context.setIsLogin(true); 
+        const userData = JSON.parse(localStorage.getItem("user"));
+        context.setUser(userData); 
+      } else {
+        context.setIsLogin(false); 
+        context.setUser({
+          name: "",
+          email: "",
+          userId: ""
+        });
+      }
+    }, [context]);
 
   return (
     <>
@@ -121,8 +167,29 @@ const Header = ( ) => {
                                 ? 
                                <Link  to="/signIn"> Sign In </Link> 
                                  : 
-                                <button> <FiUser /> </button>
+                                 <button className="myAcc d-flex align-items-center justify-content-center" onClick={handleOpen}>
+                                     <FiUser />
+                                </button>
+                                
                            }
+
+                           {
+                                 openDrop === true && 
+                                 <ul className="dropdown-menu-item shadow">
+                                    <li>
+                                       <Link className="dropdown-item my-custom" to="" onClick={handleClose} > 
+                                       <FaRegUserCircle /> my account 
+                                    </Link>
+                                    </li>
+                                    <li>
+                                       <Link className="dropdown-item my-custom" to="" onClick={handleClose}> <PiShieldWarningFill /> reset password </Link>
+                                    </li>
+                                    <li onClick={handleLogout}>
+                                       <Link className="dropdown-item my-custom" to="" onClick={handleClose}> <RiLock2Fill /> logout  </Link>
+                                    </li>
+                                 </ul>
+                              }
+                      
                         </div>
                         <div className="price">
                          <Link to="/cart" > 

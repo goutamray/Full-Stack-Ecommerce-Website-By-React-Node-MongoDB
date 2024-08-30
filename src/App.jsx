@@ -49,6 +49,13 @@ function App() {
 
   const [productData, setProductData] = useState(); 
   const [categoryData, setCategoryData] = useState([]); 
+  const [user, setUser] = useState(() => {
+    return JSON.parse(localStorage.getItem("user")) || {
+      name: "",
+      email: "",
+      userId: ""
+    };
+  });
 
  // get all countries
   useEffect(() => {
@@ -70,9 +77,27 @@ function App() {
 
   const getCountry = async(url) => {
      const response = await axios.get(url).then((res) => {
-      setCountryList(res.data.data);
+      setCountryList(res?.data?.data);
      })
   }
+
+    // login & logout 
+    useEffect(() => {
+      const token = localStorage.getItem("token");
+  
+      if (token) {
+        setIsLogin(true); 
+        const userData = JSON.parse(localStorage.getItem("user"));
+        setUser(userData); 
+      } else {
+        setIsLogin(false); 
+        setUser({
+          name: "",
+          email: "",
+          userId: ""
+        });
+      }
+    }, []);
   
 
   // send all data
@@ -89,7 +114,9 @@ function App() {
     categoryData,
     setCategoryData,
     productData,
-    setProductData 
+    setProductData,
+    user,
+    setUser, 
 
   };   
 

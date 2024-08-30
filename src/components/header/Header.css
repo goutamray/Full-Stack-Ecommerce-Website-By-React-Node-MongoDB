@@ -206,6 +206,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  position: relative;
   background: transparent;
   border: 1px solid rgb(208, 208, 208);
 }
@@ -332,12 +333,78 @@
   display: flex;
   gap: 10px;
 }
-/* .main-menu .custom-icon span svg{
-  font-size: 16px;
+/*************** account css ***************/
+.myAcc{
+  background: transparent;
+  border: none;
   position: relative;
-  top: -2px;
-  padding-left: 6px;
-} */
+}
+.myAcc .user-img {
+  border: 1px solid var(--secondary-color);
+  padding: 2px;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  color: #fff !important;
+}
+.myAcc .user-img span{
+  position: relative;
+  font-size: 20px;
+  font-weight: 600;
+}
+.myAcc .rounded-circle img{
+  width: 33px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.myAcc .user-name{
+  margin-left: 5px;
+}
+.myAcc .user-name .name{
+   display: flex;
+   align-items: center;
+   gap: 5px;
+}
+.myAcc .user-name .name h4{
+  font-size: 14px;
+  font-weight: 600;
+  color: #403E57;
+  text-transform: capitalize;
+}
+.user-name .name .drop-icon svg{
+  font-size: 14px;
+  color: #403E57;
+}
+button.signUp-btn{
+  color: #fff;
+  padding: 8px 22px !important;
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+}
+.myAcc .user-name .nick-name{
+font-size: 12px;
+color: #403E57;
+text-align: left;
+}  
+ul.dropdown-menu-item.shadow {
+  position: absolute !important;
+  background: #fff !important;
+  padding: 10px;
+  z-index: 99999 !important;
+  border-radius: 10px !important;
+  border: 1px solid #f1f1f1;
+}
+
+a.dropdown-item.my-custom {
+  background: transparent;
+  color: #000;
+}
+
 .main-menu ul li .submenu{
   position: absolute;
   top: 140%;

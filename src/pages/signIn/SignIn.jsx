@@ -86,7 +86,7 @@ const SignIn = () => {
 
   useEffect(() => {
     context.setIsHeaderFooterShow(false); 
-  }, []);  
+  }, [context]);  
 
   return (
     <>

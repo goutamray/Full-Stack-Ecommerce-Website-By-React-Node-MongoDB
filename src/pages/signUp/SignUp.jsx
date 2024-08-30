@@ -45,6 +45,7 @@ const SignUp = () => {
     if (!input.name || !input.email || !input.password || !input.phone) {
       setLoading(false);
       createToast("All fields are required"); 
+      return;
     }
   
     try {
@@ -91,9 +92,7 @@ const SignUp = () => {
               // Other errors
               createToast("Registration failed. Please try again.", "error");
             }
-          } else {
-            createToast("An unexpected error occurred. Please try again.", "error");
-          }
+          } 
     
           console.error("Error during registration:", error);
         });
@@ -109,9 +108,8 @@ const SignUp = () => {
 
   // hide header footer 
   useEffect(() => {
-    
     context.setIsHeaderFooterShow(false); 
-  }, []); 
+  }, [context]); 
 
   return (
     <>

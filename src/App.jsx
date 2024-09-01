@@ -29,7 +29,7 @@ import Download from './pages/myAccount/download/Download';
 import Logout from './pages/myAccount/logout/Logout';
 import Order from './pages/myAccount/order/Order';
 import NotFound from './pages/notFound/NotFound';
-import { createCartData, fetchDataFromApi, fetchProductFromApi } from './utils/api';
+import { createCartData, fetchCartDataFromApi, fetchDataFromApi, fetchProductFromApi } from './utils/api';
 
 import './App.css';
 import { ToastContainer } from 'react-toastify';
@@ -58,9 +58,9 @@ function App() {
     };
   });
 
-  // const [cartFields, setCartFields] = useState({}); 
-
   const [addingCart, setAddingCart] = useState(false); 
+
+   const [cartData, setCartData ] = useState();
 
 
  // get all countries
@@ -78,6 +78,11 @@ function App() {
     fetchDataFromApi("/").then((res) => {
       setCategoryData(res); 
     }); 
+
+  // cart all data
+  fetchCartDataFromApi("/").then((res) => {
+    setCartData(res.cartList);
+  }); 
 
   }, [isOpenProductModal ]);
 
@@ -137,11 +142,18 @@ function App() {
         setAddingCart(false); 
         return;
       });
+    };
+
+
+    // get cart data 
+    const getCartData = () => {
+       // cart all data
+       fetchCartDataFromApi("/").then((res) => {
+          setCartData(res.cartList);
+        }); 
     }
     
     
-    
-
   // send all data
   const values = {
     countryList,
@@ -162,6 +174,9 @@ function App() {
     addToCart, 
     addingCart,
     setAddingCart,
+    cartData,
+    setCartData,
+    getCartData
 
   };   
 

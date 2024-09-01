@@ -193,10 +193,21 @@ const Header = ( ) => {
                         </div>
                         <div className="price">
                          <Link to="/cart" > 
-                             <span className="total-amonut"> $ 19.56 </span>
+                             <span className="total-amonut"> 
+                             Tk.  
+                               { 
+                                  context.cartData?.length !== 0 ?  
+                                  context.cartData?.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0)  : 0
+                                  
+                               }
+                               
+                              
+                             </span>
                              <button> <BsMinecartLoaded /> </button>    
                              <div className="total-count">
-                                 <span> 1 </span>
+                                 <span>      
+                                   {context.cartData?.length}
+                                </span>
                              </div>
                         </Link>
                         </div>

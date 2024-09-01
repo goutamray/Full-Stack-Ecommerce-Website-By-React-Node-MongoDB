@@ -9,13 +9,14 @@ import { FaLongArrowAltLeft } from "react-icons/fa";
 import { Link } from "react-router-dom"
 import Rating from '@mui/material/Rating';
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 
 import { deleteCartData, editcartData, fetchCartDataFromApi } from "../../utils/api";
 
 import "./Cart.css";
 import createToast from "../../utils/toastify";
+import { MyContext } from "../../App";
 
 const Cart = () => {
 
@@ -25,12 +26,18 @@ const Cart = () => {
   const [cartFields, setCartFields] = useState({}); 
   const [isLoading, setIsLoading] = useState(false); 
   const [changeQuantity, setChangeQuantity] = useState(0); 
+  const context = useContext(MyContext); 
 
   useEffect(() => {
     fetchCartDataFromApi("/").then((res) => {
       setCartData(res.cartList); 
+      context.setCartItemsLength(res.cartList?.length)
     });
-   }, []); 
+
+    // real time data update 
+    context.getCartData(); 
+
+   }, [context]); 
 
 
   // quantity 
@@ -73,6 +80,8 @@ const Cart = () => {
     }
   }
 
+  
+
  // delete cart product 
  const removeProduct = (id) => {
   deleteCartData(`/${id}`).then((res) => {
@@ -82,6 +91,8 @@ const Cart = () => {
       fetchCartDataFromApi("/").then((res) => {
         setCartData(res.cartList); 
       });
+
+      context.getCartData(); 
   })
  }; 
 
@@ -179,7 +190,7 @@ const Cart = () => {
                         <div className="sub-total d-flex align-items-center justify-content-between">
                             <p className="top-total"> Subtotal </p>
                             <h4 className="sub-price"> 
-                             Tk {
+                            {
                                  cartData?.length !== 0
                                  ? cartData.reduce((total, item) => total + (parseFloat(item?.price) * item.quantity), 0)
                                  : 0

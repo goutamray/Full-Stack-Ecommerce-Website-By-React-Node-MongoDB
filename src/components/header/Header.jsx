@@ -21,10 +21,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../App"
 
+import createToast from "../../utils/toastify";
   
 
 import "./Header.css";
-import createToast from "../../utils/toastify";
 const Header = ( ) => {
   const [openDrop, setOpenDrop ] = useState(false); 
   const context = useContext(MyContext); 
@@ -152,7 +152,7 @@ const Header = ( ) => {
              <div className="col-sm-10">
                 <div className="menu-part-middle">
                   {
-                     context.countryList.length !== 0 &&  <CountryDrop /> 
+                     context?.countryList?.length !== 0 &&  <CountryDrop /> 
                   }
                    
 

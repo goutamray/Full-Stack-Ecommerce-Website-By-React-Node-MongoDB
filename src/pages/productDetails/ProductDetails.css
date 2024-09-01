@@ -82,6 +82,9 @@
 .productSize ul {
   margin-left: 10px;
 }
+.productSize ul.error li a{
+  border: 1px solid red;
+}
 .productSize ul li a {
   font-size: 15px;
   color: #747474;

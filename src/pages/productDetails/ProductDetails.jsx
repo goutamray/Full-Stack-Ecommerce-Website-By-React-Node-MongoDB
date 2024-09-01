@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import ProductZoom from "../../components/productZoom/ProductZoom";
 import QuantityBox from "../../components/quantityBox/QuantityBox";
 import RelatedProduct from "./relatedProduct/RelatedProduct";
+import { MyContext } from "../../App";
 
 // react icons 
 import { CiHeart } from "react-icons/ci";
@@ -18,13 +19,13 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaPinterest } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa";
 
-import { useState } from "react";
-
-
-import "./ProductDetails.css"; 
+import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+
+
+import "./ProductDetails.css"; 
 
 const ProductDetails = () => {
   const [activeSize, setActiveSize] = useState(null);
@@ -33,15 +34,18 @@ const ProductDetails = () => {
   const [productData, setProductData] = useState(null); // State to hold product data
   const [loading, setLoading] = useState(false);
   const [relatedProducts, setRelatedProducts] = useState([]); // State to hold related products
+  const [cartFields, setCartFields] = useState({}); 
+  const [productQuantity, setProductQuantity] = useState(); 
+ 
+  const [tabError, setTabError] = useState(false); 
+
+  const context = useContext(MyContext)
 
   // Function to handle active size selection
   const isActive = (index) => {
     setActiveSize(index);
+    setTabError(false); 
   };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const { id } = useParams();
 
@@ -49,6 +53,7 @@ const ProductDetails = () => {
   const fetchSingleProduct = async (id) => {
     try {
       setLoading(true); // Start loading
+      setActiveSize(null); 
 
       // Fetch the single product
       const productRes = await axios.get(`http://localhost:5050/api/v1/product/${id}`);
@@ -79,14 +84,45 @@ const ProductDetails = () => {
     }
   };
 
+  // Fetch product when the component mounts or the 'id' parameter changes
+  useEffect(() => {
+    if (id) {
+      fetchSingleProduct(id);
+    }
+  }, [id]);
 
-// Fetch product when the component mounts or the 'id' parameter changes
-useEffect(() => {
-  if (id) {
-    fetchSingleProduct(id);
+
+  // quantity 
+  const quantity = (val) => {
+    setProductQuantity(val); 
   }
-}, [id]);
 
+
+  // add to cart 
+  const addToCart = () => {
+
+    if (activeSize !== null) {
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      cartFields.productTitle = productData?.name
+      cartFields.image = productData?.photo[0]
+      cartFields.rating = productData?.rating
+      cartFields.price = productData?.oldPrice
+      cartFields.quantity = productQuantity
+      cartFields.subTotal = parseInt(productData?.oldPrice * productQuantity) 
+      cartFields.productId = productData?._id
+      cartFields.userId = user?.userId
+  
+      context.addToCart(cartFields);
+    }else{
+      setTabError(true); 
+    }
+  
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
  
   return (
     <>
@@ -118,7 +154,7 @@ useEffect(() => {
                         <div className="price-total">
                              <span className="delete-price"> {productData?.price}</span>
                             <span className="regular-price"> {productData?.oldPrice} </span>
-                            <span className="currency-data"> BDT  </span>
+                            <span className="currency-data"> Tk  </span>
                         </div>
                         <p className="stock"> In Stock </p>
                         <p className="desc">{productData?.description}</p>
@@ -128,7 +164,7 @@ useEffect(() => {
                           productData?.productRams?.length !== 0 && 
                           <div className="productSize d-flex align-items-center mt-3 mb-4">
                           <span> Ram : </span>
-                          <ul className='list list-inline'>
+                          <ul className={`list list-inline ${tabError === true && 'error'}`}>
                             {
                               productData?.productRams?.map((item, index) => {      
                                 return <li className='list-inline-item' key={index}> 
@@ -146,7 +182,7 @@ useEffect(() => {
                           productData?.productSize?.length !== 0 && 
                           <div className="productSize d-flex align-items-center mt-3 mb-4">
                           <span> Size :  </span>
-                          <ul className='list list-inline'>
+                          <ul className={`list list-inline ${tabError === true && 'error'}`}>
                             {
                               productData?.productSize?.map((item, index) => {
                                 return <li className='list-inline-item' key={index}> 
@@ -163,7 +199,7 @@ useEffect(() => {
                           productData?.productWeight?.length !== 0 && 
                           <div className="productSize d-flex align-items-center mt-3 mb-4">
                           <span> Weight :  </span>
-                          <ul className='list list-inline'>
+                          <ul className={`list list-inline ${tabError === true && 'error'}`}>
                             {
                               productData?.productWeight?.map((item, index) => {
                                 return <li className='list-inline-item' key={index}> 
@@ -179,8 +215,15 @@ useEffect(() => {
                       {/****  cart btn ********/}
                         <div className="all-count-compare d-flex align-items-center gap-2">
                           <div className="cart-counter ">
-                             <QuantityBox />
-                             <button className="cart-btn"> Add To Cart </button>
+                             <QuantityBox quantity={quantity}/>
+                             <button 
+                                 className="cart-btn" 
+                                 onClick={() => addToCart()}> 
+                                 {
+                                  context.addingCart === true ? "Adding...." : "Add To Cart"
+                                 }
+                                      
+                              </button>
                           </div>
                            <div className="wish-compare-btn">
                              <Tooltip title="Add To WishList" placement="top-start">

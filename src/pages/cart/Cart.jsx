@@ -7,20 +7,98 @@ import { PiSignOutBold } from "react-icons/pi";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 
 import { Link } from "react-router-dom"
-
 import Rating from '@mui/material/Rating';
 
+import { useEffect, useState } from "react";
+
+
+import { deleteCartData, editcartData, fetchCartDataFromApi } from "../../utils/api";
+
 import "./Cart.css";
+import createToast from "../../utils/toastify";
+
 const Cart = () => {
+
+  const [cartData, setCartData] = useState([]); 
+  const [productQuantity, setProductQuantity] = useState(); 
+
+  const [cartFields, setCartFields] = useState({}); 
+  const [isLoading, setIsLoading] = useState(false); 
+  const [changeQuantity, setChangeQuantity] = useState(0); 
+
+  useEffect(() => {
+    fetchCartDataFromApi("/").then((res) => {
+      setCartData(res.cartList); 
+    });
+   }, []); 
+
+
+  // quantity 
+   const quantity = (val) => {
+    setProductQuantity(val); 
+    setChangeQuantity(val); 
+  }
+
+
+  const selectedItem = (item, quantityVal) => {
+
+    if (changeQuantity !== 0) {
+      setIsLoading(true);
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      
+      cartFields.productTitle = item?.productTitle
+      cartFields.image = item?.image
+      cartFields.rating = item?.rating
+      cartFields.price = item?.price
+      cartFields.quantity = quantityVal
+      cartFields.subTotal = parseInt(item?.price * quantityVal) 
+      cartFields.productId = item?.productId
+      cartFields.userId = user?.userId
+  
+      // update cart data
+      editcartData(`/${item?._id}`, cartFields).then(() => {
+      
+          setTimeout(() => {
+            setIsLoading(false); 
+          }, 1000);
+  
+          // refresh databse 
+          fetchCartDataFromApi("/").then((res) => {
+            setCartData(res.cartList); 
+          });
+  
+      });
+
+    }
+  }
+
+ // delete cart product 
+ const removeProduct = (id) => {
+  deleteCartData(`/${id}`).then((res) => {
+    createToast("Cart Product Deleted Successfull", "success");
+
+      // refresh databse 
+      fetchCartDataFromApi("/").then((res) => {
+        setCartData(res.cartList); 
+      });
+  })
+ }; 
+
+ useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
+
   return (
     <>
+    
       <div className="section cart-section">
         <div className="container">
           <div className="row">
             <div className="col">
                <div className="top-part-cart">
-                   <h1 className="head-cart"> Your Carts </h1>
-                    <p> There are <span> 1 </span> products in your cart </p>                    
+                    <h1 className="head-cart"> Your Carts </h1>
+                    <p> There are <span> {cartData?.length}</span> products in your cart </p>                    
               </div>
             </div>
           </div>
@@ -31,7 +109,7 @@ const Cart = () => {
                       <div className="table-responsive cart-product">
                       <table className="table table-bordered ">
                             <thead>
-                                  <tr > 
+                                  <tr> 
                                     <th> Product </th>
                                     <th> Unit Price </th>
                                     <th> Quantity </th>
@@ -40,32 +118,49 @@ const Cart = () => {
                                   </tr>           
                             </thead>
                             <tbody>   
-                                <tr >
+                              {
+                                cartData?.length !== 0 ? cartData?.map((item, index) => {
+                                  
+                                  
+                                  return <tr key={index}>
                                   <td> 
                                     <div className="table-box d-flex align-items-center">
                                         <div className="image">
                                             <Link to=""> 
-                                                <img src="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-60-600x600.jpg" alt="" />
+                                                <img src={item?.image} alt={item?.productTitle} />
                                             </Link>  
                                         </div>
                                         <div className="product-content">
-                                          <Link to=""> <h5> Angies Boomchickapop Sweet & Salty Kettle Corn  </h5> </Link>  
-                                          <Rating name="half-rating" defaultValue={4.5} precision={0.5} readOnly  size="small" />               
+                                        <Link to={item?.productId ? `/product/${item.productId}` : "#"}>
+                                             <h5> {item?.productTitle?.substr(0, 35) + "..."}  </h5> 
+                                          </Link>  
+                                          <Rating name="half-rating" value={item?.rating}  readOnly  size="small" />               
                                         </div>
                                     </div>
                                   </td>
-                                  <td className="product-price"> $ 20 </td>
+                                  <td className="product-price"> Tk {item?.price} </td>
                                   <td> 
                                     <div className="cart-counter">
-                                         <QuantityBox />
-                                    </div>
+                                       <QuantityBox 
+                                         value = {item?.quantity}
+                                         quantity = {quantity} 
+                                         item = {item} 
+                                         selectedItem = {selectedItem}
+                                         
+                                       />
+                                  </div>
                                   </td>
-                                  <td className="subTotal"> $120.00 </td>
+                                  <td className="subTotal"> {item?.subTotal}  </td>
                                   <td className="delete-product"> 
-                                      <span >  <RiDeleteBin6Fill  /> 
+                                      <span onClick={() => removeProduct(item?._id)}>  <RiDeleteBin6Fill  /> 
                                       </span>
                                   </td>
-                                </tr>                         
+                                </tr> 
+                                }) : <p className="cart-not-found"> No Cart Product Added </p>
+                              }
+                                     
+                                                   
+                                          
                             </tbody>
                         </table>
                       </div>
@@ -83,7 +178,13 @@ const Cart = () => {
                         <h3 className="cart-total"> Cart Totals </h3>
                         <div className="sub-total d-flex align-items-center justify-content-between">
                             <p className="top-total"> Subtotal </p>
-                            <h4 className="sub-price">  $120.00 </h4>
+                            <h4 className="sub-price"> 
+                             Tk {
+                                 cartData?.length !== 0
+                                 ? cartData.reduce((total, item) => total + (parseFloat(item?.price) * item.quantity), 0)
+                                 : 0
+                              }
+                            </h4>
                         </div>
                         <div className='border-info d-flex align-items-center justify-content-between mb-4'>
                             <h5 className='mb-0 same-text'>Shipping</h5>
@@ -98,8 +199,14 @@ const Cart = () => {
 
                         <div className='d-flex align-items-center justify-content-between  mb-4'>
                           <h5 className='mb-0 same-text'>Total</h5>
-                          <h3 className='right-text ml-auto mb-0 font-weight-bold'> $120.00 <span className='text-g'>                
-                            </span></h3>
+                          <h3 className='right-text ml-auto mb-0 font-weight-bold'>
+                              {
+                                 cartData?.length !== 0
+                                 ? cartData.reduce((total, item) => total + (parseFloat(item?.price) * item.quantity), 0)
+                                 : 0
+                              } <span className='text-g'>                
+                            </span>
+                          </h3>
                         </div>
                         <div className="process-btn ">
                                 <Link to=""> Proceed To Checkout <PiSignOutBold className='cart-icon'/> </Link>
@@ -112,6 +219,10 @@ const Cart = () => {
           </div>
         </div>
       </div>
+
+      {
+        isLoading === true &&  <div className="loading-data"></div>
+      }
     </>
   )
 }

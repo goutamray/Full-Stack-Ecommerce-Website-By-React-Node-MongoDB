@@ -42,11 +42,11 @@ const Home = () => {
    // get all product & category 
    useEffect(() => {
       fetchProductFromApi("/").then((res) => {
-         setProductData(res.productList);
+         setProductData(res?.productList);
       }); 
 
       fetchDataFromApi("/").then((res) => {
-         setCategoryAllData(res.categoryList); 
+         setCategoryAllData(res?.categoryList); 
        }); 
    }, []); 
 

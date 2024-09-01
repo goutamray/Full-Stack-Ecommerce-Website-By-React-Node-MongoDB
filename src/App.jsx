@@ -110,6 +110,14 @@ function App() {
       }
     }, []);
 
+  // get cart data 
+  const getCartData = () => {
+       // cart all data
+      fetchCartDataFromApi("/").then((res) => {
+            setCartData(res.cartList);
+      }); 
+  }; 
+       
 
     // add to cart 
      const addToCart = (data) => {
@@ -125,6 +133,8 @@ function App() {
           setTimeout(() => {
             setAddingCart(false); 
           }, 2000);
+
+          getCartData(); 
 
           return;
 
@@ -143,16 +153,6 @@ function App() {
         return;
       });
     };
-
-
-    // get cart data 
-    const getCartData = () => {
-       // cart all data
-       fetchCartDataFromApi("/").then((res) => {
-          setCartData(res.cartList);
-        }); 
-    }
-    
     
   // send all data
   const values = {

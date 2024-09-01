@@ -89,6 +89,7 @@ const ProductDetails = () => {
     if (id) {
       fetchSingleProduct(id);
     }
+
   }, [id]);
 
 

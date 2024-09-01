@@ -31,7 +31,7 @@ const Cart = () => {
   useEffect(() => {
     fetchCartDataFromApi("/").then((res) => {
       setCartData(res.cartList); 
-      context.setCartItemsLength(res.cartList?.length)
+      // context?.setCartItemsLength(res?.cartList?.length)
     });
 
     // real time data update 

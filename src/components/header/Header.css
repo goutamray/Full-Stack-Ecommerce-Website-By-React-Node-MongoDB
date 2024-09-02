@@ -404,7 +404,11 @@ a.dropdown-item.my-custom {
   background: transparent;
   color: #000;
 }
-
+a.dropdown-item.my-custom svg{
+   padding-right: 5px;
+   color: red;
+   font-size: 22px;
+}
 .main-menu ul li .submenu{
   position: absolute;
   top: 140%;

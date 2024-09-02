@@ -254,7 +254,7 @@ img.rounded.my-custom-size {
 .imagewrapper .discount{
   height: 30px;
   width: 40px;
-  background-color: var(--primary-color);
+  background-color: var( --hover-color); 
   position: absolute;
   left: 15px;
   top: 15px;

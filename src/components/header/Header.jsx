@@ -12,6 +12,7 @@ import { IoMdMenu } from "react-icons/io";
 import { PiShieldWarningFill } from "react-icons/pi";
 import { RiLock2Fill } from "react-icons/ri";
 import { FaRegUserCircle } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 // images
 import logo from "../../assets/logo/logo.png"
@@ -177,15 +178,19 @@ const Header = ( ) => {
                                  openDrop === true && 
                                  <ul className="dropdown-menu-item shadow">
                                     <li>
-                                       <Link className="dropdown-item my-custom" to="" onClick={handleClose} > 
-                                       <FaRegUserCircle /> my account 
+                                       <Link className="dropdown-item my-custom" to="/my-account" onClick={handleClose} > 
+                                       <FaRegUserCircle /> My Account 
                                     </Link>
                                     </li>
                                     <li>
-                                       <Link className="dropdown-item my-custom" to="" onClick={handleClose}> <PiShieldWarningFill /> reset password </Link>
+                                       <Link className="dropdown-item my-custom" to="" onClick={handleClose}> <PiShieldWarningFill /> Reset Password </Link>
+                                    </li>
+                                    <li>
+                                       <Link className="dropdown-item my-custom" to="/wishlist" onClick={handleClose}> <FaHeart /> 
+                                       Wish List </Link>
                                     </li>
                                     <li onClick={handleLogout}>
-                                       <Link className="dropdown-item my-custom" to="" onClick={handleClose}> <RiLock2Fill /> logout  </Link>
+                                       <Link className="dropdown-item my-custom" to="" onClick={handleClose}> <RiLock2Fill /> Logout  </Link>
                                     </li>
                                  </ul>
                               }

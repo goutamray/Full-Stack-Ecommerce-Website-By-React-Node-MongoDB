@@ -10,6 +10,8 @@ import { IoIosHeartEmpty } from "react-icons/io";
 
 import { useContext } from "react";
 import { MyContext } from "../../App";
+import { createWishListData } from "../../utils/api";
+import createToast from "../../utils/toastify";
 
 const ProductItem = (props) => {
    const context = useContext(MyContext); 
@@ -21,6 +23,50 @@ const ProductItem = (props) => {
     }); 
   }; 
 
+
+  // add to wish list 
+  const addToWishList = (id) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user !== undefined && user !== null && user !== "")  {
+      const data = {
+        productTitle : props?.item?.name,
+        image : props?.item?.photo[0],
+        rating : props?.item?.rating,
+        price : props?.item?.oldPrice,
+        productId : id,
+        userId : user?.userId,
+      }
+  
+      createWishListData(`/`, data).then((res) => {
+  
+        if (res.status === true) {
+          // Product Wishlist added successfully
+          createToast("Product Added Wish List", "success");
+          return;
+  
+        } else if (res.status === false) {
+          // Product already in the cart or some other issue
+          return createToast("Product Already Wish List Added");
+        } else {
+          // Handle unexpected statuses
+          return createToast("An unexpected error occurred", "error");
+        }
+      }).catch((error) => {
+        // Handle any network or other errors
+        console.error("Error adding product to cart:", error);
+        createToast("Product Already Wish Listed", );
+        return;
+      });
+
+    }else{
+      createToast("Please Login Your Account");
+    }
+
+   
+
+  }
+
   return (
     <>
        <div className={`item product-item ${props.itemView} `}>
@@ -30,10 +76,18 @@ const ProductItem = (props) => {
                          <span> {props?.item?.discount}% </span>
                    </div>
                    <div className="actions">
-                      <button className="screen" onClick={() => viewProductDetails(props?.item?._id)}> 
+                      <button 
+                          className="screen" 
+                          onClick={() => viewProductDetails(props?.item?._id)}
+                          > 
                           <SlSizeFullscreen />
                        </button>
-                      <button className="cart"> <IoIosHeartEmpty /> </button>
+                      <button 
+                         className="cart"
+                         onClick={() => addToWishList(props?.item?._id)}
+                        > 
+                        <IoIosHeartEmpty /> 
+                      </button>
                    </div>
             </div>
              <div className="all-details">

@@ -26,7 +26,7 @@ import axios from "axios";
 
 import avaterPhoto from "../../assets/banner/avater-photo.jpg"
 
-import { createReviewData, getReviewData } from "../../utils/api";
+import { createReviewData, createWishListData, getReviewData } from "../../utils/api";
 import createToast from "../../utils/toastify";
 
 // loading 
@@ -36,7 +36,7 @@ import "./ProductDetails.css";
 
 const ProductDetails = () => {
   const [activeSize, setActiveSize] = useState(null);
-  const [activeTab, setActiveTab] = useState(2);
+  const [activeTab, setActiveTab] = useState(0);
 
   const [productData, setProductData] = useState(null); // State to hold product data
   const [loading, setLoading] = useState(false);
@@ -191,6 +191,49 @@ const ProductDetails = () => {
       setReviewsData(res.reviews); 
     })
   }, [id]); 
+
+
+
+    // add to wish list 
+    const addToWishList = (id) => {
+      const user = JSON.parse(localStorage.getItem("user"));
+  
+      if (user !== undefined && user !== null && user !== "")  {
+        const modalData = {
+          productTitle : productData?.name,
+          image : productData?.photo[0],
+          rating : productData?.rating,
+          price : productData.oldPrice,
+          productId : id,
+          userId : user?.userId,
+        }
+    
+        createWishListData(`/`, modalData).then((res) => {
+    
+          if (res.status === true) {
+            // Product Wishlist added successfully
+            createToast("Product Added Wish List", "success");
+            return;
+    
+          } else if (res.status === false) {
+            // Product already in the cart or some other issue
+            return createToast("Product Already Wish List Added");
+          } else {
+            // Handle unexpected statuses
+            return createToast("An unexpected error occurred", "error");
+          }
+        }).catch((error) => {
+          // Handle any network or other errors
+          console.error("Error adding product to cart:", error);
+          createToast("Product Already Wish Listed", );
+          return;
+        });
+  
+      }else{
+        createToast("Please Login Your Account");
+      }
+  
+    }
  
   return (
     <>
@@ -295,7 +338,9 @@ const ProductDetails = () => {
                           </div>
                            <div className="wish-compare-btn">
                              <Tooltip title="Add To WishList" placement="top-start">
-                                <Button> <CiHeart /> </Button>   
+                                <Button onClick={() => addToWishList(productData?._id)}> 
+                                  <CiHeart /> 
+                                </Button>   
                               </Tooltip>
                              <Tooltip title="Add To Compare " placement="top-start">
                                 <Button> <FaCodeCompare /> </Button>   

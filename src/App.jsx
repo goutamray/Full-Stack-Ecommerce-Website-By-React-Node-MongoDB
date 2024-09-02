@@ -15,6 +15,7 @@ import ProductModal from './components/productModal/ProductModal';
 
 import About from './pages/about/About';
 import Cart from './pages/cart/Cart';
+
 import Contact from './pages/contact/Contact';
 import MyAccount from './pages/myAccount/MyAccount';
 import Dashboard from './pages/myAccount/dashboard/Dashboard';
@@ -34,6 +35,7 @@ import { createCartData, fetchCartDataFromApi, fetchDataFromApi, fetchProductFro
 import './App.css';
 import { ToastContainer } from 'react-toastify';
 import createToast from './utils/toastify';
+import WishList from './pages/wishlist/WishList';
 
 // context 
 const MyContext = createContext();
@@ -211,6 +213,7 @@ function App() {
                   <Route  path='/product/:id' exact={true} element={ <ProductDetails /> }/>
                   <Route path="/product/:productId"  exact={true} element={<ProductDetails />} />
                   <Route  path='/cart' exact={true} element={ <Cart /> }/>
+                  <Route  path='/wishlist' exact={true} element={ <WishList /> }/>
                   <Route  path='/signIn' exact={true} element={ <SignIn /> }/>
                   <Route  path='/signUp' exact={true} element={ <SignUp /> }/>
                   <Route  path='*' exact={true} element={ <NotFound /> }/>

@@ -24,12 +24,19 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import avaterPhoto from "../../assets/banner/avater-photo.jpg"
+
+import { createReviewData, getReviewData } from "../../utils/api";
+import createToast from "../../utils/toastify";
+
+// loading 
+import CircularProgress from '@mui/material/CircularProgress';
 
 import "./ProductDetails.css"; 
 
 const ProductDetails = () => {
   const [activeSize, setActiveSize] = useState(null);
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(2);
 
   const [productData, setProductData] = useState(null); // State to hold product data
   const [loading, setLoading] = useState(false);
@@ -37,7 +44,26 @@ const ProductDetails = () => {
   const [cartFields, setCartFields] = useState({}); 
   const [productQuantity, setProductQuantity] = useState(); 
  
-  const [tabError, setTabError] = useState(false); 
+  const [tabError, setTabError] = useState(false);
+
+ const [reviewsData, setReviewsData] = useState([]);
+  const [rating, setRating] = useState(0)
+
+  const [input, setInput ] = useState({
+      productId : "",
+      customerName : "",
+      customerId : "",
+      customerRating : null,
+      review : "",
+  })
+
+ // handle review change 
+ const handleReviewChange = (e) => {
+  setInput((prevState) => ({
+    ...prevState,
+    [e.target.name] : e.target.value
+  }))
+ }; 
 
   const context = useContext(MyContext)
 
@@ -89,7 +115,6 @@ const ProductDetails = () => {
     if (id) {
       fetchSingleProduct(id);
     }
-
   }, [id]);
 
 
@@ -118,12 +143,54 @@ const ProductDetails = () => {
     }else{
       setTabError(true); 
     }
-  
+  }
+
+
+  // handle review submit 
+  const handleReviewSubmit = (e) => {
+     e.preventDefault();
+     setLoading(true); 
+
+     const user = JSON.parse(localStorage.getItem("user"));
+
+     input.customerId = user?.userId;
+     input.productId = id;
+     input.customerName = user?.name;
+
+       // Validate all inputs 
+       if (!input.review || !input.customerRating) {
+        setLoading(false);
+        createToast("All fields are required", );
+        return;
+      }
+
+     createReviewData("/", input).then((res) => {
+        createToast("Review Submitted Successful", "success");
+        setLoading(false);
+        // empty 
+        setInput({
+          review: "",
+          customerRating: "",
+        });
+
+        getReviewData(`/review?productId=${id}`).then((res) => {
+          setReviewsData(res.reviews); 
+        })
+
+     })
+
   }
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // product review 
+  useEffect(() => {
+    getReviewData(`/review?productId=${id}`).then((res) => {
+      setReviewsData(res.reviews); 
+    })
+  }, [id]); 
  
   return (
     <>
@@ -148,7 +215,7 @@ const ProductDetails = () => {
                     </div>
                     <div className="reviews d-flex align-items-center gap-2">
                        <Rating name="read-only" value={parseInt(productData?.rating)} readOnly size="small"/>
-                        <span > 2 Reviews </span>
+                        <span > ( {reviewsData?.length} ) Reviews </span>
                     </div>
                 </div>
                 <div className="product-content">
@@ -274,14 +341,14 @@ const ProductDetails = () => {
                              <button className={`${activeTab === 1 && "active" }`} onClick={()   => setActiveTab(1)}> Additional info </button> 
                           </li>
                          <li className='list-inline-item my-custom-list'> 
-                             <button className={`${activeTab === 2 && "active" }`} onClick={() => setActiveTab(2)}> Reviews (3) </button> 
+                             <button className={`${activeTab === 2 && "active" }`} onClick={() => setActiveTab(2)}> Reviews ( {reviewsData?.length} )  </button> 
                           </li>
                        </ul>
                   
                   {
                     activeTab === 0 && <div className="tab-content mt-3">
                     <p className="all-small-font"> {productData?.description} </p>
-                  </div>
+                   </div>
                   }
                     
                   {
@@ -354,7 +421,7 @@ const ProductDetails = () => {
                              </tbody>
                        </table>
                     </div>
-                  </div>
+                    </div>
                   }
                    
                   {/* review part  */}
@@ -365,53 +432,85 @@ const ProductDetails = () => {
                           <div className="col-md-8 left-review-box ">
                                <div className="review-customer">
                                   <h4> Customer questions & answers  </h4>
-
-                                <div className="card p-3 review-card mb-4" >
-                                  <div className="image-item">
-                                    <div className="rounded-circle">
-                                        <img src="https://nest-frontend-v6.netlify.app/assets/imgs/blog/author-2.png" alt="" />
-                                     </div>
-                                     <p> Goutam Ray </p>
-                                  </div>
-                                  <div className="customer-review-info ">
-                                      <div className="card-info">
-                                        <div className="review-date">
-                                          <p className="now-date"> 25-05-2024 </p>
-                                          </div>
-                                          <div className="star-message mt-3"> 
-                                            <p className="message"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ad magni culpa, numquam dolore dignissimos perspiciatis mollitia cum unde error.  </p>
-                                          </div> 
-                                      </div>
-                                      <div className="review-final">
-                                        <span>  <Rating name="read-only" value={5} readOnly size="small"/> </span>   
-                                      </div>
-                                  </div>
-                            
-                              </div>
+                            {
+                              reviewsData?.length !== 0 && 
+                              reviewsData?.slice(0)?.reverse()?.map((item, index) => {
+                                return  <div className="card p-3 review-card mb-4" key={index}>
+                                <div className="image-item">
+                                  <div className="rounded-circle">
+                                      <img src={avaterPhoto} alt="" />
+                                   </div>
+                                   <p> {item?.customerName} </p>
+                                </div>
+                                <div className="customer-review-info ">
+                                    <div className="card-info">
+                                      <div className="review-date">
+                                        <p className="now-date"> {item?.createdAt} </p>
+                                        </div>
+                                        <div className="star-message mt-3"> 
+                                          <p className="message"> {item?.review} </p>
+                                        </div> 
+                                    </div>
+                                    <div className="review-final">
+                                      <span>  
+                                        <Rating 
+                                           name="read-only" 
+                                           value={item?.customerRating} 
+                                           readOnly 
+                                           size="small"
+                                          /> 
+                                      </span>   
+                                    </div>
+                                </div>
+                          
+                            </div>
+                              })
+                            }
+                               
                            
                             <div className="review-form">
                                      <h3> Add a review </h3>
                              
-                                 <form className="form" > 
+                                 <form className="form" onSubmit={handleReviewSubmit} > 
                                      <div className="form-group my-2">
-                                        <textarea name="review" cols="30" rows="5" className="form-control" placeholder="Write Comment"></textarea>
+                                        <textarea 
+                                            cols="30" rows="5" className="form-control" placeholder="Write Comment"
+                                            name="review" 
+                                            value={input.review}
+                                            onChange={handleReviewChange}
+                                          >
+                                        </textarea>
                                      </div>
                                      <div className="row my-3">
-                                       <div className="col-md-6">
-                                          <div className="form-group">
-                                            <input type="text" className="form-control" placeholder="Name" name="userName"  />
-                                          </div>
-                                       </div>
-                                    <div className="col-md-6">
-                                      <div className="form-group star-view ">
-                                       <span className="me-3"> 
-                                       Review     <Rating name="read-only" value={5} readOnly size="small"/> </span>
-                                     
-                                          </div>
-                                       </div>  
-                                     </div>
-                                                                       
-                                     <button type="submit" className="submit-btn"> Submit Review </button>
+                                          <div className="col-md-6">
+                                            <div className="form-group star-view ">
+                                            <span className="me-3"> 
+                                                Review    
+                                            <Rating
+                                                name="customerRating"
+                                                value={input.customerRating}
+                                                onChange={(event, newValue) => {
+                                                  setRating(newValue);
+                                                  setInput((prev) => ({
+                                                    ...prev,
+                                                    customerRating : newValue
+                                                  }))
+                                                }}
+                                              />
+                                                </span>
+                                              </div>
+                                          </div>  
+                                       </div>                                
+                                     <button 
+                                        type="submit" 
+                                        className="submit-btn"> 
+                                          {
+                                            loading === true ?   
+                                            <CircularProgress color="inherit" className="ml-3 loader "/> : 
+                                            "Submit Review"
+                                          }
+                                         
+                                     </button>
                                   </form>
 
                                  </div> 

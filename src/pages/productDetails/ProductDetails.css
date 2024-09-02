@@ -228,13 +228,17 @@
   margin-top: 7px;
 }
 .review-card .review-final{
-  width: 12%;
+  width: 17%;
 }
 .customer-review-info{
   display: flex;
   justify-content: space-between;
 }
-
+.css-1qqgbpl-MuiRating-root {
+  position: relative;
+  top: 5px;
+  left: 7px;
+}
 /****** right side ber  ******/
 .review-details{
   padding-left: 20px;

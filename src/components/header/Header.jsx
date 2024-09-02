@@ -163,7 +163,7 @@ const Header = ( ) => {
                     <div className="cart-section">
                         <div className="user">
                            {
-                              context.isLogin !== true 
+                              context?.isLogin !== true 
                                 ? 
                                <Link  to="/signIn"> Sign In </Link> 
                                  : 

@@ -11,7 +11,7 @@ const Download = () => {
            <p> No downloads available yet. </p>
         </div>
         <div className="download-btn">
-            <Link to="/cat/:id"> Browse Product </Link>  
+            <Link to="/"> Browse Product </Link>  
         </div>
      </div>
     </>

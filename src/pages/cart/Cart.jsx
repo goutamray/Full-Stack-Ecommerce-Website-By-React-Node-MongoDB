@@ -18,7 +18,8 @@ import "./Cart.css";
 import createToast from "../../utils/toastify";
 import { MyContext } from "../../App";
 
-const Cart = () => {
+
+const Cart =  () => {
 
   const [cartData, setCartData] = useState([]); 
   const [productQuantity, setProductQuantity] = useState(); 
@@ -31,14 +32,12 @@ const Cart = () => {
   useEffect(() => {
     fetchCartDataFromApi("/").then((res) => {
       setCartData(res.cartList); 
-      // context?.setCartItemsLength(res?.cartList?.length)
     });
 
     // real time data update 
     context.getCartData(); 
 
    }, [context]); 
-
 
   // quantity 
    const quantity = (val) => {
@@ -47,6 +46,7 @@ const Cart = () => {
   }
 
 
+  // select item data 
   const selectedItem = (item, quantityVal) => {
 
     if (changeQuantity !== 0) {
@@ -80,8 +80,6 @@ const Cart = () => {
     }
   }
 
-  
-
  // delete cart product 
  const removeProduct = (id) => {
   deleteCartData(`/${id}`).then((res) => {
@@ -96,9 +94,11 @@ const Cart = () => {
   })
  }; 
 
+ 
  useEffect(() => {
   window.scrollTo(0, 0);
 }, []);
+
 
   return (
     <>
@@ -219,8 +219,9 @@ const Cart = () => {
                             </span>
                           </h3>
                         </div>
-                        <div className="process-btn ">
-                                <Link to=""> Proceed To Checkout <PiSignOutBold className='cart-icon'/> </Link>
+                        <div className="process-btn" >
+                                <Link to="/checkout"> Proceed To Checkout <PiSignOutBold className='cart-icon'/> 
+                                </Link>
                         </div>
 
                       </div>

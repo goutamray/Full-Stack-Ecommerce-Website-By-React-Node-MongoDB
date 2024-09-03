@@ -36,6 +36,8 @@ import './App.css';
 import { ToastContainer } from 'react-toastify';
 import createToast from './utils/toastify';
 import WishList from './pages/wishlist/WishList';
+import Checkout from './pages/checkout/Checkout';
+import ThankYou from './pages/thankYou/ThankYou';
 
 // context 
 const MyContext = createContext();
@@ -214,8 +216,10 @@ function App() {
                   <Route path="/product/:productId"  exact={true} element={<ProductDetails />} />
                   <Route  path='/cart' exact={true} element={ <Cart /> }/>
                   <Route  path='/wishlist' exact={true} element={ <WishList /> }/>
+                  <Route  path='/checkout' exact={true} element={ <Checkout /> }/>
                   <Route  path='/signIn' exact={true} element={ <SignIn /> }/>
                   <Route  path='/signUp' exact={true} element={ <SignUp /> }/>
+                  <Route  path='/thank-you' exact={true} element={ <ThankYou /> }/>
                   <Route  path='*' exact={true} element={ <NotFound /> }/>
 
                    {/* children routing */}

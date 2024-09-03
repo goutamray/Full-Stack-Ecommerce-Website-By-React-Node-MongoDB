@@ -423,5 +423,19 @@ export const deleteWishlistData = async( id ) => {
 }; 
 
 
-
+/**
+ * Create order data
+ * @param {string} url - The endpoint URL (e.g., "/")
+ * @param {FormData} formData - The form data to submit
+ * @returns {Promise<Object>} - The response data from the server
+ */
+export const createOrderData = async(url, formData) => {
+   try {
+      const response = await axios.post(`http://localhost:5050/api/v1/order${url}`, formData); 
+       return response.data;
+   } catch (error) {
+      console.error('Error submitting form data:', error.message);
+      throw error; 
+   }
+};
 

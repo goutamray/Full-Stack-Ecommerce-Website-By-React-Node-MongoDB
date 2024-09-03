@@ -27,13 +27,27 @@ const MyAccount = () => {
           <div className="row">
             <div className="col-md-3">
               <ul>
-                  <li> <Link to="dashboard" className={location.pathname === "/my-account/dashboard" ? "active" : ""}> dashboard </Link></li>
-                  <li> <Link to="orders" className={location.pathname === "/my-account/orders" ? "active" : ""}> orders </Link></li>
-                  <li> <Link to="downloads" className={location.pathname === "/my-account/downloads" ? "active" : ""}> downloads </Link></li>
-                  <li> <Link to="address" className={location.pathname === "/my-account/address" ? "active" : ""}> address </Link></li>
-                  <li> <Link to="account-details" className={location.pathname === "/my-account/account-details" ? "active" : ""}> account details </Link></li>
-                  <li> <Link to="change-password" className={location.pathname === "/my-account/change-password" ? "active" : ""}> change password </Link></li>
-                  <li> <Link to="logout"> log out </Link></li>
+                  <li> 
+                    <Link to="dashboard" className={location.pathname === "/my-account/dashboard" ? "active" : ""}> dashboard </Link>
+                  </li>
+                  <li> 
+                    <Link to="orders" className={location.pathname === "/my-account/orders" ? "active" : ""}> orders </Link>
+                  </li>
+                  <li> 
+                    <Link to="downloads" className={location.pathname === "/my-account/downloads" ? "active" : ""}> downloads </Link>
+                  </li>
+                  <li> 
+                    <Link to="address" className={location.pathname === "/my-account/address" ? "active" : ""}> address </Link>
+                  </li>
+                  <li> 
+                    <Link to="account-details" className={location.pathname === "/my-account/account-details" ? "active" : ""}> account details </Link>
+                  </li>
+                  <li> 
+                    <Link to="change-password" className={location.pathname === "/my-account/change-password" ? "active" : ""}> change password </Link>
+                  </li>
+                  <li>
+                     <Link to="/signIn"> log out </Link>
+                  </li>
               </ul>
             </div>
             <div className="col-md-9 pl-3 custom-padding  ">

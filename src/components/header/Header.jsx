@@ -178,16 +178,16 @@ const Header = ( ) => {
                                  openDrop === true && 
                                  <ul className="dropdown-menu-item shadow">
                                     <li>
-                                       <Link className="dropdown-item my-custom" to="/my-account" onClick={handleClose} > 
+                                       <Link className="dropdown-item my-custom" to="/my-account/dashboard" onClick={handleClose} > 
                                        <FaRegUserCircle /> My Account 
                                     </Link>
                                     </li>
                                     <li>
-                                       <Link className="dropdown-item my-custom" to="" onClick={handleClose}> <PiShieldWarningFill /> Reset Password </Link>
+                                       <Link className="dropdown-item my-custom" to="/my-account/orders" onClick={handleClose}> <PiShieldWarningFill /> My Orders </Link>
                                     </li>
                                     <li>
                                        <Link className="dropdown-item my-custom" to="/wishlist" onClick={handleClose}> <FaHeart /> 
-                                       Wish List </Link>
+                                       My Wish List </Link>
                                     </li>
                                     <li onClick={handleLogout}>
                                        <Link className="dropdown-item my-custom" to="" onClick={handleClose}> <RiLock2Fill /> Logout  </Link>

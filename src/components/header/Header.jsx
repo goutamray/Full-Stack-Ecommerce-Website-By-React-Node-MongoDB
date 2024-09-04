@@ -68,7 +68,7 @@ const Header = ( ) => {
           userId: ""
         });
       }
-    }, [context]);
+    }, []);
 
   return (
     <>

@@ -2,7 +2,18 @@
 
 import { Link } from "react-router-dom"
 import "./Order.css"
+import { useEffect, useState } from "react"
+import { fetchAllOrderData } from "../../../utils/api";
 const Order = () => {
+  const [orders, setOrders] = useState([]);
+
+
+  useEffect(() => {
+    fetchAllOrderData("/").then((res) => {
+      setOrders(res.orderList); 
+    })
+  }, [orders]);
+   
   return (
     <>
       <div className="order p-4">
@@ -18,13 +29,18 @@ const Order = () => {
                  </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td> #351 </td>
-                  <td> May 31, 2024 </td>
-                  <td> On hold </td>
-                  <td> 7.99$ for 1 item</td>
-                  <td > <Link to="" className="view-btn"> View </Link>  </td>
-                </tr>
+                {
+                  orders?.length !== 0 && orders?.map((item, index)=> {
+                    return  <tr key={index}>
+                    <td> {item?._id}</td>
+                    <td> {item?.createdAt}</td>
+                    <td> {item?.status}</td>
+                    <td> 7.99$ for 1 item</td>
+                    <td > <Link to="" className="view-btn"> View </Link>  </td>
+                  </tr>
+                  })
+                }
+               
               </tbody>
             </table>
           </div>

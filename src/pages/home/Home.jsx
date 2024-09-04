@@ -72,9 +72,11 @@ const Home = () => {
       }
    };
 
+   // handle category change 
    const handleCategoryChange = (event, newValue) => {
       setSelectedCategory(newValue);
       fetchProducts(newValue);
+
    };
 
 

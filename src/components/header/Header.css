@@ -185,6 +185,10 @@
 .header-search  button svg{
   font-size: 25px;
 }
+.MuiCircularProgress-root.MuiCircularProgress-indeterminate{
+  width: 25px !important;
+  height: 25px !important;
+}
 
 /**** cart section css  *****/
 .cart-section{

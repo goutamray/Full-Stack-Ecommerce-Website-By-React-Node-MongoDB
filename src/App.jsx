@@ -38,6 +38,7 @@ import createToast from './utils/toastify';
 import WishList from './pages/wishlist/WishList';
 import Checkout from './pages/checkout/Checkout';
 import ThankYou from './pages/thankYou/ThankYou';
+import Search from './pages/search/Search';
 
 // context 
 const MyContext = createContext();
@@ -65,6 +66,7 @@ function App() {
   const [addingCart, setAddingCart] = useState(false); 
 
    const [cartData, setCartData ] = useState();
+   const [searchData, setSearchData] = useState([]); 
 
 
  // get all countries
@@ -180,7 +182,9 @@ function App() {
     setAddingCart,
     cartData,
     setCartData,
-    getCartData
+    getCartData,
+    searchData,
+    setSearchData,
 
   };   
 
@@ -213,7 +217,8 @@ function App() {
                   <Route  path='/contact' exact={true} element={ <Contact /> }/>
                   <Route  path='/category/:id' exact={true} element={ <Listing /> }/>
                   <Route  path='/product/:id' exact={true} element={ <ProductDetails /> }/>
-                  <Route path="/product/:productId"  exact={true} element={<ProductDetails />} />
+                  <Route path="/product/:productId" exact={true} element={<ProductDetails />} />
+                  <Route path="/search" exact={true} element={<Search />} />
                   <Route  path='/cart' exact={true} element={ <Cart /> }/>
                   <Route  path='/wishlist' exact={true} element={ <WishList /> }/>
                   <Route  path='/checkout' exact={true} element={ <Checkout /> }/>

@@ -6,6 +6,8 @@ import Slider from "react-slick";
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 
+
+
 const ProductZoom = ({ images, discount }) => {
   const zoomSliderBig = useRef(); 
   const zoomSlider = useRef(); 

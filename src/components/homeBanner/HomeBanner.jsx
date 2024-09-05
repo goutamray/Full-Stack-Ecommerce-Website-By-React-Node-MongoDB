@@ -12,8 +12,12 @@ import slider1 from "../../assets/slider/slider1.webp";
 import slider2 from "../../assets/slider/slider2.webp";
 import slider3 from "../../assets/slider/slider3.webp";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+import { fetchSliderFromApi } from "../../utils/api";
 
 const HomeBanner = () => {
+  const [sliderData, setSliderData] = useState([]); 
  
   var settings = {
     dots: true,
@@ -26,31 +30,44 @@ const HomeBanner = () => {
     slidesToScroll: 1
   };
 
+
+  useEffect(() => {
+    fetchSliderFromApi("/").then((res) => {
+      setSliderData(res.sliderList)
+    })
+  }, []); 
+
+ 
   return (
     <div className="py-2">
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
                   <Slider {...settings}>
-                    <div className="item">
-                        <img src={slider1} alt="slider1" height={400} className="rounded my-custom-size" />
+                    {
+                      sliderData?.length !== 0 && sliderData?.map((item, index) => {
+                        return  <div className="item" key={index}>
+                        <img src={item?.photo} alt="slider1" height={400} className="rounded my-custom-size" />
                        <div className="slide-content">
                          <div className="offer-part">
-                           <h6> Exclusive offer </h6>
-                           <p> - 20% off </p>
+                           <h6> {item?.offerText} </h6>
+                           <p> {item?.discount} off </p>
                          </div>
                          <div className="main-content">
-                            <h1 className="entry-title"> A different kind of grocery store </h1>
-                            <p> Only this week. Don’t miss... </p>
+                            <h1 className="entry-title">{item?.title} </h1>
+                            <p> {item?.subTitle} </p>
                           <div className="price-data">
                             <p> from </p>
-                            <h1> $ 7.99 </h1>
+                            <h1> $ {item?.price} </h1>
                           </div>
                           <Link to="/shop"> Shop Now <FaArrowRightLong /></Link> 
                          </div>
                        </div>
-                    </div>  
-                    <div className="item">
+                    </div>
+                      })
+                    }
+                     
+                    {/* <div className="item">
                         <img src={slider2} alt="slider2" height={400} className="rounded my-custom-size" />
                         <div className="slide-content">
                          <div className="offer-part">
@@ -85,7 +102,7 @@ const HomeBanner = () => {
                            <Link to="/shop"> Shop Now <FaArrowRightLong /></Link> 
                          </div>
                        </div>
-                    </div>  
+                    </div>   */}
                 </Slider>
             </div>
           </div>

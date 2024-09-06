@@ -18,21 +18,15 @@ import Cart from './pages/cart/Cart';
 
 import Contact from './pages/contact/Contact';
 import MyAccount from './pages/myAccount/MyAccount';
-import Dashboard from './pages/myAccount/dashboard/Dashboard';
 import ProductDetails from './pages/productDetails/ProductDetails';
 import SignIn from './pages/signIn/SignIn';
 import SignUp from './pages/signUp/SignUp';
 
-import AccountDetail from './pages/myAccount/accountDetails/AccountDetail';
-import Address from './pages/myAccount/address/Address';
-import ChangePassword from './pages/myAccount/changePassword/ChangePassword';
-import Download from './pages/myAccount/download/Download';
-import Logout from './pages/myAccount/logout/Logout';
-import Order from './pages/myAccount/order/Order';
+
+import Order from './pages/order/Order';
 import NotFound from './pages/notFound/NotFound';
 import { createCartData, fetchCartDataFromApi, fetchDataFromApi, fetchProductFromApi } from './utils/api';
 
-import './App.css';
 import { ToastContainer } from 'react-toastify';
 import createToast from './utils/toastify';
 import WishList from './pages/wishlist/WishList';
@@ -42,6 +36,8 @@ import Search from './pages/search/Search';
 
 // context 
 const MyContext = createContext();
+
+import './App.css';
 
 function App() {
   const [countryList , setCountryList ] = useState([]);
@@ -227,16 +223,12 @@ function App() {
                   <Route  path='/thank-you' exact={true} element={ <ThankYou /> }/>
                   <Route  path='*' exact={true} element={ <NotFound /> }/>
 
-                   {/* children routing */}
-                  <Route  path='/my-account' exact={true} element={ <MyAccount /> } >
-                     <Route path='dashboard' exact={true} element={<Dashboard />}/>
-                     <Route path='orders' exact={true} element={<Order />}/>
-                     <Route path='downloads' exact={true} element={<Download />}/>
-                     <Route path='address' exact={true} element={<Address />}/>
-                     <Route path='account-details' exact={true} element={<AccountDetail />}/>
-                     <Route path='change-password' exact={true} element={<ChangePassword />}/>
-                     <Route path='logout' exact={true} element={<Logout />}/>
-                  </Route >
+             
+                  <Route  path='/my-account' exact={true} element={ <MyAccount /> } />
+                   
+                  <Route path='orders' exact={true} element={<Order />}/>
+                   
+               
               </Routes>
 
             {/* footer part  */}

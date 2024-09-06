@@ -3,7 +3,8 @@
 import { Link } from "react-router-dom"
 import "./Order.css"
 import { useEffect, useState } from "react"
-import { fetchAllOrderData } from "../../../utils/api";
+import { fetchAllOrderData } from "../../utils/api";
+
 const Order = () => {
   const [orders, setOrders] = useState([]);
 
@@ -14,6 +15,7 @@ const Order = () => {
     })
   }, [orders]);
    
+  
   return (
     <>
       <div className="order p-4">

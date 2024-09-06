@@ -178,12 +178,12 @@ const Header = ( ) => {
                                  openDrop === true && 
                                  <ul className="dropdown-menu-item shadow">
                                     <li>
-                                       <Link className="dropdown-item my-custom" to="/my-account/dashboard" onClick={handleClose} > 
+                                       <Link className="dropdown-item my-custom" to="/my-account" onClick={handleClose} > 
                                        <FaRegUserCircle /> My Account 
                                     </Link>
                                     </li>
                                     <li>
-                                       <Link className="dropdown-item my-custom" to="/my-account/orders" onClick={handleClose}> <PiShieldWarningFill /> My Orders </Link>
+                                       <Link className="dropdown-item my-custom" to="/orders" onClick={handleClose}> <PiShieldWarningFill /> My Orders </Link>
                                     </li>
                                     <li>
                                        <Link className="dropdown-item my-custom" to="/wishlist" onClick={handleClose}> <FaHeart /> 
@@ -202,7 +202,7 @@ const Header = ( ) => {
                              Tk.  
                                { 
                                   context.cartData?.length !== 0 ?  
-                                  context.cartData?.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0)  : 0
+                                  context.cartData?.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0)  : <p> 0 </p> 
                                   
                                }
                                
@@ -211,7 +211,7 @@ const Header = ( ) => {
                              <button> <BsMinecartLoaded /> </button>    
                              <div className="total-count">
                                  <span>      
-                                   {context.cartData?.length}
+                                   {context.cartData === true ? context.cartData?.length : 0 }
                                 </span>
                              </div>
                         </Link>

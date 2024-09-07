@@ -310,7 +310,7 @@ export const updateUserData = async( url, updatedData ) => {
 
 
 /**
- * update password data from api 
+ * update user password data from api 
  * @param {*} url 
  * @param {*} updatedData 
  * @returns 
@@ -329,7 +329,6 @@ export const changePassData = async (url, formData) => {
    }
  };
  
-
 
 /**
  * Create cart data

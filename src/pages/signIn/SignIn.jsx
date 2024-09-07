@@ -12,7 +12,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import "./SignIn.css"; 
 import createToast from "../../utils/toastify";
-import { createNewUser } from "../../utils/api";
+import {  createNewUser } from "../../utils/api";
+
 
 const SignIn = () => {
   const [input, setInput] = useState({
@@ -82,7 +83,7 @@ const SignIn = () => {
         });
     };
 
- 
+
 
   useEffect(() => {
     context.setIsHeaderFooterShow(false); 
@@ -146,7 +147,7 @@ const SignIn = () => {
                         <div className="text-center mt-3 text-black">
                           <p> Or continue with social account </p>
                         </div>
-                        <button className="google-btn">
+                        <button className="google-btn" >
                           <img src={google} alt="google" />
                           <span>  Sign In with Google </span>
                         </button>

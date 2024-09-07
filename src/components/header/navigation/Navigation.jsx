@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
-import { FaAngleRight } from "react-icons/fa6"; 
 
 import { useContext } from "react";
 import { MyContext } from "../../../App";
@@ -28,25 +27,15 @@ const Navigation = () => {
                         </button>
                         <div className={`sidebarnav ${isOpenSideNav === true ? "open" : ""}`}>
                            <ul>
-                             <li className="angle"> 
-                              <Link href="#"> Men <FaAngleRight />  </Link>
-                              <div className="submenu shadow">
-                                <li> <Link href="/">  Clothing </Link> </li>
-                                <li> <Link href="/">  FoodWear </Link> </li>
-                                <li> <Link href="/">  Watches </Link> </li>
-                                <li> <Link href="/">  Clothing </Link> </li>
-                                <li> <Link href="/">  FoodWear </Link> </li>
-                                <li> <Link href="/">  Watches </Link> </li>
-                              </div>
-                            </li>
-                            <li> <Link href="#"> Beauty </Link></li>
-                            <li> <Link href="#"> Watches </Link></li>
-                            <li> <Link href="#"> Kids </Link></li>
-                            <li> <Link href="#"> Gifts </Link></li>
-                            <li> <Link href="#"> Beauty </Link></li>
-                            <li> <Link href="#"> Watches </Link></li>
-                            <li> <Link href="#"> Kids </Link></li>
-                            <li> <Link href="#"> Gifts </Link></li>
+
+                          {
+                             context.categoryData?.categoryList?.length !== 0 &&
+                             context.categoryData?.categoryList?.map((item, index) => {
+                              return  <li key={index}> 
+                                       <Link to={`/category/${item?._id}`}> {item?.name} </Link>
+                                        </li>
+                            })
+                          }
                            </ul>
                         </div>
                      </div>
@@ -64,7 +53,7 @@ const Navigation = () => {
                             context.categoryData?.categoryList?.length !== 0 &&
                             context.categoryData?.categoryList?.map((item, index) => {
                               return  <li className="list-inline-item" key={index}> 
-                              <Link to={`/category/${item._id}`}> {item.name } 
+                              <Link to={`/category/${item?._id}`}> {item?.name } 
                                  {/* <span> <FaAngleDown /> </span>  */}
                               </Link>
                               {/* <div className="submenu shadow">

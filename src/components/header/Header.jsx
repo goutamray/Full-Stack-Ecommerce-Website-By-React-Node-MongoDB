@@ -201,8 +201,8 @@ const Header = ( ) => {
                              <span className="total-amonut"> 
                              Tk.  
                                { 
-                                  context.cartData?.length !== 0 ?  
-                                  context.cartData?.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0)  : <p> 0 </p> 
+                                  context?.cartData?.length !== 0 ?  
+                                  context?.cartData?.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0)  : <p> 0 </p> 
                                   
                                }
                                

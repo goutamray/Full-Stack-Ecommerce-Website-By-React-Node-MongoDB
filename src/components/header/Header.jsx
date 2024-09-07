@@ -68,7 +68,7 @@ const Header = ( ) => {
           userId: ""
         });
       }
-    }, []);
+    }, [context]);
 
   return (
     <>
@@ -211,7 +211,7 @@ const Header = ( ) => {
                              <button> <BsMinecartLoaded /> </button>    
                              <div className="total-count">
                                  <span>      
-                                   {context.cartData === true ? context.cartData?.length : 0 }
+                                   { context.cartData?.length }
                                 </span>
                              </div>
                         </Link>

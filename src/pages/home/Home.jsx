@@ -19,7 +19,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 
 // images 
-import man from "../../assets/avater/avatar.jpg"
+import man from "../../assets/avater/aaaa.jpg"
 import coupon from "../../assets/banner/coupon.png"
 
 import { useContext, useEffect, useState } from "react";

@@ -276,6 +276,60 @@ export const editSubCategoryData = async( url, updatedData ) => {
    }
 };
 
+/**
+ *  fetch user from api
+ * @param {*} url 
+ * @returns 
+ */
+export const fetchUserDataFromApi = async(url) => {
+   try {
+      const res = await axios.get("http://localhost:5050/api/v1/user"+url);
+      return res.data;
+   } catch (error) {
+      console.error('Error submitting form data:', error.message);
+      throw error; 
+   }  
+}; 
+
+/**
+ * update user data from api 
+ * @param {*} url 
+ * @param {*} updatedData 
+ * @returns 
+ */
+export const updateUserData = async( url, updatedData ) => {
+   try {
+    const response = await axios.patch(`http://localhost:5050/api/v1/user${url}`, updatedData); 
+   
+     return response.data;  
+   } catch (error) {
+    console.error('Error submitting form data:', error.message);
+    throw error; 
+   }
+ }; 
+
+
+/**
+ * update password data from api 
+ * @param {*} url 
+ * @param {*} updatedData 
+ * @returns 
+ */
+export const changePassData = async (url, formData) => {
+   try {
+     const response = await axios.patch(`http://localhost:5050/api/v1/user${url}`, formData, {
+       headers: {
+         'Content-Type': 'multipart/form-data'  // Ensure correct headers are set
+       }
+     });
+     return response.data;
+   } catch (error) {
+     console.error('Error submitting form data:', error.message);
+     throw error;
+   }
+ };
+ 
+
 
 /**
  * Create cart data

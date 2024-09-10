@@ -110,7 +110,7 @@ const ProductModal = ({ closeProductModal, data }) => {
         <Dialog  open={true} onClose={() => context.setIsOpenProductModal(false)} className="productModal">
           <div className="modal-top-part">
                 <button className="close_btn" onClick={() => context.setIsOpenProductModal(false)}> <IoMdClose /> </button>
-                <h3> {data?.name}</h3>
+                <h3> {data?.name?.substr(0, 50) + "..."}</h3>
                 <div className="d-flex align-items-center"> 
                     <div className="brand d-flex align-items-center ">
                         <span> Brands </span>
@@ -128,13 +128,15 @@ const ProductModal = ({ closeProductModal, data }) => {
 
                     <div className="col-md-7">
                       <div className="product-content">
-                      <h4> {data?.name}</h4>
+                      <h4> {data?.name?.substr(0, 50) + "..."} </h4>
                         <div className="price-total">
-                             <span className="delete-price">${data?.oldPrice}</span>
-                            <span className="regular-price mr-2"> ${data?.price}</span>
+                             <span className="delete-price">${data?.price}</span>
+                         
+                            <span className="regular-price mr-2"> ${data?.oldPrice}</span>
                         </div>
                         <p className="stock"> In Stock </p>
-                        <p className="desc">{data?.description}</p>
+                   
+                        <p className="desc">{data?.description?.substr(0, 250) + "..."}</p>
 
                 {/* product ram data  */}
                      {

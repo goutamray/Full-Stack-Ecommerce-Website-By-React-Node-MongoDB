@@ -8,6 +8,7 @@
   padding: 30px !important;
   width: 900px !important;
   max-width: 900px !important;
+  max-height: 100%;
 }
 .productModal h3 {
   font-size: 23px;
@@ -48,6 +49,10 @@
   overflow: hidden;
   z-index: 99999;
 }
+.product-zoom img{
+  height: 400px !important;
+  width: 100%;
+}
 
 /***** galary css *******/
 .zoom-galary .product-galary-slider {
@@ -57,6 +62,7 @@
  padding: 5px !important;
  overflow: hidden !important;
  height: auto;
+ width: 100%;
  border: none;
  outline: none;
 }
@@ -107,12 +113,14 @@
   margin-top: 5px;
 }
 .product-content p.desc{
+  width: 90% !important;
   font-size: 13px;
   font-weight: 400;
   font-family: var(--font-secondary);
   color: var(--heading-color);
   margin-top: 20px;
   margin-bottom: 20px;
+
 }
 .product-content button.cart-btn{
   font-size: 16px;

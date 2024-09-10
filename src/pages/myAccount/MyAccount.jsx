@@ -17,7 +17,7 @@ import TabPanel from '@mui/lab/TabPanel';
 import TextField from '@mui/material/TextField';
 
 import { FaCloudUploadAlt } from "react-icons/fa";
-import { changePassData, fetchUserDataFromApi, updateUserData } from "../../utils/api";
+import { fetchUserDataFromApi, updateUserData } from "../../utils/api";
 import createToast from "../../utils/toastify";
 import axios from "axios";
 

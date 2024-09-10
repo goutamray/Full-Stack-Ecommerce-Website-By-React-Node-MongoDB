@@ -51,7 +51,7 @@ const ProductZoom = ({ images, discount }) => {
                        <Slider {...settings2} className="product-galary-slider-big" ref={zoomSliderBig}>    
                           {
                             images?.map((item, index) => {
-                              return  <div className="item" key={index}>
+                              return  <div className="item big-photo" key={index}>
                               <div className="product-zoom">
                                   <InnerImageZoom zoomType="hover"
                                   zoomScale= "1"  src={item}  /> 
@@ -69,7 +69,7 @@ const ProductZoom = ({ images, discount }) => {
 
                         {
                           images?.map((item, index) => {
-                            return  <div className="item" key={index}>
+                            return  <div className="item small-photo" key={index}>
                             <img src={item} alt="zoom" onClick={() => goto(index)}/>
                         </div>
                           })

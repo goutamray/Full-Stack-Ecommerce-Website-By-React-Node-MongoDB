@@ -177,9 +177,11 @@ img.rounded.my-custom-size {
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
 }
+.imagewrapper{
+  height: 230px !important;
+}
 .imagewrapper img{
-  height: 220px !important;
-  object-fit: fill;
+  height: auto ;
   width: 100%;
 }
 .product-item:hover {

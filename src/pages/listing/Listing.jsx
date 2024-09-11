@@ -35,6 +35,13 @@ const Listing = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
+  const [isOpenSideBar, setIsOpenSideBar ] = useState(false); 
+
+  // open filter 
+  const openSideBarData = () => {
+    setIsOpenSideBar(() => !isOpenSideBar)
+  }
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -149,7 +156,13 @@ const Listing = () => {
         <div className="product-listing-page">
           <div className="container">
             <div className="productListing d-flex">
-                <SideBar filterData={filterData} filterByPrice={filterByPrice} filterByRating={filterByRating}/>
+                <SideBar 
+                   filterData={filterData} 
+                   filterByPrice={filterByPrice} 
+                   filterByRating={filterByRating} 
+                   isOpenSideBar={isOpenSideBar} 
+                   openSideBarData={openSideBarData}
+                  />
             
                 <div className="content_right">
                    <div className="showBy d-flex align-items-center justify-content-between">
@@ -161,12 +174,15 @@ const Listing = () => {
                          <button className={productView === "four" && "acti" } 
                          onClick={() => setProductView('four')}> <TfiLayoutGrid4Alt /> </button>
                       </div>
-                      <div className="mobile-filter-button">
+                      <div 
+                         className="mobile-filter-button" 
+                         onClick={openSideBarData}
+                        >
                             <button> <FaFilter /> Filter </button>
                         </div>
-                      <div className="drop-btn">
-                        
-                      <Button
+
+                      <div className="drop-btn">  
+                       <Button
                           id="basic-button"
                           aria-controls={open ? 'basic-menu' : undefined}
                           aria-haspopup="true"

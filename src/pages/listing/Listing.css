@@ -146,6 +146,10 @@
 .mobile-filter-button{
   display: none;
 }
+.product-listing-page .sidebar .filterBox h6 button{
+  display: none;
+}
+
 /******** Responsive css  *******/
 
 /***** Min 320px & Max 576px  ******/
@@ -153,13 +157,39 @@
 .drop-btn button{
     display: none;
 }
+.productListing{
+  position: relative;
+}
 .sidebar{
    display: none;
    width: 0px;
 }
+.sidebar.openSidebar{
+  display: block;
+  width: 100%;
+  left: 0% !important;
+  top: 0% !important;
+  z-index: 99999;
+  background-color: #f7f8fd;
+  position: absolute;
+  padding: 20px !important;
+}
+.product-listing-page .sidebar .filterBox h6 {
+  display: flex;
+  justify-content: space-between;
+}
+.product-listing-page .sidebar .filterBox h6 button{
+  border: none;
+  background-color: #f7f8fd;
+  margin-right: 25%;
+  display: block;
+}
+.product-listing-page .sidebar .filterBox h6 button svg{
+  font-size: 22px;
+}
 .product-listing-page .productListing {
    gap: 20px; 
-  width: 460px;
+  width: 500px;
   margin: 0px;
 }
 .productListingGrid .product-item.four {
@@ -195,5 +225,9 @@
   font-weight: 600;
   font-size: 16px !important;
 }
+.range-slider {
+  width: 75% !important;
+}
+
 
 }

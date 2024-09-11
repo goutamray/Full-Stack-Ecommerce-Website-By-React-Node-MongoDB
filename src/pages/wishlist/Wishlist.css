@@ -1,4 +1,6 @@
-
+.wishlist-section{
+  padding: 40px 0px;
+}
 
 .empty-cart{
   display: flex;
@@ -27,3 +29,10 @@
 .empty-cart a span svg{
   font-size: 22px;
 }
+
+
+/****** Responsive csss *******/
+@media (min-width : 320px) and (max-width: 576px){
+
+}
+

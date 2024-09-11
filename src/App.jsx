@@ -38,6 +38,7 @@ import Search from './pages/search/Search';
 const MyContext = createContext();
 
 import './App.css';
+import OrderTruck from './pages/orderTruck/OrderTruck';
 
 function App() {
   const [countryList , setCountryList ] = useState([]);
@@ -216,6 +217,7 @@ function App() {
                   <Route path="/product/:productId" exact={true} element={<ProductDetails />} />
                   <Route path="/search" exact={true} element={<Search />} />
                   <Route  path='/cart' exact={true} element={ <Cart /> }/>
+                  <Route  path='/order-trucking' exact={true} element={ <OrderTruck /> }/>
                   <Route  path='/wishlist' exact={true} element={ <WishList /> }/>
                   <Route  path='/checkout' exact={true} element={ <Checkout /> }/>
                   <Route  path='/signIn' exact={true} element={ <SignIn /> }/>

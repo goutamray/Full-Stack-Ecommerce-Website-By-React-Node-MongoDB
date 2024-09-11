@@ -103,10 +103,10 @@ const Cart =  () => {
   return (
     <>
     
-      <div className="section cart-section">
+      <div className="section cart-section-page">
         <div className="container">
           <div className="row">
-            <div className="col">
+            <div className="col-md-12">
                <div className="top-part-cart">
                     <h1 className="head-cart"> Your Carts </h1>
                     <p> There are <span> {cartData?.length}</span> products in your cart </p>                    
@@ -122,10 +122,10 @@ const Cart =  () => {
                             <thead>
                                   <tr> 
                                     <th> Product </th>
-                                    <th> Unit Price </th>
-                                    <th> Quantity </th>
+                                    <th > Unit Price </th>
+                                    <th className="mobile-hide"> Quantity </th>
                                     <th> Subtotal </th>
-                                    <th> Remove </th>
+                                    <th className="mobile-hide"> Remove </th>
                                   </tr>           
                             </thead>
                             <tbody>   
@@ -150,7 +150,7 @@ const Cart =  () => {
                                     </div>
                                   </td>
                                   <td className="product-price"> Tk {item?.price} </td>
-                                  <td> 
+                                  <td className="mobile-hide"> 
                                     <div className="cart-counter">
                                        <QuantityBox 
                                          value = {item?.quantity}
@@ -162,7 +162,7 @@ const Cart =  () => {
                                   </div>
                                   </td>
                                   <td className="subTotal"> {item?.subTotal}  </td>
-                                  <td className="delete-product"> 
+                                  <td className="delete-product mobile-hide"> 
                                       <span onClick={() => removeProduct(item?._id)}>  <RiDeleteBin6Fill  /> 
                                       </span>
                                   </td>

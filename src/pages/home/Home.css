@@ -178,9 +178,9 @@ img.rounded.my-custom-size {
   transition: all 0.3s ease-in-out;
 }
 .imagewrapper img{
-  height: 250px;
+  height: 220px !important;
+  object-fit: fill;
   width: 100%;
-  object-fit: cover;
 }
 .product-item:hover {
   border: 1px solid #0000!important;
@@ -595,6 +595,24 @@ img.rounded.my-custom-size {
 .top-part {
   margin-bottom: 5px;
 }
+.populart-text{
+  width: 100%;
+  display: block;
+}
+.product-slider .product-header p {
+   width: 100%;
+}
+.product-slider .product-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column !important;
+}
+.css-113cboj-MuiTabs-root {
+  width: 359px !important;
+}
+
+
 }
 
 /**** Min 576px & Max 768px  ******/
@@ -616,6 +634,7 @@ img.rounded.my-custom-size {
   top: 12px;
   right: -47px;
 }
+
 
 }
 

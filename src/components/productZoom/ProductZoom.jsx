@@ -46,7 +46,7 @@ const ProductZoom = ({ images, discount }) => {
       <div className="productZoom">
           <div className="product-zoom-box">
                           <div className="discount-pro">
-                             <span> { discount }</span>
+                             <span> { discount } % </span>
                           </div>
                        <Slider {...settings2} className="product-galary-slider-big" ref={zoomSliderBig}>    
                           {

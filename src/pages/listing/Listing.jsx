@@ -11,13 +11,15 @@ import { FaAngleDown } from "react-icons/fa6";
 import { FiMenu } from "react-icons/fi";
 import { RiGridFill } from "react-icons/ri";
 import { TfiLayoutGrid4Alt } from "react-icons/tfi";
+import { FaFilter } from "react-icons/fa";
 
-// react icons 
+
+// material ui
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-// material ui
+
 import Pagination from '@mui/material/Pagination';
 
 import { useEffect } from "react";
@@ -148,6 +150,7 @@ const Listing = () => {
           <div className="container">
             <div className="productListing d-flex">
                 <SideBar filterData={filterData} filterByPrice={filterByPrice} filterByRating={filterByRating}/>
+            
                 <div className="content_right">
                    <div className="showBy d-flex align-items-center justify-content-between">
                       <div className="left-grid d-flex align-items-center gap-2 ">
@@ -158,7 +161,11 @@ const Listing = () => {
                          <button className={productView === "four" && "acti" } 
                          onClick={() => setProductView('four')}> <TfiLayoutGrid4Alt /> </button>
                       </div>
+                      <div className="mobile-filter-button">
+                            <button> <FaFilter /> Filter </button>
+                        </div>
                       <div className="drop-btn">
+                        
                       <Button
                           id="basic-button"
                           aria-controls={open ? 'basic-menu' : undefined}
@@ -199,12 +206,16 @@ const Listing = () => {
 
                    {/* pagination */}
                    <div className="d-flex justify-content-center align-items-center mt-5">
-                       <Pagination count={10} color="primary" />
+                       {/* <Pagination count={10} color="primary" /> */}
                    </div>
                 </div>
+
+             
             </div>
           </div>
         </div>
+        
+       
     </>
   )
 }

@@ -91,11 +91,16 @@
 
 /**** middle-header-bar  *****/
 .middle-header-bar {
-  padding-top: 0px ;
+  padding-top: 10px ;
 }
 .middle-header-bar .logo{
   position: relative;
-  top: 25px;
+  top: 0;
+}
+.main-header-part{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .logo-part button{
   display: none;
@@ -589,59 +594,173 @@ a.dropdown-item.my-custom svg{
   display: flex;
   flex-direction: column;
 }
+.mobile-menu-drop button{
+  display: none;
+}
+button.mobile-search-box {
+  display: none;
+}
+.main-menu-phone {
+  display: none;
+}
+
+
 
 /******** Responsive css  *******/
 
-
-
 /***** Min 320px & Max 576px  ******/
 @media (min-width : 320px) and (max-width: 576px){
+.main-header-part{
+  display: flex;
+  align-items: center;
+  padding-top: 15px !important;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(209, 209, 209);
+}
 .second-bar{
     opacity: 0;
     visibility: hidden;
     height: 0px !important;
 }
-img.logo-main {
-    width: 50%;
+.logo a img {
+  width: 120px;
+  height: auto;
 }
 .logo-part{
-  display: flex;
-  gap: 10px;
+  width: 30%;
 }
-.logo-part button{
-  display: block;
-  background-color: transparent;
+.menu-right-part{
+  width: 70%;
+}
+.header-search{
+  display: none;
+}
+button.mobile-search-box {
+  height: 37px !important;
+  width: 37px !important;
+  border-radius: 50%;
+  background-color: #ebebeb;
+  display: inline-block;
   border: none;
 }
-.logo-part button svg{
-  font-size: 25px;
-} 
-.middle-header-bar .logo {
+.mobile-search-box svg{
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+}
+.middle-header-bar .logo{
   position: relative;
   top: -4px;
   left: 14%;
 }
+
 .middle-header-bar .logo p {
   display: none;
 }
-.cart-section{
-  position: relative;
+.cart-section {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  display: flex !important;
+  gap: 10px !important;
+  width: 125px !important;
+  padding: 0px !important;
+  margin-right: 0px;
 }
-.cart-section .price {
-  position: absolute;
-  top: -29%;
-  right: 55%;
-}
+
 .cart-section .price  span.total-amonut {
   width: 0px;
   opacity: 0;
   visibility: hidden;
 }
+.cart-section .price a {
+  padding-left: 0px !important; 
+  gap: 0;
+}
+.menu-part-middle {
+  display: flex;
+  align-items: center;
+  gap: 10px !important;
+  justify-content: flex-end;
+  
+}
 .total-count span{
   color: #fff !important;
   display: block !important;
 }
+.menu-part-middle button.countryDrop {
+  display: none;
+}
+.header-bottom{
+  display: none;
+}
+.header-bottom .category-tab button {
+  display: none;
+}
+.mobile-menu-drop button{
+  display: block;
+  border: none;
+  height: 35px;
+  width: 35px;
+  border-radius: 10px;
+}
+.mobile-menu-drop button svg{
+  font-size: 22px;
+  font-weight: 600;
+}
+/* mobile header css */
+.dropdown-mobile-menu{
+  position: relative;
+}
+.main-menu-phone  {
+  display: block;
+  position: absolute;
+  z-index: 9999;
+  top: 10px;
+  right: 0;
+  width: 390px;
+  background-color: rgb(248, 248, 248);
+  padding: 20px 30px;
+  opacity: 0;
+  visibility: hidden;
+}
+.main-menu-phone.open{
+  height: 320px;
+  opacity: 1;
+  visibility: visible;
+} 
+.second-bar {
+  padding: 0px;
+}
 
+.main-menu-phone  ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+}
+.main-menu-phone ul li a{
+ font-size: 17px;
+ font-weight: 600;
+ color: #000;
+ padding: 5px 0px;
+}
+
+.main-menu-phone button{
+  width: 100%;
+  background-color: red;
+  margin-bottom: 8px;
+
+}
+.main-menu-phone button a {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+button .myAcc{
+  display: none;
+}
 
 
 

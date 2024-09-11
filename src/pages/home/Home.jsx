@@ -138,7 +138,7 @@ const Home = () => {
                <div className="product-slider">
 
                   <div className="product-header">
-                     <div>
+                     <div className="populart-text">
                         <h2> Popular Products </h2>
                         <p> Do not miss the current offers until the end of   March. </p>
                     </div>
@@ -207,7 +207,7 @@ const Home = () => {
                         <h2> NEW PRODUCTS </h2>
                         <p> New products with updated stocks. </p>
                     </div>
-                    <button className="view-all-btn"> View All <span> <FaArrowRightLong /> </span></button>
+                  
                   </div>
 
                   <div className="product_row_all product-row2 mt-4 d-flex ">

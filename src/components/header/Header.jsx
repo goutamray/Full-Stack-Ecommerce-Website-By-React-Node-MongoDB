@@ -14,6 +14,8 @@ import { RiLock2Fill } from "react-icons/ri";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
+import { IoSearch } from "react-icons/io5";
+
 // images
 import logo from "../../assets/logo/logo.png"
 import { Link, useNavigate } from "react-router-dom";
@@ -31,6 +33,7 @@ const Header = ( ) => {
   const context = useContext(MyContext); 
   const navigate = useNavigate();
 
+  const [openMobile, setOpenMobile] = useState(false); 
 
    // handle open 
  const handleOpen  = () => {
@@ -41,6 +44,11 @@ const Header = ( ) => {
   const handleClose  = () => {
    setOpenDrop(false);
   };
+
+  // open mobile menu 
+  const openMobileMenuData = () => {
+   setOpenMobile(() => !openMobile)
+  }
 
    //user logout 
    const handleLogout = () => {
@@ -140,25 +148,31 @@ const Header = ( ) => {
       </div>
 
       {/* middle header part start */}
-       <div className="container middle-header-bar ">
-          <div className="row">
+       <div className="container middle-header-bar  ">
+          <div className="row main-header-part ">
             {/* logo part */}
              <div className="col-sm-2 logo-part ">
-                <button> <IoMdMenu /> </button>
+         
                 <div className="logo">
-                   <Link to={"/"}> <img src={logo} alt="logo" className="logo-main"/> </Link>
+                   <Link to={"/"}> 
+                        <img src={logo} alt="logo" className="logo-main"/> 
+                   </Link>
                    <p> Online Grocery Shopping Center </p>
                 </div>
              </div>
-             <div className="col-sm-10">
+             <div className="col-sm-10 menu-right-part ">
                 <div className="menu-part-middle">
                   {
                      context?.countryList?.length !== 0 &&  <CountryDrop /> 
                   }
                    
-
-                    {/* search btn  */}
+                  {/* search btn  */}
                    <SearchBox /> 
+
+                   {/* mobile search */}
+                   <button className="mobile-search-box">
+                       <IoSearch />
+                   </button>
 
                     {/* cart section */}
                     <div className="cart-section">
@@ -166,7 +180,7 @@ const Header = ( ) => {
                            {
                               context?.isLogin !== true 
                                 ? 
-                               <Link  to="/signIn"> Sign In </Link> 
+                               <Link  to="/signIn"> Login </Link> 
                                  : 
                                  <button className="myAcc d-flex align-items-center justify-content-center" onClick={handleOpen}>
                                      <FiUser />
@@ -215,6 +229,34 @@ const Header = ( ) => {
                                 </span>
                              </div>
                         </Link>
+                        </div>
+                    </div>
+
+                    <div className="mobile-menu-drop">
+                        <button onClick={openMobileMenuData}>
+                            <IoMdMenu /> 
+                        </button> 
+                        <div className="dropdown-mobile-menu">
+                           <div className={`main-menu-phone ${openMobile == true ? "open" : ""}`}>
+                    
+                              <ul className="list list-inline">
+                                 <li className="list-inline-item custom-icon " onClick={openMobileMenuData}> 
+                                 <Link to="/">         
+                                       Home 
+                                    </Link>
+                                 </li>
+
+                                 {
+                                    context.categoryData?.categoryList?.length !== 0 &&
+                                    context.categoryData?.categoryList?.map((item, index) => {
+                                       return  <li className="list-inline-item" key={index} onClick={openMobileMenuData}> 
+                                       <Link to={`/category/${item?._id}`}> {item?.name } 
+                                       </Link>
+                                    </li>
+                                    })
+                                 }
+                              </ul>
+                          </div>
                         </div>
                     </div>
 

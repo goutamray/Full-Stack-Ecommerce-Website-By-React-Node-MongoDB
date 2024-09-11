@@ -54,6 +54,7 @@
   width: 100%;
 }
 
+
 /***** galary css *******/
 .zoom-galary .product-galary-slider {
   padding-top: 20px !important;
@@ -93,6 +94,8 @@
  margin-right: 2% !important;
  margin-top: 20px !important;
 }
+
+
 
 /****** description  *****/
 .product-content .price-total .regular-price {

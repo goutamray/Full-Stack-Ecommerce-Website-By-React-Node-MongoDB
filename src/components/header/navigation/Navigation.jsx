@@ -41,6 +41,7 @@ const Navigation = () => {
                      </div>
                  </div>
                  <div className="col-sm-9">
+
                    <div className="main-menu">
                       <ul className="list list-inline">
                         <li className="list-inline-item custom-icon "> 
@@ -54,21 +55,13 @@ const Navigation = () => {
                             context.categoryData?.categoryList?.map((item, index) => {
                               return  <li className="list-inline-item" key={index}> 
                               <Link to={`/category/${item?._id}`}> {item?.name } 
-                                 {/* <span> <FaAngleDown /> </span>  */}
                               </Link>
-                              {/* <div className="submenu shadow">
-                                 <li> <Link href="/">  Clothing </Link> </li>
-                                 <li> <Link href="/">  FoodWear </Link> </li>
-                                 <li> <Link href="/">  Watches </Link> </li>
-                                 <li> <Link href="/">  Clothing </Link> </li>
-                                 <li> <Link href="/">  FoodWear </Link> </li>
-                                 <li> <Link href="/">  Watches </Link> </li>
-                             </div> */}
                             </li>
                             })
                           }
                       </ul>
                    </div>
+                   
                  </div>
              </div>
           </div>

@@ -1,5 +1,5 @@
 
-.cart-section{
+.cart-section-page{
   padding: 40px 0px;
 }
 .top-part-cart{
@@ -25,9 +25,8 @@
 .table-box .image img {
   width: 90px;
   height: 90px;
-  object-fit: cover;
   border: 1px solid #cbcbcb;
-  border-radius: 5px;
+  border-radius: 5px !important;
   padding: 4px;
 }
 .product-content {
@@ -169,46 +168,27 @@ span.MuiRating-root.MuiRating-sizeSmall.Mui-readOnly.MuiRating-readOnly.css-1nbs
   margin-top: 20px;
   text-align: center;
 }
+.mobile-hide{
+  display: block;
+}
 
 /**** Responsive css ******/
 @media (min-width : 320px) and (max-width: 576px){
-.my-cart-row {
-  display: flex;
-  flex-direction: column;
+  .mobile-hide{
+    display: none;
+  }
+.product-price{
+  font-size: 16px;
 }
-.cart-product table {
-  display: flex;
-  justify-content: space-between;
+.subTotal{
+  font-size: 16px;
 }
-.cart-product table thead tr{
-    display: flex;
-    flex-direction: column;
+.table-box .image img {
+  width: 80px;
+  height: 60px;
+  border-radius: 5px;
 }
-.cart-product table tbody{
-  position: relative;
-  top: -32px;
-  background: transparent !important;
-}
-.table-box .image img{
-  opacity: 0;
-  visibility: hidden;
-}
-.cart-product table tbody tr{
-  display: flex;
-  flex-direction: column;
-  text-align: end;
-}
-.cart-product table tbody tr td {
-  display: flex;
-  justify-content: flex-end;
-}
-.cart-body table thead {
-  background: #ffffff !important;
-}
-.cart-counter {
-  position: relative;
-  right: -7%;
-}
+
 }
 
 

@@ -3,7 +3,7 @@
 import { CiDiscount1, CiDollar } from "react-icons/ci";
 import { FaTruck } from "react-icons/fa";
 import { TbMilk } from "react-icons/tb";
-
+import logo from "../../assets/logo/logo.png"
 
 import { Link } from "react-router-dom";
 
@@ -51,15 +51,20 @@ const Footer = () => {
           <div className="row">
             <div className="col-sm-3">
               <div className="footer-middle-part">
-                <h2> FRUIT & VEGETABLES </h2>
+                <div className="logo">
+                  <Link to="/"> 
+                      <img src={logo} alt="logo" />
+                  </Link>
+                 
+                </div>
                 <ul>
                   <li> <Link href="#"> Fresh Vegetables </Link></li>
                   <li> <Link href="#"> Herbs & Seasonings </Link></li>
                   <li> <Link href="#"> Fresh Fruits </Link></li>
                   <li> <Link href="#"> Cuts & Sprouts</Link></li>
-                  <li> <Link href="#"> Exotic Fruits & Veggies </Link></li>
-                  <li> <Link href="#"> Packaged Produce </Link></li>
-                  <li> <Link href="#"> Party Trays </Link></li>
+                  <li> <Link href="#"> Cuts & Sprouts</Link></li>
+                  <li> <Link href="#"> Cuts & Sprouts</Link></li>
+                  <li> <Link href="#"> Cuts & Sprouts</Link></li>
                 </ul>
               </div>
             </div>
@@ -73,6 +78,7 @@ const Footer = () => {
                   <li> <Link href="#"> Eggs Substitutes </Link></li>
                   <li> <Link href="#"> Honey </Link></li>
                   <li> <Link href="#"> Marmalades </Link></li>
+                  <li> <Link href="#"> Sour Cream and Dips</Link></li>
                   <li> <Link href="#"> Sour Cream and Dips</Link></li>
                 </ul>
               </div>

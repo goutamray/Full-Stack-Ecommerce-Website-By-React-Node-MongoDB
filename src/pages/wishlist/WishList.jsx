@@ -58,7 +58,7 @@ const WishList = () => {
   return (
     <>
     
-      <div className="section cart-section">
+      <div className="section wishlist-section">
         <div className="container">
           <div className="row">
             <div className="col">

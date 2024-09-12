@@ -15,6 +15,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
 import { IoSearch } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 
 // images
 import logo from "../../assets/logo/logo.png"
@@ -34,6 +35,7 @@ const Header = ( ) => {
   const navigate = useNavigate();
 
   const [openMobile, setOpenMobile] = useState(false); 
+  const [openSearch, setOpenSearch] = useState(false); 
 
    // handle open 
  const handleOpen  = () => {
@@ -49,6 +51,11 @@ const Header = ( ) => {
   const openMobileMenuData = () => {
    setOpenMobile(() => !openMobile)
   }
+  const hanleOpenSearch = () => {
+   setOpenSearch(() => !openSearch)
+  }
+
+
 
    //user logout 
    const handleLogout = () => {
@@ -170,9 +177,25 @@ const Header = ( ) => {
                    <SearchBox /> 
 
                    {/* mobile search */}
-                   <button className="mobile-search-box">
+                   <button 
+                      className="mobile-search-box"
+                      onClick={hanleOpenSearch}
+                     >
                        <IoSearch />
                    </button>
+              
+                      {
+                        openSearch === true &&  
+                           <div className="dynamic-search ">  
+                                <div className="close-search-bar" >
+                                     <button onClick={hanleOpenSearch}> <IoClose /> </button>
+                                </div>
+                                  <SearchBox hanleOpenSearch={hanleOpenSearch}/> 
+                            </div>
+                      }
+             
+
+                   
 
                     {/* cart section */}
                     <div className="cart-section">

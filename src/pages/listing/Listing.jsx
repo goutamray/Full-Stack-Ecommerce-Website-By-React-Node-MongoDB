@@ -222,7 +222,7 @@ const Listing = () => {
 
                    {/* pagination */}
                    <div className="d-flex justify-content-center align-items-center mt-5">
-                       {/* <Pagination count={10} color="primary" /> */}
+                       <Pagination count={10} color="primary" /> 
                    </div>
                 </div>
 

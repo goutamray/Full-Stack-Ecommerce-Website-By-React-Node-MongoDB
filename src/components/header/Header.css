@@ -643,6 +643,31 @@ button.mobile-search-box {
   display: inline-block;
   border: none;
 }
+.close-search-bar {
+   margin: 20px;
+   text-align: end;
+}
+.close-search-bar button {
+   border: none; 
+}
+.close-search-bar button svg{
+  font-size: 22px;
+}
+.dynamic-search {
+  background-color: #efefef;
+  height: 295px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+}
+.dynamic-search .header-search {
+  display: block;
+  width: 350px !important;
+  margin-top: 10px;
+  margin-left: 10px;
+}
 .mobile-search-box svg{
   font-size: 18px;
   font-weight: 500;
@@ -653,7 +678,6 @@ button.mobile-search-box {
   top: -4px;
   left: 14%;
 }
-
 .middle-header-bar .logo p {
   display: none;
 }
@@ -666,7 +690,6 @@ button.mobile-search-box {
   padding: 0px !important;
   margin-right: 0px;
 }
-
 .cart-section .price  span.total-amonut {
   width: 0px;
   opacity: 0;
@@ -731,7 +754,6 @@ button.mobile-search-box {
 .second-bar {
   padding: 0px;
 }
-
 .main-menu-phone  ul {
   display: flex;
   flex-direction: column;
@@ -757,13 +779,21 @@ button.mobile-search-box {
   font-size: 16px;
   font-weight: 500;
 }
-
 button .myAcc{
   display: none;
 }
 
-
-
+.homeBanner .info {
+  display: none;
+  padding: 0px !important;
+}
+.homeBanner .data-all {
+  padding: 0px !important;
+  display: none;
+}
+.homeBanner.py-5 {
+  padding: 0px !important;
+}
 
 }
 

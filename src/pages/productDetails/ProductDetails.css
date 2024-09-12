@@ -326,7 +326,6 @@
 }
 .productSize.d-flex {
   display: flex;
-  flex-direction: column;
   gap: 10px;
 }
 .product-content button.cart-btn {
@@ -341,6 +340,13 @@ li.list-inline-item.my-custom-list {
 .cart-counter{
   display: flex;
   gap: 10px;
+  padding: 0px !important;
+}
+.wish-compare-btn {
+  display: none;
+}
+.all-count-compare{
+  align-items: flex-start !important;
 }
 .all-count-compare.d-flex {
   display: flex;

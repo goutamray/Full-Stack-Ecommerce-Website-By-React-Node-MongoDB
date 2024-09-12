@@ -613,7 +613,12 @@ img.rounded.my-custom-size {
 .css-113cboj-MuiTabs-root {
   width: 359px !important;
 }
-
+.imagewrapper img {
+  height: 230px !important;
+  width: 100%;
+  margin: 0px 5px;
+  border-radius: 5px;
+}
 
 }
 

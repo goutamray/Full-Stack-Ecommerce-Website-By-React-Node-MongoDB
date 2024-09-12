@@ -25,13 +25,13 @@ const Navigation = () => {
                             <span> ALL CATEGORIES  </span>
                             <span className="angle"> <FaAngleDown /> </span>
                         </button>
-                        <div className={`sidebarnav ${isOpenSideNav === true ? "open" : ""}`}>
+                        <div className={`sidebarnav ${isOpenSideNav === true ? "open" : ""}`}  >
                            <ul>
 
                           {
                              context.categoryData?.categoryList?.length !== 0 &&
                              context.categoryData?.categoryList?.map((item, index) => {
-                              return  <li key={index}> 
+                              return  <li key={index} > 
                                        <Link to={`/category/${item?._id}`}> {item?.name} </Link>
                                         </li>
                             })

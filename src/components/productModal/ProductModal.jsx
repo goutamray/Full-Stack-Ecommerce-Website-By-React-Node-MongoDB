@@ -128,7 +128,7 @@ const ProductModal = ({ closeProductModal, data }) => {
 
                     <div className="col-md-7">
                       <div className="product-content">
-                      <h4> {data?.name?.substr(0, 50) + "..."} </h4>
+                      <h4 className="product-name"> {data?.name?.substr(0, 50) + "..."} </h4>
                         <div className="price-total">
                              <span className="delete-price">${data?.price}</span>
                          

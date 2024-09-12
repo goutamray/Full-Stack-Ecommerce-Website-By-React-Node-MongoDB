@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 // loading 
 import CircularProgress from '@mui/material/CircularProgress';
 
-const SearchBox = () => {
+const SearchBox = ( { hanleOpenSearch }) => {
   const [searchFields, setSearchFields] = useState("");
   const [loading, setLoading] = useState(false); 
 
@@ -28,6 +28,7 @@ const SearchBox = () => {
     // query data form database 
     fetchSearchProductData(`?q=${searchFields}`).then((res) => {
       context.setSearchData(res);
+      hanleOpenSearch()
     
       setTimeout(() => {
         setLoading(false); 
